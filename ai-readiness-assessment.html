@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Readiness Assessment | Koios Analytics</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Adamina&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #060d13;
+    --bg-secondary: #0c1920;
+    --bg-card: #0f2230;
+    --bg-card-hover: #122a3a;
+    --border: #1a3a50;
+    --text-primary: #e8edf2;
+    --text-secondary: #8a9fb5;
+    --text-muted: #5a7a92;
+    --accent: #0A3A50;
+    --accent-light: #0d4d6a;
+    --accent-bright: #1a8ab5;
+    --accent-glow: rgba(10, 58, 80, 0.2);
+    --accent-secondary: #22d3a7;
+    --accent-warning: #f59e0b;
+    --accent-danger: #ef4444;
+    --accent-purple: #a78bfa;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .assessment-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+  /* --- Site Header --- */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .site-header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .site-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+  .site-logo img {
+    height: 36px;
+    width: auto;
+  }
+  .site-logo-text {
+    font-family: 'Adamina', serif;
+    font-size: 16px;
+    color: var(--text-primary);
+  }
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .site-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color var(--transition);
+  }
+  .site-nav a:hover { color: var(--text-primary); }
+  .site-nav a.nav-cta {
+    background: var(--accent);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    transition: all var(--transition);
+  }
+  .site-nav a.nav-cta:hover { background: var(--accent-light); }
+  @media (max-width: 520px) {
+    .site-nav { gap: 12px; }
+    .site-nav a.nav-link { display: none; }
+  }
+  /* --- Site Footer --- */
+  .site-footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+  }
+  .site-footer p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .site-footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 12px;
+    transition: color var(--transition);
+  }
+  .site-footer a:hover { color: var(--accent-bright); }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .lang-switcher { display: flex; justify-content: flex-end; gap: 4px; margin-bottom: 12px; }
+  .lang-btn {
+    padding: 5px 12px; border: 1px solid var(--border); border-radius: 100px;
+    background: transparent; color: var(--text-muted); font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 600; cursor: pointer; transition: all var(--transition);
+  }
+  .lang-btn:hover { border-color: var(--accent-bright); color: var(--text-secondary); }
+  .lang-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .assessment-header { text-align: center; margin-bottom: 40px; padding-top: 8px; }
+  .assessment-header .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent-glow); border: 1px solid rgba(10,58,80,0.5);
+    border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 600;
+    color: var(--accent-bright); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .assessment-header h1 {
+    font-family: 'Adamina', Georgia, serif; font-size: clamp(26px, 5vw, 38px);
+    font-weight: 400; line-height: 1.2; margin-bottom: 12px;
+  }
+  .assessment-header h1 em { font-style: italic; color: var(--accent-bright); }
+  .assessment-header p { color: var(--text-secondary); font-size: 15px; max-width: 500px; margin: 0 auto; }
+  .progress-bar-container { margin-bottom: 36px; }
+  .progress-steps { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .progress-step {
+    font-size: 11px; font-weight: 600; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.06em; transition: color var(--transition);
+    text-align: center; flex: 1;
+  }
+  .progress-step.active { color: var(--accent-bright); }
+  .progress-step.completed { color: var(--accent-secondary); }
+  .progress-track { height: 4px; background: var(--bg-card); border-radius: 100px; overflow: hidden; }
+  .progress-fill {
+    height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-bright), var(--accent-secondary));
+    border-radius: 100px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); position: relative;
+  }
+  .progress-fill::after {
+    content: ''; position: absolute; right: 0; top: -3px; width: 10px; height: 10px;
+    background: var(--accent-secondary); border-radius: 50%; box-shadow: 0 0 12px rgba(34,211,167,0.5);
+  }
+  .form-section { display: none; animation: fadeSlideIn 0.4s ease forwards; }
+  .form-section.active { display: block; }
+  @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .section-title { font-family: 'Adamina', Georgia, serif; font-size: 24px; margin-bottom: 6px; }
+  .section-subtitle { color: var(--text-secondary); font-size: 14px; margin-bottom: 28px; }
+  .question-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px; margin-bottom: 20px;
+    transition: border-color var(--transition);
+  }
+  .question-card:hover { border-color: rgba(10,58,80,0.7); }
+  .question-card .q-label { font-size: 14px; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .question-card .q-label .q-num { color: var(--accent-bright); font-size: 12px; font-weight: 700; min-width: 22px; }
+  .question-card .q-hint { color: var(--text-muted); font-size: 12px; margin-bottom: 16px; padding-left: 30px; }
+  select, input[type="text"], input[type="email"] {
+    width: 100%; padding: 12px 16px; background: var(--bg-secondary);
+    border: 1px solid var(--border); border-radius: var(--radius-sm);
+    color: var(--text-primary); font-family: 'DM Sans', sans-serif; font-size: 14px;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none; appearance: none; -webkit-appearance: none;
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a9fb5' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer;
+  }
+  select:focus, input:focus { border-color: var(--accent-bright); box-shadow: 0 0 0 3px rgba(26,138,181,0.15); }
+  select option { background: var(--bg-secondary); color: var(--text-primary); }
+  .option-group { display: flex; flex-direction: column; gap: 8px; }
+  .option-group.inline { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+  .option-item {
+    display: flex; align-items: center; gap: 10px; padding: 11px 16px;
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); cursor: pointer; transition: all var(--transition);
+    font-size: 14px; user-select: none;
+  }
+  .option-group.inline .option-item { flex: 1; min-width: 130px; justify-content: center; }
+  .option-item:hover { border-color: rgba(26,138,181,0.4); background: var(--bg-card-hover); }
+  .option-item.selected { border-color: var(--accent-bright); background: rgba(26,138,181,0.1); }
+  .custom-indicator {
+    width: 18px; height: 18px; border: 2px solid var(--border);
+    transition: all var(--transition); flex-shrink: 0; position: relative;
+  }
+  .custom-indicator.radio { border-radius: 50%; }
+  .custom-indicator.check { border-radius: 4px; }
+  .option-item.selected .custom-indicator.radio { border-color: var(--accent-bright); }
+  .option-item.selected .custom-indicator.radio::after {
+    content: ''; position: absolute; top: 3px; left: 3px;
+    width: 8px; height: 8px; background: var(--accent-bright); border-radius: 50%;
+  }
+  .option-item.selected .custom-indicator.check { border-color: var(--accent-bright); background: var(--accent-bright); }
+  .option-item.selected .custom-indicator.check::after {
+    content: ''; position: absolute; top: 1px; left: 4px;
+    width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg);
+  }
+  .scale-group { display: flex; gap: 8px; }
+  .scale-btn {
+    flex: 1; padding: 12px 8px; text-align: center; background: var(--bg-secondary);
+    border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer;
+    transition: all var(--transition); font-size: 14px; font-weight: 600;
+    color: var(--text-secondary); user-select: none;
+  }
+  .scale-btn:hover { border-color: rgba(26,138,181,0.4); }
+  .scale-btn.selected {
+    background: var(--accent); border-color: var(--accent-bright);
+    color: #fff; box-shadow: 0 4px 14px rgba(10,58,80,0.5);
+  }
+  .scale-labels { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--text-muted); }
+  .range-container { padding: 8px 0; }
+  .range-value { text-align: center; font-size: 22px; font-weight: 700; color: var(--accent-bright); margin-bottom: 12px; }
+  input[type="range"] {
+    -webkit-appearance: none; width: 100%; height: 6px; background: var(--bg-secondary);
+    border-radius: 100px; outline: none; border: none; padding: 0;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 22px; height: 22px; background: var(--accent-bright);
+    border-radius: 50%; cursor: pointer; box-shadow: 0 2px 10px rgba(26,138,181,0.5);
+    border: 3px solid var(--bg-primary);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 22px; height: 22px; background: var(--accent-bright);
+    border-radius: 50%; cursor: pointer; box-shadow: 0 2px 10px rgba(26,138,181,0.5);
+    border: 3px solid var(--bg-primary);
+  }
+  .range-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: var(--text-muted); }
+  .nav-buttons { display: flex; justify-content: space-between; margin-top: 32px; gap: 12px; }
+  .btn {
+    padding: 14px 28px; border-radius: var(--radius-sm); font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 600; cursor: pointer; border: none;
+    transition: all var(--transition); display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary { background: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border); }
+  .btn-secondary:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 4px 16px rgba(10,58,80,0.4); }
+  .btn-primary:hover { background: var(--accent-light); box-shadow: 0 6px 24px rgba(10,58,80,0.6); transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn-cta {
+    background: var(--accent); color: #fff; padding: 16px 32px; font-size: 15px;
+    border-radius: var(--radius); box-shadow: 0 4px 20px rgba(10,58,80,0.5);
+  }
+  .btn-cta:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(10,58,80,0.7); }
+  .lead-section { display: none; animation: fadeSlideIn 0.4s ease forwards; }
+  .lead-section.active { display: block; }
+  .lead-form { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+  .lead-form label { font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 4px; display: block; }
+  .lead-form .field { display: flex; flex-direction: column; }
+  .lead-disclaimer { font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 8px; line-height: 1.5; }
+  .results-section { display: none; animation: fadeSlideIn 0.5s ease forwards; }
+  .results-section.active { display: block; }
+  .score-hero {
+    text-align: center; padding: 48px 24px;
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(10,58,80,0.15) 100%);
+    border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 28px;
+    position: relative; overflow: hidden;
+  }
+  .score-hero::before {
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(26,138,181,0.06) 0%, transparent 60%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
+  .score-number { font-family: 'Adamina', Georgia, serif; font-size: 72px; font-weight: 400; line-height: 1; margin-bottom: 4px; position: relative; }
+  .score-max { font-size: 28px; color: var(--text-muted); }
+  .score-label-text { font-size: 18px; font-weight: 600; margin-top: 8px; position: relative; }
+  .score-tag {
+    display: inline-block; padding: 4px 14px; border-radius: 100px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase; margin-top: 12px; position: relative;
+  }
+  .radar-container {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px; margin-bottom: 28px; text-align: center;
+  }
+  .radar-container h3 { font-family: 'Adamina', Georgia, serif; font-size: 20px; margin-bottom: 16px; }
+  .radar-canvas-wrap { max-width: 360px; margin: 0 auto; }
+  canvas#radarChart { width: 100% !important; height: auto !important; }
+  .dimensions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+  @media (max-width: 520px) { .dimensions-grid { grid-template-columns: 1fr; } }
+  .dim-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .dim-card .dim-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .dim-card .dim-label { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+  .dim-card .dim-score { font-size: 20px; font-weight: 700; }
+  .dim-bar { height: 6px; background: var(--bg-secondary); border-radius: 100px; overflow: hidden; margin-bottom: 10px; }
+  .dim-bar-fill { height: 100%; border-radius: 100px; transition: width 1s ease; }
+  .dim-card .dim-detail { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .recs-section { margin-bottom: 28px; }
+  .recs-section h3 { font-family: 'Adamina', Georgia, serif; font-size: 22px; margin-bottom: 16px; }
+  .rec-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px; margin-bottom: 12px; display: flex; gap: 14px;
+  }
+  .rec-icon {
+    width: 40px; height: 40px; border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
+  }
+  .rec-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .rec-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+  .cta-section {
+    text-align: center; padding: 40px 24px;
+    background: linear-gradient(135deg, rgba(10,58,80,0.15) 0%, rgba(26,138,181,0.08) 100%);
+    border: 1px solid rgba(10,58,80,0.4); border-radius: var(--radius); margin-top: 36px;
+  }
+  .cta-section h3 { font-family: 'Adamina', Georgia, serif; font-size: 24px; margin-bottom: 8px; }
+  .cta-section p { color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; max-width: 400px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<!-- Site Header -->
+<div class="site-header">
+  <div class="site-header-inner">
+    <a href="https://koios-analytics.com/" class="site-logo">
+      <img src="https://img1.wsimg.com/isteam/ip/48351d78-2301-42de-83a8-8139f9954e86/brandmark-design-white%20transparent.png/:/rs=h:97,cg:true,m/qt=q:95" alt="Koios Analytics">
+    </a>
+    <nav class="site-nav">
+      <a href="https://koios-analytics.com/" class="nav-link">Home</a>
+      <a href="/#services" class="nav-link">Resources</a>
+      <a href="/#about" class="nav-link">Contact</a>
+      <a href="https://calendar.app.google/gARU96EmoueEsaTv6" class="nav-cta">Schedule Call</a>
+    </nav>
+  </div>
+</div>
+
+<div class="assessment-container">
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('nl')">NL</button>
+  </div>
+  <div class="assessment-header">
+    <div class="badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      <span data-i18n="badge">Free Assessment</span>
+    </div>
+    <h1 data-i18n="headline_html">How <em>AI-Ready</em> is<br>Your Organisation?</h1>
+    <p data-i18n="subheadline">15 questions across 4 dimensions. Get your personalised AI readiness score and strategic recommendations in under 5 minutes.</p>
+  </div>
+  <div class="progress-bar-container" id="progressBarContainer">
+    <div class="progress-steps">
+      <div class="progress-step active" id="pstep-1" data-i18n="step_company">Company</div>
+      <div class="progress-step" id="pstep-2" data-i18n="step_technology">Technology</div>
+      <div class="progress-step" id="pstep-3" data-i18n="step_ai">AI Readiness</div>
+      <div class="progress-step" id="pstep-4" data-i18n="step_strategy">Strategy</div>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:2%"></div></div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="form-section active" id="section-1">
+    <div class="section-title" data-i18n="s1_title">Company Profile</div>
+    <div class="section-subtitle" data-i18n="s1_sub">Help us understand your organisation's context.</div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">01</span> <span data-i18n="q1_label">What industry are you in?</span></div>
+      <div class="q-hint" data-i18n="q1_hint">Select the closest match to your primary business.</div>
+      <select id="q1" onchange="handleChange()">
+        <option value="" disabled selected data-i18n="q1_placeholder">Select your industry...</option>
+        <option value="financial_services" data-i18n="ind_financial">Financial Services &amp; Insurance</option>
+        <option value="manufacturing" data-i18n="ind_manufacturing">Manufacturing &amp; Industrial</option>
+        <option value="retail_ecommerce" data-i18n="ind_retail">Retail &amp; E-Commerce</option>
+        <option value="healthcare" data-i18n="ind_healthcare">Healthcare &amp; Life Sciences</option>
+        <option value="technology" data-i18n="ind_technology">Technology &amp; SaaS</option>
+        <option value="telecom" data-i18n="ind_telecom">Telecommunications</option>
+        <option value="energy" data-i18n="ind_energy">Energy &amp; Utilities</option>
+        <option value="agriculture" data-i18n="ind_agriculture">Agriculture &amp; Food</option>
+        <option value="logistics" data-i18n="ind_logistics">Logistics &amp; Supply Chain</option>
+        <option value="professional_services" data-i18n="ind_professional">Professional Services</option>
+        <option value="government" data-i18n="ind_government">Government &amp; Public Sector</option>
+        <option value="other" data-i18n="ind_other">Other</option>
+      </select>
+    </div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">02</span> <span data-i18n="q2_label">How many employees does your company have?</span></div>
+      <div class="q-hint" data-i18n="q2_hint">This helps calibrate our recommendations to your scale.</div>
+      <div class="option-group inline" id="q2-group">
+        <div class="option-item" data-q="q2" data-val="1-49"><span class="custom-indicator radio"></span> 1–49</div>
+        <div class="option-item" data-q="q2" data-val="50-249"><span class="custom-indicator radio"></span> 50–249</div>
+        <div class="option-item" data-q="q2" data-val="250-999"><span class="custom-indicator radio"></span> 250–999</div>
+        <div class="option-item" data-q="q2" data-val="1000+"><span class="custom-indicator radio"></span> 1,000+</div>
+      </div>
+    </div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">03</span> <span data-i18n="q3_label">Annual revenue range (EUR)</span></div>
+      <div class="q-hint" data-i18n="q3_hint">Approximate is fine — this helps size recommendations appropriately.</div>
+      <select id="q3" onchange="handleChange()">
+        <option value="" disabled selected data-i18n="q3_placeholder">Select a range...</option>
+        <option value="under_1m" data-i18n="rev_under1m">Under €1M</option>
+        <option value="1m_5m" data-i18n="rev_1m5m">€1M – €5M</option>
+        <option value="5m_20m" data-i18n="rev_5m20m">€5M – €20M</option>
+        <option value="20m_100m" data-i18n="rev_20m100m">€20M – €100M</option>
+        <option value="over_100m" data-i18n="rev_over100m">Over €100M</option>
+      </select>
+    </div>
+    <div class="nav-buttons">
+      <div></div>
+      <button class="btn btn-primary" onclick="nextSection(2)"><span data-i18n="btn_continue">Continue</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="form-section" id="section-2">
+    <div class="section-title" data-i18n="s2_title">Technology Maturity</div>
+    <div class="section-subtitle" data-i18n="s2_sub">Assess your current technical foundation for AI adoption.</div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">04</span> <span data-i18n="q4_label">Current data analytics capabilities</span></div>
+      <div class="q-hint" data-i18n="q4_hint">Rate from basic spreadsheets (1) to advanced predictive analytics (5).</div>
+      <div class="scale-group" id="q4-group">
+        <div class="scale-btn" data-q="q4" data-val="1">1</div><div class="scale-btn" data-q="q4" data-val="2">2</div><div class="scale-btn" data-q="q4" data-val="3">3</div><div class="scale-btn" data-q="q4" data-val="4">4</div><div class="scale-btn" data-q="q4" data-val="5">5</div>
+      </div>
+      <div class="scale-labels"><span data-i18n="q4_low">Spreadsheets only</span><span data-i18n="q4_high">Advanced analytics</span></div>
+    </div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">05</span> <span data-i18n="q5_label">Cloud infrastructure adoption</span></div>
+      <div class="q-hint" data-i18n="q5_hint">Where does your infrastructure primarily live?</div>
+      <div class="option-group" id="q5-group">
+        <div class="option-item" data-q="q5" data-val="on_premise"><span class="custom-indicator radio"></span> <span data-i18n="q5_o1">Fully on-premise</span></div>
+        <div class="option-item" data-q="q5" data-val="hybrid"><span class="custom-indicator radio"></span> <span data-i18n="q5_o2">Hybrid (on-premise + some cloud)</span></div>
+        <div class="option-item" data-q="q5" data-val="cloud_partial"><span class="custom-indicator radio"></span> <span data-i18n="q5_o3">Mostly cloud with some legacy</span></div>
+        <div class="option-item" data-q="q5" data-val="cloud_native"><span class="custom-indicator radio"></span> <span data-i18n="q5_o4">Cloud-native / fully cloud</span></div>
+      </div>
+    </div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">06</span> <span data-i18n="q6_label">Data governance and quality</span></div>
+      <div class="q-hint" data-i18n="q6_hint">Rate from no formal processes (1) to mature governance framework (5).</div>
+      <div class="scale-group" id="q6-group">
+        <div class="scale-btn" data-q="q6" data-val="1">1</div><div class="scale-btn" data-q="q6" data-val="2">2</div><div class="scale-btn" data-q="q6" data-val="3">3</div><div class="scale-btn" data-q="q6" data-val="4">4</div><div class="scale-btn" data-q="q6" data-val="5">5</div>
+      </div>
+      <div class="scale-labels"><span data-i18n="q6_low">No formal processes</span><span data-i18n="q6_high">Mature governance</span></div>
+    </div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">07</span> <span data-i18n="q7_label">Technical team capabilities</span></div>
+      <div class="q-hint" data-i18n="q7_hint">Select all that apply to your current team.</div>
+      <div class="option-group" id="q7-group">
+        <div class="option-item" data-q="q7" data-val="data_analysts" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q7_o1">Data analysts / BI specialists</span></div>
+        <div class="option-item" data-q="q7" data-val="data_engineers" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q7_o2">Data engineers</span></div>
+        <div class="option-item" data-q="q7" data-val="ml_engineers" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q7_o3">ML engineers / Data scientists</span></div>
+        <div class="option-item" data-q="q7" data-val="software_devs" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q7_o4">Software developers</span></div>
+        <div class="option-item" data-q="q7" data-val="none" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q7_o5">None of the above</span></div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="prevSection(1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> <span data-i18n="btn_back">Back</span></button>
+      <button class="btn btn-primary" onclick="nextSection(3)"><span data-i18n="btn_continue">Continue</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="form-section" id="section-3">
+    <div class="section-title" data-i18n="s3_title">AI Readiness</div>
+    <div class="section-subtitle" data-i18n="s3_sub">Evaluate your organisation's preparedness for AI implementation.</div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">08</span> <span data-i18n="q8_label">AI experience level</span></div>
+      <div class="q-hint" data-i18n="q8_hint">From no experience (1) to multiple production AI systems (5).</div>
+      <div class="scale-group" id="q8-group">
+        <div class="scale-btn" data-q="q8" data-val="1">1</div><div class="scale-btn" data-q="q8" data-val="2">2</div><div class="scale-btn" data-q="q8" data-val="3">3</div><div class="scale-btn" data-q="q8" data-val="4">4</div><div class="scale-btn" data-q="q8" data-val="5">5</div>
+      </div>
+      <div class="scale-labels"><span data-i18n="q8_low">No experience</span><span data-i18n="q8_high">Multiple AI systems live</span></div>
+    </div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">09</span> <span data-i18n="q9_label">Data infrastructure readiness</span></div>
+      <div class="q-hint" data-i18n="q9_hint">How would you describe your data infrastructure?</div>
+      <div class="option-group" id="q9-group">
+        <div class="option-item" data-q="q9" data-val="siloed"><span class="custom-indicator radio"></span> <span data-i18n="q9_o1">Data scattered across disconnected systems</span></div>
+        <div class="option-item" data-q="q9" data-val="partially_integrated"><span class="custom-indicator radio"></span> <span data-i18n="q9_o2">Some systems integrated, key gaps remain</span></div>
+        <div class="option-item" data-q="q9" data-val="central_warehouse"><span class="custom-indicator radio"></span> <span data-i18n="q9_o3">Centralised data warehouse / lake in place</span></div>
+        <div class="option-item" data-q="q9" data-val="ml_ready"><span class="custom-indicator radio"></span> <span data-i18n="q9_o4">ML-ready pipelines with data quality monitoring</span></div>
+      </div>
+    </div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">10</span> <span data-i18n="q10_label">Annual AI / digital transformation budget</span></div>
+      <div class="q-hint" data-i18n="q10_hint">Drag to indicate your planned investment level.</div>
+      <div class="range-container">
+        <div class="range-value" id="q10-display">€50K – €100K</div>
+        <input type="range" id="q10" min="1" max="5" step="1" value="2" oninput="updateBudgetLabel(this.value);handleChange();">
+        <div class="range-labels"><span data-i18n="q10_low">Under €25K</span><span data-i18n="q10_high">€500K+</span></div>
+      </div>
+    </div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">11</span> <span data-i18n="q11_label">Desired implementation timeline</span></div>
+      <div class="q-hint" data-i18n="q11_hint">When do you want to see first AI results?</div>
+      <div class="option-group inline" id="q11-group">
+        <div class="option-item" data-q="q11" data-val="3_months"><span class="custom-indicator radio"></span> <span data-i18n="q11_o1">0–3 months</span></div>
+        <div class="option-item" data-q="q11" data-val="6_months"><span class="custom-indicator radio"></span> <span data-i18n="q11_o2">3–6 months</span></div>
+        <div class="option-item" data-q="q11" data-val="12_months"><span class="custom-indicator radio"></span> <span data-i18n="q11_o3">6–12 months</span></div>
+        <div class="option-item" data-q="q11" data-val="12_plus"><span class="custom-indicator radio"></span> <span data-i18n="q11_o4">12+ months</span></div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="prevSection(2)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> <span data-i18n="btn_back">Back</span></button>
+      <button class="btn btn-primary" onclick="nextSection(4)"><span data-i18n="btn_continue">Continue</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="form-section" id="section-4">
+    <div class="section-title" data-i18n="s4_title">Strategic Priorities</div>
+    <div class="section-subtitle" data-i18n="s4_sub">Understand your goals and concerns around AI adoption.</div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">12</span> <span data-i18n="q12_label">Top business objectives for AI</span></div>
+      <div class="q-hint" data-i18n="q12_hint">Select up to 3 priorities.</div>
+      <div class="option-group" id="q12-group">
+        <div class="option-item" data-q="q12" data-val="cost_reduction" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q12_o1">Cost reduction &amp; operational efficiency</span></div>
+        <div class="option-item" data-q="q12" data-val="revenue_growth" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q12_o2">Revenue growth &amp; new products</span></div>
+        <div class="option-item" data-q="q12" data-val="customer_experience" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q12_o3">Customer experience &amp; retention</span></div>
+        <div class="option-item" data-q="q12" data-val="predictive_analytics" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q12_o4">Predictive analytics &amp; forecasting</span></div>
+        <div class="option-item" data-q="q12" data-val="process_automation" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q12_o5">Process automation</span></div>
+        <div class="option-item" data-q="q12" data-val="competitive_advantage" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q12_o6">Competitive differentiation</span></div>
+      </div>
+    </div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">13</span> <span data-i18n="q13_label">Biggest concerns about AI adoption</span></div>
+      <div class="q-hint" data-i18n="q13_hint">What keeps you up at night?</div>
+      <div class="option-group" id="q13-group">
+        <div class="option-item" data-q="q13" data-val="data_quality"><span class="custom-indicator radio"></span> <span data-i18n="q13_o1">Data quality and availability</span></div>
+        <div class="option-item" data-q="q13" data-val="talent_gap"><span class="custom-indicator radio"></span> <span data-i18n="q13_o2">Lack of AI/ML talent</span></div>
+        <div class="option-item" data-q="q13" data-val="roi_unclear"><span class="custom-indicator radio"></span> <span data-i18n="q13_o3">Unclear ROI / business case</span></div>
+        <div class="option-item" data-q="q13" data-val="integration"><span class="custom-indicator radio"></span> <span data-i18n="q13_o4">Integration with existing systems</span></div>
+        <div class="option-item" data-q="q13" data-val="regulation"><span class="custom-indicator radio"></span> <span data-i18n="q13_o5">Regulatory / compliance requirements</span></div>
+      </div>
+    </div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">14</span> <span data-i18n="q14_label">Regulatory requirements that apply</span></div>
+      <div class="q-hint" data-i18n="q14_hint">Select all that apply to your organisation.</div>
+      <div class="option-group" id="q14-group">
+        <div class="option-item" data-q="q14" data-val="gdpr" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q14_o1">GDPR / Data privacy</span></div>
+        <div class="option-item" data-q="q14" data-val="eu_ai_act" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q14_o2">EU AI Act</span></div>
+        <div class="option-item" data-q="q14" data-val="industry_specific" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q14_o3">Industry-specific (POPIA, HIPAA, PCI-DSS, etc.)</span></div>
+        <div class="option-item" data-q="q14" data-val="iso_soc" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q14_o4">ISO 27001 / SOC 2</span></div>
+        <div class="option-item" data-q="q14" data-val="none" data-type="check"><span class="custom-indicator check"></span> <span data-i18n="q14_o5">None / Unsure</span></div>
+      </div>
+    </div>
+    <div class="question-card">
+      <div class="q-label"><span class="q-num">15</span> <span data-i18n="q15_label">AI decision-making process</span></div>
+      <div class="q-hint" data-i18n="q15_hint">How are technology investment decisions made?</div>
+      <div class="option-group" id="q15-group">
+        <div class="option-item" data-q="q15" data-val="founder_led"><span class="custom-indicator radio"></span> <span data-i18n="q15_o1">Founder / Owner-led</span></div>
+        <div class="option-item" data-q="q15" data-val="it_driven"><span class="custom-indicator radio"></span> <span data-i18n="q15_o2">IT / CTO driven</span></div>
+        <div class="option-item" data-q="q15" data-val="committee"><span class="custom-indicator radio"></span> <span data-i18n="q15_o3">Steering committee / Board</span></div>
+        <div class="option-item" data-q="q15" data-val="department"><span class="custom-indicator radio"></span> <span data-i18n="q15_o4">Individual department heads</span></div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="btn btn-secondary" onclick="prevSection(3)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> <span data-i18n="btn_back">Back</span></button>
+      <button class="btn btn-primary" onclick="showLeadCapture()"><span data-i18n="btn_results">See My Results</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <!-- LEAD CAPTURE -->
+  <div class="lead-section" id="lead-section">
+    <div class="section-title" data-i18n="lead_title">Almost There!</div>
+    <div class="section-subtitle" data-i18n="lead_sub">Enter your details to receive your personalised AI readiness report.</div>
+    <div class="lead-form">
+      <div class="field"><label data-i18n="lead_name">Full Name *</label><input type="text" id="lead-name" data-i18n-placeholder="lead_name_ph" placeholder="e.g. Jan van der Merwe" oninput="handleChange()"></div>
+      <div class="field"><label data-i18n="lead_email">Business Email *</label><input type="email" id="lead-email" data-i18n-placeholder="lead_email_ph" placeholder="e.g. jan@company.com" oninput="handleChange()"></div>
+      <div class="field"><label data-i18n="lead_company">Company Name *</label><input type="text" id="lead-company" data-i18n-placeholder="lead_company_ph" placeholder="e.g. Acme Industries" oninput="handleChange()"></div>
+      <div class="field">
+        <label data-i18n="lead_role">Your Role</label>
+        <select id="lead-role">
+          <option value="" selected data-i18n="lead_role_ph">Select your role...</option>
+          <option value="c_suite" data-i18n="role_csuite">C-Suite / Executive</option>
+          <option value="vp_director" data-i18n="role_vp">VP / Director</option>
+          <option value="manager" data-i18n="role_manager">Manager</option>
+          <option value="technical_lead" data-i18n="role_tech">Technical Lead / Architect</option>
+          <option value="other" data-i18n="role_other">Other</option>
+        </select>
+      </div>
+      <div class="nav-buttons" style="margin-top:8px">
+        <button class="btn btn-secondary" onclick="backFromLead()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> <span data-i18n="btn_back">Back</span></button>
+        <button class="btn btn-primary" id="btn-get-results" onclick="calculateAndShowResults()" disabled><span data-i18n="btn_get_report">Get My Report</span> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="lead-disclaimer" data-i18n="lead_disclaimer">Your data is processed in accordance with GDPR. We'll send your detailed report and may follow up with relevant insights. No spam, ever.</div>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="results-section" id="results-section"></div>
+</div>
+
+<!-- Site Footer -->
+<div class="site-footer">
+  <p>Koios Analytics (Pty) Ltd &mdash; solutions@koios-analytics.com</p>
+  <div class="footer-links">
+    <a href="https://koios-analytics.com/">Home</a>
+    <a href="/#services">Resources</a>
+    <a href="https://koios-analytics.com/about-us">About Us</a>
+    <a href="mailto:solutions@koios-analytics.com">Contact</a>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// i18n
+// ============================================================
+const T={en:{badge:"Free Assessment",headline_html:'How <em>AI-Ready</em> is<br>Your Organisation?',subheadline:"15 questions across 4 dimensions. Get your personalised AI readiness score and strategic recommendations in under 5 minutes.",step_company:"Company",step_technology:"Technology",step_ai:"AI Readiness",step_strategy:"Strategy",s1_title:"Company Profile",s1_sub:"Help us understand your organisation\u2019s context.",q1_label:"What industry are you in?",q1_hint:"Select the closest match to your primary business.",q1_placeholder:"Select your industry...",ind_financial:"Financial Services & Insurance",ind_manufacturing:"Manufacturing & Industrial",ind_retail:"Retail & E-Commerce",ind_healthcare:"Healthcare & Life Sciences",ind_technology:"Technology & SaaS",ind_telecom:"Telecommunications",ind_energy:"Energy & Utilities",ind_agriculture:"Agriculture & Food",ind_logistics:"Logistics & Supply Chain",ind_professional:"Professional Services",ind_government:"Government & Public Sector",ind_other:"Other",q2_label:"How many employees does your company have?",q2_hint:"This helps calibrate our recommendations to your scale.",q3_label:"Annual revenue range (EUR)",q3_hint:"Approximate is fine \u2014 this helps size recommendations appropriately.",q3_placeholder:"Select a range...",rev_under1m:"Under \u20ac1M",rev_1m5m:"\u20ac1M \u2013 \u20ac5M",rev_5m20m:"\u20ac5M \u2013 \u20ac20M",rev_20m100m:"\u20ac20M \u2013 \u20ac100M",rev_over100m:"Over \u20ac100M",btn_continue:"Continue",btn_back:"Back",btn_results:"See My Results",btn_get_report:"Get My Report",s2_title:"Technology Maturity",s2_sub:"Assess your current technical foundation for AI adoption.",q4_label:"Current data analytics capabilities",q4_hint:"Rate from basic spreadsheets (1) to advanced predictive analytics (5).",q4_low:"Spreadsheets only",q4_high:"Advanced analytics",q5_label:"Cloud infrastructure adoption",q5_hint:"Where does your infrastructure primarily live?",q5_o1:"Fully on-premise",q5_o2:"Hybrid (on-premise + some cloud)",q5_o3:"Mostly cloud with some legacy",q5_o4:"Cloud-native / fully cloud",q6_label:"Data governance and quality",q6_hint:"Rate from no formal processes (1) to mature governance framework (5).",q6_low:"No formal processes",q6_high:"Mature governance",q7_label:"Technical team capabilities",q7_hint:"Select all that apply to your current team.",q7_o1:"Data analysts / BI specialists",q7_o2:"Data engineers",q7_o3:"ML engineers / Data scientists",q7_o4:"Software developers",q7_o5:"None of the above",s3_title:"AI Readiness",s3_sub:"Evaluate your organisation\u2019s preparedness for AI implementation.",q8_label:"AI experience level",q8_hint:"From no experience (1) to multiple production AI systems (5).",q8_low:"No experience",q8_high:"Multiple AI systems live",q9_label:"Data infrastructure readiness",q9_hint:"How would you describe your data infrastructure?",q9_o1:"Data scattered across disconnected systems",q9_o2:"Some systems integrated, key gaps remain",q9_o3:"Centralised data warehouse / lake in place",q9_o4:"ML-ready pipelines with data quality monitoring",q10_label:"Annual AI / digital transformation budget",q10_hint:"Drag to indicate your planned investment level.",q10_low:"Under \u20ac25K",q10_high:"\u20ac500K+",q11_label:"Desired implementation timeline",q11_hint:"When do you want to see first AI results?",q11_o1:"0\u20133 months",q11_o2:"3\u20136 months",q11_o3:"6\u201312 months",q11_o4:"12+ months",s4_title:"Strategic Priorities",s4_sub:"Understand your goals and concerns around AI adoption.",q12_label:"Top business objectives for AI",q12_hint:"Select up to 3 priorities.",q12_o1:"Cost reduction & operational efficiency",q12_o2:"Revenue growth & new products",q12_o3:"Customer experience & retention",q12_o4:"Predictive analytics & forecasting",q12_o5:"Process automation",q12_o6:"Competitive differentiation",q13_label:"Biggest concerns about AI adoption",q13_hint:"What keeps you up at night?",q13_o1:"Data quality and availability",q13_o2:"Lack of AI/ML talent",q13_o3:"Unclear ROI / business case",q13_o4:"Integration with existing systems",q13_o5:"Regulatory / compliance requirements",q14_label:"Regulatory requirements that apply",q14_hint:"Select all that apply to your organisation.",q14_o1:"GDPR / Data privacy",q14_o2:"EU AI Act",q14_o3:"Industry-specific (POPIA, HIPAA, PCI-DSS, etc.)",q14_o4:"ISO 27001 / SOC 2",q14_o5:"None / Unsure",q15_label:"AI decision-making process",q15_hint:"How are technology investment decisions made?",q15_o1:"Founder / Owner-led",q15_o2:"IT / CTO driven",q15_o3:"Steering committee / Board",q15_o4:"Individual department heads",lead_title:"Almost There!",lead_sub:"Enter your details to receive your personalised AI readiness report.",lead_name:"Full Name *",lead_name_ph:"e.g. Jan van der Merwe",lead_email:"Business Email *",lead_email_ph:"e.g. jan@company.com",lead_company:"Company Name *",lead_company_ph:"e.g. Acme Industries",lead_role:"Your Role",lead_role_ph:"Select your role...",role_csuite:"C-Suite / Executive",role_vp:"VP / Director",role_manager:"Manager",role_tech:"Technical Lead / Architect",role_other:"Other",lead_disclaimer:"Your data is processed in accordance with GDPR. We\u2019ll send your detailed report and may follow up with relevant insights. No spam, ever.",budget_labels:["Under \u20ac25K","\u20ac25K \u2013 \u20ac50K","\u20ac50K \u2013 \u20ac100K","\u20ac100K \u2013 \u20ac500K","\u20ac500K+"],res_headline_html:'Your AI Readiness <em>Report</em>',res_prepared_for:"Prepared for",res_profile:"Your AI Readiness Profile",res_recs:"Personalised Recommendations",res_cta_title:"Ready to Act on These Insights?",res_cta_sub:"Book a complimentary 30-minute strategy discussion to explore how we can accelerate your AI journey.",res_cta_btn:"Schedule Strategy Call",lbl_strategic:"Strategic Clarity",lbl_technical:"Technical Foundation",lbl_organisational:"Organisational Readiness",lbl_implementation:"Implementation Capability",tier_leader:"AI Leader",tier_leader_tag:"Ready to scale",tier_ready:"AI Ready",tier_ready_tag:"Foundation in place",tier_emerging:"AI Emerging",tier_emerging_tag:"Key gaps to address",tier_exploring:"AI Exploring",tier_exploring_tag:"Strategic guidance needed",dim_strategic_high:"Excellent clarity on AI objectives and governance.",dim_strategic_mid:"Good foundation \u2014 refine your AI roadmap priorities.",dim_strategic_low:"Focus on aligning AI goals with business strategy.",dim_technical_high:"Strong technical infrastructure for AI deployment.",dim_technical_mid:"Solid base \u2014 invest in data pipelines and tooling.",dim_technical_low:"Prioritise data centralisation and quality improvement.",dim_org_high:"Well-positioned for AI adoption at scale.",dim_org_mid:"Good readiness \u2014 build AI literacy across teams.",dim_org_low:"Consider fractional AI leadership to bridge capability gaps.",dim_impl_high:"Proven AI delivery capability in place.",dim_impl_mid:"Ready for pilot projects \u2014 start with a quick win.",dim_impl_low:"Begin with a focused proof-of-concept to build momentum.",rec_strategy_low_t:"Define a Clear AI Strategy",rec_strategy_low_p:"Your organisation would benefit from a structured AI strategy aligned with business objectives. Start with a focused use-case discovery workshop to identify 2-3 high-impact opportunities.",rec_strategy_high_t:"Accelerate Strategic Execution",rec_strategy_high_p:"You have strong strategic clarity. Focus on building a phased implementation roadmap with clear KPIs and ROI metrics for each AI initiative.",rec_tech_low_t:"Strengthen Your Data Foundation",rec_tech_low_p:"Before investing in AI models, prioritise data infrastructure: centralise data sources, implement quality checks, and establish governance policies.",rec_tech_mid_t:"Bridge the Analytics-to-AI Gap",rec_tech_mid_p:"Your technical foundation is solid. The next step is building ML-ready data pipelines with automated feature engineering and monitoring.",rec_tech_high_t:"Scale AI Operations",rec_tech_high_p:"With a mature technical foundation, focus on MLOps: automated model retraining, A/B testing frameworks, and model governance.",rec_org_low_t:"Build Internal AI Literacy",rec_org_low_p:"Consider a Fractional AI CTO engagement to bridge the gap. An experienced AI leader can build your strategy, evaluate vendors, and upskill your team without a full-time hire.",rec_org_high_t:"Scale AI Governance",rec_org_high_p:"Your organisation has the foundation for AI. Focus on cross-functional AI governance: ethics frameworks, model risk management, and accountability.",rec_impl_low_t:"Start with a Quick Win",rec_impl_low_p:"Begin with a low-risk, high-visibility pilot project (e.g., document processing, customer segmentation, or demand forecasting).",rec_impl_high_t:"Expand Your AI Portfolio",rec_impl_high_p:"You have implementation capability. Build a portfolio of AI projects with a mix of quick wins and strategic bets.",irec_financial_services_t:"Financial Services AI Priority",irec_financial_services_p:"Focus on fraud detection, credit risk modelling, and regulatory compliance automation.",irec_manufacturing_t:"Manufacturing AI Priority",irec_manufacturing_p:"Predictive maintenance, quality control automation, and supply chain optimisation offer the highest immediate ROI.",irec_retail_ecommerce_t:"Retail AI Priority",irec_retail_ecommerce_p:"Customer churn prediction, personalised recommendations, and demand forecasting are proven high-impact use cases.",irec_healthcare_t:"Healthcare AI Priority",irec_healthcare_p:"Clinical decision support, patient flow optimisation, and administrative automation are high-impact opportunities.",irec_technology_t:"Technology AI Priority",irec_technology_p:"AI-powered product features, intelligent automation, and predictive analytics can accelerate your competitive advantage.",irec_telecom_t:"Telecom AI Priority",irec_telecom_p:"Network optimisation, customer churn prediction, and intelligent customer service automation are proven high-ROI use cases.",irec_agriculture_t:"Agriculture AI Priority",irec_agriculture_p:"Yield prediction, precision agriculture, supply chain optimisation, and quality grading automation are transforming the sector.",irec_energy_t:"Energy AI Priority",irec_energy_p:"Demand forecasting, predictive maintenance, and grid optimisation are delivering significant value.",irec_logistics_t:"Logistics AI Priority",irec_logistics_p:"Route optimisation, demand forecasting, warehouse automation, and predictive maintenance are key AI value drivers.",irec_professional_services_t:"Professional Services AI Priority",irec_professional_services_p:"Document intelligence, knowledge management, and client analytics can dramatically improve margins.",irec_government_t:"Public Sector AI Priority",irec_government_p:"Citizen services automation, fraud detection, and resource allocation optimisation can improve efficiency."},
+fr:{badge:"\u00c9valuation Gratuite",headline_html:"\u00cates-vous pr\u00eat pour<br>l'<em>Intelligence Artificielle</em> ?",subheadline:"15 questions r\u00e9parties en 4 dimensions. Obtenez votre score de maturit\u00e9 IA personnalis\u00e9 et des recommandations strat\u00e9giques en moins de 5 minutes.",step_company:"Entreprise",step_technology:"Technologie",step_ai:"Maturit\u00e9 IA",step_strategy:"Strat\u00e9gie",s1_title:"Profil de l'entreprise",s1_sub:"Aidez-nous \u00e0 comprendre le contexte de votre organisation.",q1_label:"Dans quel secteur op\u00e9rez-vous ?",q1_hint:"S\u00e9lectionnez le secteur le plus proche.",q1_placeholder:"S\u00e9lectionnez votre secteur...",ind_financial:"Services financiers & Assurance",ind_manufacturing:"Industrie & Production",ind_retail:"Commerce & E-Commerce",ind_healthcare:"Sant\u00e9 & Sciences de la vie",ind_technology:"Technologie & SaaS",ind_telecom:"T\u00e9l\u00e9communications",ind_energy:"\u00c9nergie & Services publics",ind_agriculture:"Agriculture & Agroalimentaire",ind_logistics:"Logistique & Supply Chain",ind_professional:"Services professionnels",ind_government:"Secteur public",ind_other:"Autre",q2_label:"Combien d'employ\u00e9s compte votre entreprise ?",q2_hint:"Cela nous aide \u00e0 calibrer nos recommandations.",q3_label:"Chiffre d'affaires annuel (EUR)",q3_hint:"Une approximation suffit.",q3_placeholder:"S\u00e9lectionnez une fourchette...",rev_under1m:"Moins de 1M\u20ac",rev_1m5m:"1M\u20ac \u2013 5M\u20ac",rev_5m20m:"5M\u20ac \u2013 20M\u20ac",rev_20m100m:"20M\u20ac \u2013 100M\u20ac",rev_over100m:"Plus de 100M\u20ac",btn_continue:"Continuer",btn_back:"Retour",btn_results:"Voir mes r\u00e9sultats",btn_get_report:"Obtenir mon rapport",s2_title:"Maturit\u00e9 Technologique",s2_sub:"\u00c9valuez votre fondation technique pour l'adoption de l'IA.",q4_label:"Capacit\u00e9s analytiques actuelles",q4_hint:"Notez de tableurs basiques (1) \u00e0 analyses pr\u00e9dictives avanc\u00e9es (5).",q4_low:"Tableurs uniquement",q4_high:"Analyses avanc\u00e9es",q5_label:"Adoption de l'infrastructure cloud",q5_hint:"O\u00f9 se trouve principalement votre infrastructure ?",q5_o1:"Enti\u00e8rement sur site",q5_o2:"Hybride (sur site + cloud)",q5_o3:"Principalement cloud avec h\u00e9ritage",q5_o4:"Cloud-native / enti\u00e8rement cloud",q6_label:"Gouvernance et qualit\u00e9 des donn\u00e9es",q6_hint:"Notez de aucun processus formel (1) \u00e0 gouvernance mature (5).",q6_low:"Aucun processus formel",q6_high:"Gouvernance mature",q7_label:"Comp\u00e9tences de l'\u00e9quipe technique",q7_hint:"S\u00e9lectionnez tout ce qui s'applique.",q7_o1:"Analystes de donn\u00e9es / BI",q7_o2:"Ing\u00e9nieurs de donn\u00e9es",q7_o3:"Ing\u00e9nieurs ML / Data scientists",q7_o4:"D\u00e9veloppeurs logiciel",q7_o5:"Aucun de ces profils",s3_title:"Maturit\u00e9 IA",s3_sub:"\u00c9valuez la pr\u00e9paration de votre organisation \u00e0 l'IA.",q8_label:"Niveau d'exp\u00e9rience IA",q8_hint:"De aucune exp\u00e9rience (1) \u00e0 plusieurs syst\u00e8mes IA en production (5).",q8_low:"Aucune exp\u00e9rience",q8_high:"Plusieurs syst\u00e8mes IA en production",q9_label:"Infrastructure de donn\u00e9es",q9_hint:"Comment d\u00e9cririez-vous votre infrastructure de donn\u00e9es ?",q9_o1:"Donn\u00e9es dispers\u00e9es dans des syst\u00e8mes d\u00e9connect\u00e9s",q9_o2:"Quelques syst\u00e8mes int\u00e9gr\u00e9s, des lacunes subsistent",q9_o3:"Entrep\u00f4t de donn\u00e9es centralis\u00e9 en place",q9_o4:"Pipelines ML avec monitoring de la qualit\u00e9",q10_label:"Budget annuel IA / transformation digitale",q10_hint:"Glissez pour indiquer votre investissement pr\u00e9vu.",q10_low:"Moins de 25K\u20ac",q10_high:"500K\u20ac+",q11_label:"Calendrier souhait\u00e9",q11_hint:"Quand souhaitez-vous voir les premiers r\u00e9sultats IA ?",q11_o1:"0\u20133 mois",q11_o2:"3\u20136 mois",q11_o3:"6\u201312 mois",q11_o4:"12+ mois",s4_title:"Priorit\u00e9s Strat\u00e9giques",s4_sub:"Vos objectifs et pr\u00e9occupations concernant l'adoption de l'IA.",q12_label:"Principaux objectifs business pour l'IA",q12_hint:"S\u00e9lectionnez jusqu'\u00e0 3 priorit\u00e9s.",q12_o1:"R\u00e9duction des co\u00fbts & efficacit\u00e9",q12_o2:"Croissance du CA & nouveaux produits",q12_o3:"Exp\u00e9rience client & r\u00e9tention",q12_o4:"Analyses pr\u00e9dictives & pr\u00e9visions",q12_o5:"Automatisation des processus",q12_o6:"Diff\u00e9renciation concurrentielle",q13_label:"Plus grandes pr\u00e9occupations",q13_hint:"Qu'est-ce qui vous emp\u00eache de dormir ?",q13_o1:"Qualit\u00e9 et disponibilit\u00e9 des donn\u00e9es",q13_o2:"Manque de talent IA/ML",q13_o3:"ROI peu clair",q13_o4:"Int\u00e9gration avec les syst\u00e8mes existants",q13_o5:"Exigences r\u00e9glementaires",q14_label:"Exigences r\u00e9glementaires applicables",q14_hint:"S\u00e9lectionnez tout ce qui s'applique.",q14_o1:"RGPD / Protection des donn\u00e9es",q14_o2:"AI Act europ\u00e9en",q14_o3:"R\u00e9glementation sectorielle (POPIA, HIPAA, etc.)",q14_o4:"ISO 27001 / SOC 2",q14_o5:"Aucune / Incertain",q15_label:"Processus de d\u00e9cision IA",q15_hint:"Comment les d\u00e9cisions d'investissement tech sont-elles prises ?",q15_o1:"Dirig\u00e9 par le fondateur",q15_o2:"Pilot\u00e9 par l'IT / CTO",q15_o3:"Comit\u00e9 de pilotage / Conseil",q15_o4:"Chefs de d\u00e9partement",lead_title:"Presque termin\u00e9 !",lead_sub:"Entrez vos coordonn\u00e9es pour recevoir votre rapport personnalis\u00e9.",lead_name:"Nom complet *",lead_name_ph:"ex. Marie Dupont",lead_email:"Email professionnel *",lead_email_ph:"ex. marie@entreprise.com",lead_company:"Nom de l'entreprise *",lead_company_ph:"ex. Acme Industries",lead_role:"Votre r\u00f4le",lead_role_ph:"S\u00e9lectionnez votre r\u00f4le...",role_csuite:"Direction g\u00e9n\u00e9rale",role_vp:"VP / Directeur",role_manager:"Manager",role_tech:"Lead technique / Architecte",role_other:"Autre",lead_disclaimer:"Vos donn\u00e9es sont trait\u00e9es conform\u00e9ment au RGPD. Jamais de spam.",budget_labels:["Moins de 25K\u20ac","25K\u20ac \u2013 50K\u20ac","50K\u20ac \u2013 100K\u20ac","100K\u20ac \u2013 500K\u20ac","500K\u20ac+"],res_headline_html:'Votre Rapport de<br>Maturit\u00e9 <em>IA</em>',res_prepared_for:"Pr\u00e9par\u00e9 pour",res_profile:"Votre Profil de Maturit\u00e9 IA",res_recs:"Recommandations Personnalis\u00e9es",res_cta_title:"Pr\u00eat \u00e0 agir ?",res_cta_sub:"R\u00e9servez une discussion strat\u00e9gique gratuite de 30 minutes.",res_cta_btn:"Planifier un appel strat\u00e9gique",lbl_strategic:"Clart\u00e9 Strat\u00e9gique",lbl_technical:"Fondation Technique",lbl_organisational:"Maturit\u00e9 Organisationnelle",lbl_implementation:"Capacit\u00e9 d'Impl\u00e9mentation",tier_leader:"Leader IA",tier_leader_tag:"Pr\u00eat \u00e0 passer \u00e0 l'\u00e9chelle",tier_ready:"Pr\u00eat pour l'IA",tier_ready_tag:"Fondation en place",tier_emerging:"IA \u00c9mergente",tier_emerging_tag:"Lacunes cl\u00e9s \u00e0 combler",tier_exploring:"Exploration IA",tier_exploring_tag:"Accompagnement n\u00e9cessaire",dim_strategic_high:"Excellente clart\u00e9 sur les objectifs IA.",dim_strategic_mid:"Bonne base \u2014 affinez vos priorit\u00e9s.",dim_strategic_low:"Alignez les objectifs IA avec la strat\u00e9gie business.",dim_technical_high:"Infrastructure technique solide.",dim_technical_mid:"Base solide \u2014 investissez dans les pipelines.",dim_technical_low:"Priorisez la centralisation des donn\u00e9es.",dim_org_high:"Bien positionn\u00e9 pour l'adoption IA.",dim_org_mid:"Bonne maturit\u00e9 \u2014 d\u00e9veloppez la culture IA.",dim_org_low:"Envisagez un CTO IA fractionn\u00e9.",dim_impl_high:"Capacit\u00e9 de livraison IA \u00e9prouv\u00e9e.",dim_impl_mid:"Pr\u00eat pour des projets pilotes.",dim_impl_low:"Commencez par une preuve de concept.",rec_strategy_low_t:"D\u00e9finir une Strat\u00e9gie IA",rec_strategy_low_p:"Votre organisation b\u00e9n\u00e9ficierait d'une strat\u00e9gie IA structur\u00e9e align\u00e9e sur les objectifs business.",rec_strategy_high_t:"Acc\u00e9l\u00e9rer l'Ex\u00e9cution",rec_strategy_high_p:"Concentrez-vous sur une roadmap d'impl\u00e9mentation avec des KPIs clairs.",rec_tech_low_t:"Renforcer la Fondation Data",rec_tech_low_p:"Priorisez l'infrastructure de donn\u00e9es avant les mod\u00e8les IA.",rec_tech_mid_t:"Combler le Foss\u00e9 Analytics-IA",rec_tech_mid_p:"Prochaine \u00e9tape : pipelines ML avec feature engineering automatis\u00e9.",rec_tech_high_t:"Industrialiser les Op\u00e9rations IA",rec_tech_high_p:"Focus sur le MLOps : r\u00e9entra\u00eenement automatis\u00e9, tests A/B, gouvernance.",rec_org_low_t:"D\u00e9velopper la Culture IA",rec_org_low_p:"Un CTO IA fractionn\u00e9 peut construire votre strat\u00e9gie et monter en comp\u00e9tences votre \u00e9quipe.",rec_org_high_t:"Renforcer la Gouvernance IA",rec_org_high_p:"Focus sur la gouvernance IA transversale : \u00e9thique, risques, responsabilit\u00e9.",rec_impl_low_t:"Commencer par une Victoire Rapide",rec_impl_low_p:"D\u00e9marrez par un projet pilote \u00e0 faible risque et haute visibilit\u00e9.",rec_impl_high_t:"\u00c9largir Votre Portfolio IA",rec_impl_high_p:"Construisez un portfolio avec un mix de quick wins et paris strat\u00e9giques.",irec_financial_services_t:"Priorit\u00e9 IA Finance",irec_financial_services_p:"D\u00e9tection de fraude, risque cr\u00e9dit, et automatisation compliance.",irec_manufacturing_t:"Priorit\u00e9 IA Industrie",irec_manufacturing_p:"Maintenance pr\u00e9dictive, contr\u00f4le qualit\u00e9, et optimisation supply chain.",irec_retail_ecommerce_t:"Priorit\u00e9 IA Commerce",irec_retail_ecommerce_p:"Pr\u00e9diction du churn, recommandations personnalis\u00e9es, pr\u00e9vision de la demande.",irec_healthcare_t:"Priorit\u00e9 IA Sant\u00e9",irec_healthcare_p:"Aide \u00e0 la d\u00e9cision clinique, flux patients, automatisation administrative.",irec_technology_t:"Priorit\u00e9 IA Technologie",irec_technology_p:"Fonctionnalit\u00e9s produit IA, automatisation intelligente, analytics pr\u00e9dictifs.",irec_telecom_t:"Priorit\u00e9 IA T\u00e9l\u00e9com",irec_telecom_p:"Optimisation r\u00e9seau, pr\u00e9diction churn, automatisation service client.",irec_agriculture_t:"Priorit\u00e9 IA Agriculture",irec_agriculture_p:"Pr\u00e9diction rendements, agriculture de pr\u00e9cision, grading qualit\u00e9.",irec_energy_t:"Priorit\u00e9 IA \u00c9nergie",irec_energy_p:"Pr\u00e9vision demande, maintenance pr\u00e9dictive, optimisation r\u00e9seau.",irec_logistics_t:"Priorit\u00e9 IA Logistique",irec_logistics_p:"Optimisation routes, pr\u00e9vision demande, automatisation entrep\u00f4t.",irec_professional_services_t:"Priorit\u00e9 IA Services Pro",irec_professional_services_p:"Intelligence documentaire, gestion des connaissances, analytics client.",irec_government_t:"Priorit\u00e9 IA Secteur Public",irec_government_p:"Automatisation services citoyens, d\u00e9tection fraude, optimisation ressources."},
+nl:{badge:"Gratis Beoordeling",headline_html:'Hoe <em>AI-klaar</em> is<br>uw organisatie?',subheadline:"15 vragen over 4 dimensies. Ontvang uw gepersonaliseerde AI-score en aanbevelingen in minder dan 5 minuten.",step_company:"Bedrijf",step_technology:"Technologie",step_ai:"AI Maturiteit",step_strategy:"Strategie",s1_title:"Bedrijfsprofiel",s1_sub:"Help ons de context van uw organisatie te begrijpen.",q1_label:"In welke sector bent u actief?",q1_hint:"Selecteer de best passende optie.",q1_placeholder:"Selecteer uw sector...",ind_financial:"Financi\u00eble diensten & Verzekeringen",ind_manufacturing:"Industrie & Productie",ind_retail:"Retail & E-Commerce",ind_healthcare:"Gezondheidszorg & Life Sciences",ind_technology:"Technologie & SaaS",ind_telecom:"Telecommunicatie",ind_energy:"Energie & Nutsbedrijven",ind_agriculture:"Landbouw & Voeding",ind_logistics:"Logistiek & Supply Chain",ind_professional:"Professionele diensten",ind_government:"Overheid & Publieke sector",ind_other:"Andere",q2_label:"Hoeveel werknemers heeft uw bedrijf?",q2_hint:"Dit helpt onze aanbevelingen af te stemmen.",q3_label:"Jaarlijkse omzet (EUR)",q3_hint:"Een schatting volstaat.",q3_placeholder:"Selecteer een bereik...",rev_under1m:"Minder dan \u20ac1M",rev_1m5m:"\u20ac1M \u2013 \u20ac5M",rev_5m20m:"\u20ac5M \u2013 \u20ac20M",rev_20m100m:"\u20ac20M \u2013 \u20ac100M",rev_over100m:"Meer dan \u20ac100M",btn_continue:"Doorgaan",btn_back:"Terug",btn_results:"Mijn resultaten",btn_get_report:"Rapport ontvangen",s2_title:"Technologische Maturiteit",s2_sub:"Beoordeel uw technische basis voor AI-adoptie.",q4_label:"Huidige data-analysecapaciteiten",q4_hint:"Beoordeel van spreadsheets (1) tot geavanceerde analytics (5).",q4_low:"Alleen spreadsheets",q4_high:"Geavanceerde analytics",q5_label:"Cloud-infrastructuur adoptie",q5_hint:"Waar bevindt uw infrastructuur zich?",q5_o1:"Volledig on-premise",q5_o2:"Hybride (on-premise + cloud)",q5_o3:"Voornamelijk cloud met legacy",q5_o4:"Cloud-native / volledig cloud",q6_label:"Data governance en kwaliteit",q6_hint:"Beoordeel van geen processen (1) tot mature governance (5).",q6_low:"Geen formele processen",q6_high:"Mature governance",q7_label:"Technische teamcapaciteiten",q7_hint:"Selecteer alles wat van toepassing is.",q7_o1:"Data-analisten / BI",q7_o2:"Data engineers",q7_o3:"ML engineers / Data scientists",q7_o4:"Software ontwikkelaars",q7_o5:"Geen van bovenstaande",s3_title:"AI Maturiteit",s3_sub:"Evalueer de gereedheid voor AI-implementatie.",q8_label:"AI-ervaringsniveau",q8_hint:"Van geen ervaring (1) tot meerdere AI-systemen (5).",q8_low:"Geen ervaring",q8_high:"Meerdere AI-systemen live",q9_label:"Data-infrastructuur gereedheid",q9_hint:"Hoe beschrijft u uw data-infrastructuur?",q9_o1:"Data verspreid over losgekoppelde systemen",q9_o2:"Enkele systemen ge\u00efntegreerd, hiaten",q9_o3:"Centraal datawarehouse aanwezig",q9_o4:"ML-ready pipelines met monitoring",q10_label:"Jaarlijks AI / transformatie budget",q10_hint:"Verschuif om uw investeringsniveau aan te geven.",q10_low:"Minder dan \u20ac25K",q10_high:"\u20ac500K+",q11_label:"Gewenste tijdlijn",q11_hint:"Wanneer wilt u eerste AI-resultaten?",q11_o1:"0\u20133 maanden",q11_o2:"3\u20136 maanden",q11_o3:"6\u201312 maanden",q11_o4:"12+ maanden",s4_title:"Strategische Prioriteiten",s4_sub:"Uw doelen en zorgen rond AI-adoptie.",q12_label:"Belangrijkste bedrijfsdoelen voor AI",q12_hint:"Selecteer maximaal 3 prioriteiten.",q12_o1:"Kostenreductie & effici\u00ebntie",q12_o2:"Omzetgroei & nieuwe producten",q12_o3:"Klantervaring & retentie",q12_o4:"Predictive analytics & forecasting",q12_o5:"Procesautomatisering",q12_o6:"Concurrentieel onderscheid",q13_label:"Grootste zorgen over AI",q13_hint:"Waar maakt u zich zorgen over?",q13_o1:"Datakwaliteit en beschikbaarheid",q13_o2:"Gebrek aan AI/ML-talent",q13_o3:"Onduidelijke ROI",q13_o4:"Integratie met bestaande systemen",q13_o5:"Regelgeving / compliance",q14_label:"Toepasselijke regelgeving",q14_hint:"Selecteer alles wat van toepassing is.",q14_o1:"AVG / Gegevensbescherming",q14_o2:"EU AI Act",q14_o3:"Sectorspecifiek (POPIA, HIPAA, etc.)",q14_o4:"ISO 27001 / SOC 2",q14_o5:"Geen / Onzeker",q15_label:"AI-besluitvormingsproces",q15_hint:"Hoe worden tech-investeringen beslist?",q15_o1:"Oprichter / Eigenaar gestuurd",q15_o2:"IT / CTO gedreven",q15_o3:"Stuurgroep / Bestuur",q15_o4:"Afdelingshoofden",lead_title:"Bijna klaar!",lead_sub:"Vul uw gegevens in voor uw gepersonaliseerd rapport.",lead_name:"Volledige naam *",lead_name_ph:"bijv. Jan De Smedt",lead_email:"Zakelijk e-mail *",lead_email_ph:"bijv. jan@bedrijf.com",lead_company:"Bedrijfsnaam *",lead_company_ph:"bijv. Acme Industries",lead_role:"Uw rol",lead_role_ph:"Selecteer uw rol...",role_csuite:"C-Suite / Directie",role_vp:"VP / Directeur",role_manager:"Manager",role_tech:"Technisch Lead / Architect",role_other:"Andere",lead_disclaimer:"Uw gegevens worden verwerkt conform de AVG. Nooit spam.",budget_labels:["Minder dan \u20ac25K","\u20ac25K \u2013 \u20ac50K","\u20ac50K \u2013 \u20ac100K","\u20ac100K \u2013 \u20ac500K","\u20ac500K+"],res_headline_html:'Uw AI-Maturiteits<br><em>Rapport</em>',res_prepared_for:"Opgesteld voor",res_profile:"Uw AI-Maturiteitsprofiel",res_recs:"Gepersonaliseerde Aanbevelingen",res_cta_title:"Klaar om actie te ondernemen?",res_cta_sub:"Boek een gratis strategiegesprek van 30 minuten.",res_cta_btn:"Strategiegesprek plannen",lbl_strategic:"Strategische Helderheid",lbl_technical:"Technische Basis",lbl_organisational:"Organisatorische Maturiteit",lbl_implementation:"Implementatiecapaciteit",tier_leader:"AI Leider",tier_leader_tag:"Klaar om op te schalen",tier_ready:"AI Klaar",tier_ready_tag:"Basis aanwezig",tier_emerging:"AI Opkomend",tier_emerging_tag:"Hiaten aan te pakken",tier_exploring:"AI Verkennend",tier_exploring_tag:"Begeleiding nodig",dim_strategic_high:"Uitstekende helderheid over AI-doelen.",dim_strategic_mid:"Goede basis \u2014 verfijn prioriteiten.",dim_strategic_low:"Focus op afstemming AI-doelen op strategie.",dim_technical_high:"Sterke technische infrastructuur.",dim_technical_mid:"Solide basis \u2014 investeer in pipelines.",dim_technical_low:"Prioriteer datacentralisatie.",dim_org_high:"Goed gepositioneerd voor AI op schaal.",dim_org_mid:"Goede maturiteit \u2014 bouw AI-geletterdheid.",dim_org_low:"Overweeg fractioneel AI-leiderschap.",dim_impl_high:"Bewezen AI-leveringscapaciteit.",dim_impl_mid:"Klaar voor pilotprojecten.",dim_impl_low:"Begin met een proof-of-concept.",rec_strategy_low_t:"Definieer een AI-Strategie",rec_strategy_low_p:"Uw organisatie zou baat hebben bij een gestructureerde AI-strategie afgestemd op bedrijfsdoelen.",rec_strategy_high_t:"Versnel Uitvoering",rec_strategy_high_p:"Focus op een gefaseerde roadmap met duidelijke KPI's.",rec_tech_low_t:"Versterk Uw Data Fundament",rec_tech_low_p:"Prioriteer data-infrastructuur voor AI-modellen.",rec_tech_mid_t:"Overbruig de Analytics-AI Kloof",rec_tech_mid_p:"Volgende stap: ML-ready pipelines met feature engineering.",rec_tech_high_t:"Schaal AI Operaties",rec_tech_high_p:"Focus op MLOps: hertrainen, A/B-testing, modelgovernance.",rec_org_low_t:"Bouw AI-Geletterdheid",rec_org_low_p:"Overweeg een Fractioneel AI CTO om de kloof te overbruggen.",rec_org_high_t:"Schaal AI Governance",rec_org_high_p:"Focus op cross-functionele governance: ethiek, risico, verantwoordelijkheid.",rec_impl_low_t:"Begin met een Quick Win",rec_impl_low_p:"Start met een laag-risico, hoog-zichtbaarheid pilotproject.",rec_impl_high_t:"Breid Uw AI-Portfolio Uit",rec_impl_high_p:"Bouw een portfolio met quick wins en strategische inzetten.",irec_financial_services_t:"AI Prioriteit Financi\u00ebn",irec_financial_services_p:"Fraudedetectie, kredietrisico, compliance automatisering.",irec_manufacturing_t:"AI Prioriteit Industrie",irec_manufacturing_p:"Predictief onderhoud, kwaliteitscontrole, supply chain.",irec_retail_ecommerce_t:"AI Prioriteit Retail",irec_retail_ecommerce_p:"Churn voorspelling, aanbevelingen, vraagvoorspelling.",irec_healthcare_t:"AI Prioriteit Gezondheidszorg",irec_healthcare_p:"Klinische beslissingsondersteuning, pati\u00ebntenstroom, automatisering.",irec_technology_t:"AI Prioriteit Technologie",irec_technology_p:"AI-productfuncties, intelligente automatisering, predictieve analytics.",irec_telecom_t:"AI Prioriteit Telecom",irec_telecom_p:"Netwerkoptimalisatie, churn, klantenservice automatisering.",irec_agriculture_t:"AI Prioriteit Landbouw",irec_agriculture_p:"Opbrengstvoorspelling, precisie-landbouw, kwaliteitsclassificatie.",irec_energy_t:"AI Prioriteit Energie",irec_energy_p:"Vraagvoorspelling, predictief onderhoud, netwerkoptimalisatie.",irec_logistics_t:"AI Prioriteit Logistiek",irec_logistics_p:"Route-optimalisatie, vraagvoorspelling, magazijnautomatisering.",irec_professional_services_t:"AI Prioriteit Prof. Diensten",irec_professional_services_p:"Document intelligence, kennisbeheer, klantanalytics.",irec_government_t:"AI Prioriteit Publieke Sector",irec_government_p:"Automatisering burgerdiensten, fraudedetectie, resource-optimalisatie."}};
+
+let currentLang='en';
+function setLang(lang){currentLang=lang;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang));document.documentElement.lang=lang;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[lang][k]!==undefined){k.endsWith('_html')?el.innerHTML=T[lang][k]:el.textContent=T[lang][k];}});document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const k=el.getAttribute('data-i18n-placeholder');if(T[lang][k])el.placeholder=T[lang][k];});updateBudgetLabel(document.getElementById('q10').value);if(lastScores){renderResults(lastScores);}}
+function t(key){return T[currentLang][key]||T['en'][key]||key;}
+
+// STATE
+const state={q1:'',q2:'',q3:'',q4:0,q5:'',q6:0,q7:[],q8:0,q9:'',q10:2,q11:'',q12:[],q13:'',q14:[],q15:''};
+
+// EVENT DELEGATION - fixes checkbox/radio
+document.addEventListener('click',function(e){
+  const item=e.target.closest('.option-item[data-q]');
+  if(!item)return;
+  e.preventDefault();e.stopPropagation();
+  const q=item.getAttribute('data-q'),val=item.getAttribute('data-val'),isCheck=item.getAttribute('data-type')==='check';
+  if(isCheck){const idx=state[q].indexOf(val);if(idx>-1){state[q].splice(idx,1);item.classList.remove('selected');}else{state[q].push(val);item.classList.add('selected');}}
+  else{item.closest('.option-group').querySelectorAll('.option-item').forEach(el=>el.classList.remove('selected'));item.classList.add('selected');state[q]=val;}
+  handleChange();
+});
+document.addEventListener('click',function(e){
+  const btn=e.target.closest('.scale-btn[data-q]');
+  if(!btn)return;
+  const q=btn.getAttribute('data-q'),val=parseInt(btn.getAttribute('data-val'));
+  state[q]=val;btn.closest('.scale-group').querySelectorAll('.scale-btn').forEach(b=>b.classList.toggle('selected',parseInt(b.getAttribute('data-val'))===val));handleChange();
+});
+
+function updateBudgetLabel(val){const labels=T[currentLang].budget_labels||T['en'].budget_labels;document.getElementById('q10-display').textContent=labels[val-1];state.q10=parseInt(val);}
+function handleChange(){state.q1=document.getElementById('q1').value;state.q3=document.getElementById('q3').value;const n=(document.getElementById('lead-name')||{}).value||'';const e=(document.getElementById('lead-email')||{}).value||'';const c=(document.getElementById('lead-company')||{}).value||'';const btn=document.getElementById('btn-get-results');if(btn)btn.disabled=!(n.trim().length>1&&/\S+@\S+\.\S+/.test(e)&&c.trim().length>1);}
+
+let currentSection=1;
+function showSection(n){document.querySelectorAll('.form-section,.lead-section,.results-section').forEach(s=>s.classList.remove('active'));const t=document.getElementById('section-'+n);if(t)t.classList.add('active');currentSection=n;updateProgress(n);window.scrollTo({top:0,behavior:'smooth'});}
+function nextSection(n){showSection(n);}
+function prevSection(n){showSection(n);}
+function showLeadCapture(){document.querySelectorAll('.form-section').forEach(s=>s.classList.remove('active'));document.getElementById('lead-section').classList.add('active');updateProgress(5);window.scrollTo({top:0,behavior:'smooth'});}
+function backFromLead(){document.getElementById('lead-section').classList.remove('active');showSection(4);}
+function updateProgress(step){const p={1:6,2:30,3:55,4:80,5:95};document.getElementById('progressFill').style.width=(p[step]||2)+'%';for(let i=1;i<=4;i++){const el=document.getElementById('pstep-'+i);el.classList.remove('active','completed');if(i<step)el.classList.add('completed');else if(i===step)el.classList.add('active');}}
+
+// SCORING
+function calculateScores(){
+  let s=0;if(state.q1)s+=4;s+=Math.min(state.q12.length,3)*4;if(state.q13)s+=4;if(state.q15)s+=5;
+  let tc=0;tc+=state.q4*2;const cs={on_premise:1,hybrid:3,cloud_partial:5,cloud_native:6};tc+=cs[state.q5]||0;tc+=state.q6;tc+=state.q7.includes('none')?0:Math.min(state.q7.length*2,4);
+  let o=0;const sz={'1-49':3,'50-249':4,'250-999':5,'1000+':5};o+=sz[state.q2]||0;const rv={under_1m:1,'1m_5m':2,'5m_20m':4,'20m_100m':5,over_100m:5};o+=rv[state.q3]||0;o+=state.q10*2;o+=state.q14.includes('none')?1:Math.min(state.q14.length*2,5);
+  let im=0;im+=state.q8*3;const inf={siloed:1,partially_integrated:3,central_warehouse:5,ml_ready:7};im+=inf[state.q9]||0;const tm={'3_months':2,'6_months':3,'12_months':3,'12_plus':2};im+=tm[state.q11]||0;
+  s=Math.min(Math.round(s),25);tc=Math.min(Math.round(tc),25);o=Math.min(Math.round(o),25);im=Math.min(Math.round(im),25);
+  return{total:s+tc+o+im,strategic:s,technical:tc,organisational:o,implementation:im};
+}
+
+function getRecommendations(sc){
+  const r=[];
+  r.push(sc.strategic<15?{icon:'\ud83c\udfaf',color:'var(--accent-bright)',title:t('rec_strategy_low_t'),text:t('rec_strategy_low_p')}:{icon:'\ud83d\ude80',color:'var(--accent-secondary)',title:t('rec_strategy_high_t'),text:t('rec_strategy_high_p')});
+  r.push(sc.technical<12?{icon:'\ud83d\udd27',color:'var(--accent-warning)',title:t('rec_tech_low_t'),text:t('rec_tech_low_p')}:sc.technical<20?{icon:'\u26a1',color:'var(--accent-bright)',title:t('rec_tech_mid_t'),text:t('rec_tech_mid_p')}:{icon:'\ud83e\udde0',color:'var(--accent-purple)',title:t('rec_tech_high_t'),text:t('rec_tech_high_p')});
+  r.push(sc.organisational<12?{icon:'\ud83d\udccb',color:'var(--accent-warning)',title:t('rec_org_low_t'),text:t('rec_org_low_p')}:{icon:'\ud83d\udc65',color:'var(--accent-secondary)',title:t('rec_org_high_t'),text:t('rec_org_high_p')});
+  r.push(sc.implementation<12?{icon:'\ud83c\udfaa',color:'var(--accent-danger)',title:t('rec_impl_low_t'),text:t('rec_impl_low_p')}:{icon:'\ud83d\udcc8',color:'var(--accent-secondary)',title:t('rec_impl_high_t'),text:t('rec_impl_high_p')});
+  const ik=state.q1;if(ik&&t('irec_'+ik+'_t')!=='irec_'+ik+'_t')r.push({icon:'\ud83c\udfe2',color:'var(--accent-purple)',title:t('irec_'+ik+'_t'),text:t('irec_'+ik+'_p')});
+  return r;
+}
+function getScoreLabel(total){
+  if(total>=80)return{label:t('tier_leader'),tag:t('tier_leader_tag'),color:'var(--accent-secondary)',tagBg:'rgba(34,211,167,0.15)',tagBorder:'rgba(34,211,167,0.3)'};
+  if(total>=60)return{label:t('tier_ready'),tag:t('tier_ready_tag'),color:'var(--accent-bright)',tagBg:'rgba(26,138,181,0.12)',tagBorder:'rgba(26,138,181,0.3)'};
+  if(total>=40)return{label:t('tier_emerging'),tag:t('tier_emerging_tag'),color:'var(--accent-warning)',tagBg:'rgba(245,158,11,0.12)',tagBorder:'rgba(245,158,11,0.3)'};
+  return{label:t('tier_exploring'),tag:t('tier_exploring_tag'),color:'var(--accent-danger)',tagBg:'rgba(239,68,68,0.12)',tagBorder:'rgba(239,68,68,0.3)'};
+}
+
+let lastScores=null;let lastCompany='';
+
+function renderResults(sc){
+  const lb=getScoreLabel(sc.total),recs=getRecommendations(sc);
+  const dims=[{key:'strategic',label:t('lbl_strategic'),color:'var(--accent-bright)'},{key:'technical',label:t('lbl_technical'),color:'var(--accent-secondary)'},{key:'organisational',label:t('lbl_organisational'),color:'var(--accent-purple)'},{key:'implementation',label:t('lbl_implementation'),color:'var(--accent-warning)'}];
+  const dd=(k,s)=>{const m=k==='organisational'?'org':k==='implementation'?'impl':k;return s>=20?t('dim_'+m+'_high'):s>=12?t('dim_'+m+'_mid'):t('dim_'+m+'_low');};
+  let h='<div class="score-hero"><div class="score-number" style="color:'+lb.color+'">'+sc.total+'<span class="score-max">/100</span></div><div class="score-label-text">'+lb.label+'</div><div class="score-tag" style="background:'+lb.tagBg+';color:'+lb.color+';border:1px solid '+lb.tagBorder+'">'+lb.tag+'</div></div>';
+  h+='<div class="radar-container"><h3>'+t('res_profile')+'</h3><div class="radar-canvas-wrap"><canvas id="radarChart" width="360" height="360"></canvas></div></div>';
+  h+='<div class="dimensions-grid">'+dims.map(d=>'<div class="dim-card"><div class="dim-header"><span class="dim-label">'+d.label+'</span><span class="dim-score" style="color:'+d.color+'">'+sc[d.key]+'/25</span></div><div class="dim-bar"><div class="dim-bar-fill" style="width:'+(sc[d.key]/25*100)+'%;background:'+d.color+'"></div></div><div class="dim-detail">'+dd(d.key,sc[d.key])+'</div></div>').join('')+'</div>';
+  h+='<div class="recs-section"><h3>'+t('res_recs')+'</h3>'+recs.map(r=>'<div class="rec-card"><div class="rec-icon" style="background:'+r.color+'22;font-size:22px">'+r.icon+'</div><div><h4>'+r.title+'</h4><p>'+r.text+'</p></div></div>').join('')+'</div>';
+  h+='<div class="cta-section"><h3>'+t('res_cta_title')+'</h3><p>'+t('res_cta_sub')+'</p><a href="https://calendar.app.google/gARU96EmoueEsaTv6" target="_blank" rel="noopener noreferrer" class="btn btn-cta" style="text-decoration:none;cursor:pointer">'+t('res_cta_btn')+' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>';
+  const re=document.getElementById('results-section');re.innerHTML=h;
+  document.querySelector('.assessment-header h1').innerHTML=t('res_headline_html');
+  const dl=currentLang==='nl'?'nl-BE':currentLang==='fr'?'fr-BE':'en-GB';
+  document.querySelector('.assessment-header p').textContent=t('res_prepared_for')+' '+lastCompany+' \u2014 '+new Date().toLocaleDateString(dl,{day:'numeric',month:'long',year:'numeric'});
+  setTimeout(()=>drawRadar(sc),50);
+}
+
+function calculateAndShowResults(){
+  const sc=calculateScores();
+  lastScores=sc;
+  lastCompany=document.getElementById('lead-company').value.trim();
+  document.querySelectorAll('.form-section,.lead-section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('progressBarContainer').style.display='none';
+  document.getElementById('results-section').classList.add('active');
+  renderResults(sc);
+  window.scrollTo({top:0,behavior:'smooth'});
+  sendLeadData(sc,getScoreLabel(sc.total));
+}
+
+// RADAR CHART
+function drawRadar(sc){
+  const cv=document.getElementById('radarChart');if(!cv)return;
+  const ctx=cv.getContext('2d'),dpr=window.devicePixelRatio||1,sz=360;
+  cv.width=sz*dpr;cv.height=sz*dpr;cv.style.width=sz+'px';cv.style.height=sz+'px';ctx.scale(dpr,dpr);
+  const cx=sz/2,cy=sz/2,r=130,n=4;
+  const rl=[t('lbl_strategic'),t('lbl_technical'),t('lbl_organisational'),t('lbl_implementation')];
+  const vals=[sc.strategic,sc.technical,sc.organisational,sc.implementation];
+  for(let ring=1;ring<=5;ring++){const rr=(ring/5)*r;ctx.beginPath();for(let i=0;i<=n;i++){const a=(Math.PI*2*i)/n-Math.PI/2;const x=cx+rr*Math.cos(a),y=cy+rr*Math.sin(a);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.closePath();ctx.strokeStyle='rgba(26,58,80,0.5)';ctx.lineWidth=1;ctx.stroke();}
+  for(let i=0;i<n;i++){const a=(Math.PI*2*i)/n-Math.PI/2;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));ctx.strokeStyle='rgba(26,58,80,0.35)';ctx.lineWidth=1;ctx.stroke();}
+  ctx.beginPath();for(let i=0;i<=n;i++){const idx=i%n;const a=(Math.PI*2*idx)/n-Math.PI/2;const v=(vals[idx]/25)*r;const x=cx+v*Math.cos(a),y=cy+v*Math.sin(a);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);}ctx.closePath();ctx.fillStyle='rgba(26,138,181,0.15)';ctx.fill();ctx.strokeStyle='rgba(26,138,181,0.8)';ctx.lineWidth=2.5;ctx.stroke();
+  for(let i=0;i<n;i++){const a=(Math.PI*2*i)/n-Math.PI/2;const v=(vals[i]/25)*r;const x=cx+v*Math.cos(a),y=cy+v*Math.sin(a);ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fillStyle='#1a8ab5';ctx.fill();ctx.strokeStyle='#060d13';ctx.lineWidth=2;ctx.stroke();}
+  ctx.fillStyle='#8a9fb5';ctx.font='11px DM Sans,sans-serif';ctx.textAlign='center';
+  const off=[{dx:0,dy:-r-18},{dx:r+14,dy:4},{dx:0,dy:r+18},{dx:-r-14,dy:4}];
+  for(let i=0;i<n;i++){const w=rl[i].split(' ');const lines=w.length>2?[w.slice(0,Math.ceil(w.length/2)).join(' '),w.slice(Math.ceil(w.length/2)).join(' ')]:[rl[i]];const ox=cx+off[i].dx,oy=cy+off[i].dy;lines.forEach((l,li)=>ctx.fillText(l,ox,oy+li*14-((lines.length-1)*7)));}
+}
+
+// GOOGLE SHEETS
+function sendLeadData(sc,lb){
+  const payload={source: 'ai-readiness',
+        timestamp: new Date().toISOString(),name:document.getElementById('lead-name').value.trim(),email:document.getElementById('lead-email').value.trim(),company:document.getElementById('lead-company').value.trim(),role:document.getElementById('lead-role').value,language:currentLang,score_total:sc.total,score_strategic:sc.strategic,score_technical:sc.technical,score_organisational:sc.organisational,score_implementation:sc.implementation,score_label:lb.label,industry:state.q1,company_size:state.q2,revenue:state.q3,analytics_level:state.q4,cloud_adoption:state.q5,data_governance:state.q6,team_capabilities:state.q7.join(','),ai_experience:state.q8,data_infrastructure:state.q9,budget:state.q10,timeline:state.q11,objectives:state.q12.join(','),top_concern:state.q13,regulations:state.q14.join(','),decision_process:state.q15};
+  console.log('Lead Data:',JSON.stringify(payload,null,2));
+
+  // GOOGLE SHEETS SETUP:
+  // 1. Create a Google Sheet with these column headers in row 1:
+  //    name | email | company | role | language | score_total | score_strategic | score_technical | score_organisational | score_implementation | score_label | industry | company_size | revenue | analytics_level | cloud_adoption | data_governance | team_capabilities | ai_experience | data_infrastructure | budget | timeline | objectives | top_concern | regulations | decision_process | timestamp
+  // 2. Go to Extensions > Apps Script and paste:
+  //    function doPost(e) {
+  //      var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  //      var data = JSON.parse(e.postData.contents);
+  //      var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  //      var row = headers.map(function(h) { return data[h] || ''; });
+  //      sheet.appendRow(row);
+  //      return ContentService.createTextOutput(JSON.stringify({status:'ok'})).setMimeType(ContentService.MimeType.JSON);
+  //    }
+  // 3. Deploy > New deployment > Web app > Execute as: Me > Who has access: Anyone
+  // 4. Replace YOUR_SCRIPT_URL below with the deployment URL and uncomment:
+  //
+  fetch('https://script.google.com/macros/s/AKfycbyqr7G6AuFHdMD25sRGjCfvBkUlzLQOLwGAX0KXBbt-CYzt7npQALHnMXVQGCJsTRxfsw/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'text/plain'},
+    body: JSON.stringify(payload)
+  }).then(()=>console.log('Sheet: sent')).catch(err => console.log('Sheet error:', err));
+}
+
+document.addEventListener("DOMContentLoaded",()=>{updateBudgetLabel(2);});
+</script>
+</body>
+</html>

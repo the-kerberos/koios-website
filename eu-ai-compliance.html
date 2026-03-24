@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EU AI Act Compliance Assessment | Koios Analytics</title>
+  <meta name="description" content="Free EU AI Act compliance assessment. Evaluate your organisation's readiness for Europe's AI regulation across risk classification, data governance, transparency, and documentation.">
+  <link rel="canonical" href="https://koios-analytics.com/eu-ai-compliance.html">
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <meta property="og:title" content="EU AI Act Compliance Assessment | Koios Analytics">
+  <meta property="og:description" content="12 questions across 4 pillars. Get your EU AI Act compliance score and action plan in under 5 minutes.">
+  <meta property="og:type" content="website">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a1628; --navy-mid: #0f1d35; --gold: #c8a44e; --gold-light: #e0c476;
+      --cream: #f8f7f4; --gray-50: #f3f2ee; --gray-100: #e8e6e1; --gray-200: #d3d1c7;
+      --gray-300: #b0ada5; --gray-400: #8a877f; --gray-500: #6b6860;
+      --teal: #2a9d8f; --red-soft: #e07a5f; --h-pad: clamp(20px, 5vw, 64px);
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', -apple-system, sans-serif; color: var(--navy); background: var(--cream); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+
+    /* NAV */
+    .nav { background: var(--navy-mid); padding: 0 var(--h-pad); display: flex; align-items: center; justify-content: space-between; height: 70px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(200,164,78,0.08); }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo svg { height: 40px; width: auto; }
+    .nav-links { display: flex; gap: 28px; align-items: center; list-style: none; }
+    .nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links .cta-btn { background: var(--gold); color: var(--navy); padding: 9px 22px; border-radius: 6px; font-weight: 600; }
+    .nav-links .cta-btn:hover { background: var(--gold-light); }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--gray-300); margin: 5px 0; }
+    .lang-toggle { display: flex; gap: 2px; background: rgba(255,255,255,0.06); border-radius: 5px; padding: 2px; }
+    .lang-btn { background: none; border: none; color: var(--gray-400); font-size: 0.72rem; font-weight: 600; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-family: inherit; letter-spacing: 0.04em; transition: all 0.2s; }
+    .lang-btn:hover { color: var(--gray-200); }
+    .lang-btn.active { background: rgba(200,164,78,0.15); color: var(--gold); }
+
+    /* HERO */
+    .page-hero { background: linear-gradient(170deg, var(--navy), var(--navy-mid) 60%, #152848); padding: clamp(60px,9vw,100px) var(--h-pad) clamp(40px,6vw,60px); text-align: center; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(224,122,95,0.08), transparent 65%); border-radius: 50%; }
+    .page-hero .badge { display: inline-block; background: rgba(224,122,95,0.15); color: var(--red-soft); font-size: 0.72rem; font-weight: 600; padding: 5px 14px; border-radius: 20px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
+    .page-hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 14px; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .page-hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--red-soft), #e8a07a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .page-hero p { font-size: 1rem; color: var(--gray-300); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+    /* PROGRESS */
+    .progress-wrap { max-width: 680px; margin: 0 auto; padding: 0 var(--h-pad); }
+    .progress-bar { display: flex; gap: 4px; margin: 32px 0 8px; }
+    .progress-seg { flex: 1; height: 4px; border-radius: 2px; background: var(--gray-200); transition: background 0.4s; }
+    .progress-seg.active { background: var(--red-soft); }
+    .progress-seg.done { background: var(--teal); }
+    .progress-labels { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--gray-400); margin-bottom: 28px; }
+    .progress-labels span.active { color: var(--red-soft); font-weight: 600; }
+    .progress-labels span.done { color: var(--teal); }
+
+    /* FORM */
+    .form-wrap { max-width: 680px; margin: 0 auto 60px; padding: 0 var(--h-pad); }
+    .form-section { display: none; }
+    .form-section.active { display: block; }
+    .form-section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; color: var(--navy); }
+    .form-section .section-desc { font-size: 0.88rem; color: var(--gray-500); margin-bottom: 28px; }
+
+    .q-block { margin-bottom: 28px; }
+    .q-num { font-size: 0.72rem; font-weight: 600; color: var(--red-soft); letter-spacing: 0.06em; margin-bottom: 6px; }
+    .q-text { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .q-help { font-size: 0.78rem; color: var(--gray-400); margin-bottom: 12px; }
+
+    /* Inputs */
+    .radio-group { display: flex; flex-direction: column; gap: 8px; }
+    .radio-option { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border: 1px solid var(--gray-200); border-radius: 8px; cursor: pointer; transition: all 0.2s; font-size: 0.88rem; }
+    .radio-option:hover { border-color: var(--gold); background: rgba(200,164,78,0.04); }
+    .radio-option input { display: none; }
+    .radio-option .dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--gray-200); flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+    .radio-option input:checked ~ .dot { border-color: var(--teal); }
+    .radio-option input:checked ~ .dot::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+    .radio-option input:checked ~ span:last-child { font-weight: 500; }
+
+    .check-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .check-option { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid var(--gray-200); border-radius: 8px; cursor: pointer; transition: all 0.2s; font-size: 0.84rem; }
+    .check-option:hover { border-color: var(--gold); }
+    .check-option input { display: none; }
+    .check-option .box { width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(--gray-200); flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #fff; }
+    .check-option input:checked ~ .box { border-color: var(--teal); background: var(--teal); }
+    .check-option input:checked ~ .box::after { content: '✓'; }
+
+    .scale-group { display: flex; gap: 8px; margin-top: 4px; }
+    .scale-btn { flex: 1; padding: 12px 8px; text-align: center; border: 1px solid var(--gray-200); border-radius: 8px; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--gray-500); transition: all 0.2s; background: #fff; font-family: inherit; }
+    .scale-btn:hover { border-color: var(--gold); }
+    .scale-btn.selected { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .scale-labels { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--gray-400); margin-top: 6px; }
+
+    select { width: 100%; padding: 12px 16px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 0.88rem; font-family: inherit; color: var(--navy); background: #fff; appearance: none; cursor: pointer; }
+    select:focus { outline: none; border-color: var(--gold); }
+
+    /* Buttons */
+    .form-nav { display: flex; justify-content: space-between; margin-top: 32px; }
+    .btn { display: inline-block; padding: 12px 28px; border-radius: 7px; font-weight: 600; font-size: 0.9rem; text-decoration: none; border: 2px solid transparent; cursor: pointer; font-family: inherit; transition: all 0.25s; }
+    .btn-gold { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+    .btn-gold:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-outline { background: none; color: var(--gray-500); border-color: var(--gray-200); }
+    .btn-outline:hover { border-color: var(--gray-400); }
+    .btn-red { background: var(--red-soft); color: #fff; border-color: var(--red-soft); }
+    .btn-red:hover { background: #c96a50; border-color: #c96a50; }
+
+    /* Results */
+    .results-wrap { display: none; max-width: 680px; margin: 0 auto 60px; padding: 0 var(--h-pad); }
+    .results-wrap.active { display: block; }
+    .score-ring { width: 160px; height: 160px; margin: 0 auto 24px; position: relative; }
+    .score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+    .score-ring circle { fill: none; stroke-width: 10; }
+    .score-ring .bg { stroke: var(--gray-100); }
+    .score-ring .fill { stroke: var(--red-soft); stroke-linecap: round; transition: stroke-dashoffset 1.5s ease; }
+    .score-value { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .score-value .num { font-family: 'Playfair Display', Georgia, serif; font-size: 2.4rem; font-weight: 700; color: var(--navy); }
+    .score-value .lbl { font-size: 0.72rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.08em; }
+
+    .pillar-scores { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0 32px; }
+    .pillar-card { background: #fff; border: 1px solid var(--gray-100); border-radius: 10px; padding: 18px; }
+    .pillar-card h4 { font-size: 0.82rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+    .pillar-bar-bg { height: 6px; background: var(--gray-100); border-radius: 3px; overflow: hidden; }
+    .pillar-bar-fill { height: 100%; border-radius: 3px; transition: width 1.2s ease; }
+    .pillar-score-num { font-size: 0.72rem; color: var(--gray-500); margin-top: 6px; }
+
+    .rec-list { list-style: none; margin-bottom: 32px; }
+    .rec-list li { padding: 14px 16px; border-left: 3px solid var(--red-soft); background: rgba(224,122,95,0.04); margin-bottom: 8px; border-radius: 0 8px 8px 0; font-size: 0.88rem; color: var(--gray-500); line-height: 1.55; }
+    .rec-list li strong { color: var(--navy); }
+
+    .results-cta { text-align: center; padding: 28px; background: var(--navy); border-radius: 12px; }
+    .results-cta h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; color: #fff; margin-bottom: 8px; }
+    .results-cta p { font-size: 0.85rem; color: var(--gray-300); margin-bottom: 18px; }
+
+    /* Lead capture */
+    .lead-form { max-width: 680px; margin: 0 auto 60px; padding: 0 var(--h-pad); display: none; }
+    .lead-form.active { display: block; }
+    .lead-form h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; margin-bottom: 6px; }
+    .lead-form .section-desc { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+    .field input, .field select { width: 100%; padding: 12px 16px; border: 1px solid var(--gray-200); border-radius: 8px; font-size: 0.88rem; font-family: inherit; color: var(--navy); }
+    .field input:focus, .field select:focus { outline: none; border-color: var(--gold); }
+    .gdpr-note { font-size: 0.72rem; color: var(--gray-400); margin-top: 16px; line-height: 1.5; }
+
+    /* Footer */
+    .footer { background: var(--navy); padding: 40px var(--h-pad) 28px; color: var(--gray-300); border-top: 1px solid rgba(200,164,78,0.08); }
+    .footer-inner { max-width: 680px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-inner svg { height: 32px; }
+    .footer-inner a { color: var(--gray-300); text-decoration: none; font-size: 0.82rem; }
+    .footer-inner a:hover { color: var(--gold-light); }
+    .footer-copy { text-align: center; font-size: 0.72rem; color: var(--gray-400); margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.05); max-width: 680px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 70px; left: 0; right: 0; background: var(--navy-mid); padding: 20px var(--h-pad) 28px; gap: 8px; z-index: 99; }
+      .menu-toggle { display: block; }
+      .pillar-scores { grid-template-columns: 1fr; }
+      .scale-group { gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 50" fill="none" height="40"><circle cx="25" cy="25" r="23" stroke="#fff" stroke-width="2"/><text x="25" y="33" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="28" font-weight="700">&#x3A3;</text><text x="60" y="28" fill="#fff" font-family="'DM Sans',sans-serif" font-size="18" font-weight="400" letter-spacing="3">KOIOS ANALYTICS</text><text x="60" y="43" fill="#b0ada5" font-family="'DM Sans',sans-serif" font-size="9.5" font-style="italic">Artificial intelligence, real solutions</text></svg></a>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/ai-readiness-assessment.html">AI Readiness</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="nl">NL</button>
+    </li>
+    <li><a href="https://calendar.app.google/gARU96EmoueEsaTv6" class="cta-btn" target="_blank" rel="noopener">Schedule Call</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="badge">EU AI Act</div>
+  <h1>How <em>AI Act-Ready</em> is Your Organisation?</h1>
+  <p>12 questions across 4 compliance pillars. Get your EU AI Act compliance score and prioritised action plan in under 5 minutes.</p>
+</section>
+
+<!-- Progress -->
+<div class="progress-wrap">
+  <div class="progress-bar">
+    <div class="progress-seg active" data-step="0"></div>
+    <div class="progress-seg" data-step="1"></div>
+    <div class="progress-seg" data-step="2"></div>
+    <div class="progress-seg" data-step="3"></div>
+  </div>
+  <div class="progress-labels">
+    <span class="active">AI Systems</span>
+    <span>Risk & Governance</span>
+    <span>Transparency</span>
+    <span>Documentation</span>
+  </div>
+</div>
+
+<!-- ASSESSMENT FORM -->
+<div class="form-wrap" id="formWrap">
+
+  <!-- PILLAR 1: AI Systems Inventory -->
+  <div class="form-section active" data-step="0">
+    <h2>AI Systems Inventory</h2>
+    <p class="section-desc">Understanding what AI systems your organisation uses or plans to deploy.</p>
+
+    <div class="q-block">
+      <div class="q-num">01</div>
+      <div class="q-text">Does your organisation currently use or develop AI systems?</div>
+      <div class="q-help">Include any automated decision-making, ML models, chatbots, or predictive systems.</div>
+      <div class="radio-group" data-q="q1">
+        <label class="radio-option"><input type="radio" name="q1" value="0"><span class="dot"></span><span>No — we don't use any AI</span></label>
+        <label class="radio-option"><input type="radio" name="q1" value="1"><span class="dot"></span><span>We use third-party AI tools (e.g. ChatGPT, Copilot)</span></label>
+        <label class="radio-option"><input type="radio" name="q1" value="2"><span class="dot"></span><span>We have some internal AI/ML models in development</span></label>
+        <label class="radio-option"><input type="radio" name="q1" value="3"><span class="dot"></span><span>We have AI systems in production</span></label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">02</div>
+      <div class="q-text">Have you classified your AI systems by risk level?</div>
+      <div class="q-help">The EU AI Act defines four risk tiers: unacceptable, high, limited, and minimal.</div>
+      <div class="radio-group" data-q="q2">
+        <label class="radio-option"><input type="radio" name="q2" value="0"><span class="dot"></span><span>We haven't considered risk classification</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="1"><span class="dot"></span><span>We're aware of it but haven't classified yet</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="2"><span class="dot"></span><span>We've done a preliminary classification</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="3"><span class="dot"></span><span>All AI systems are classified with documented rationale</span></label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">03</div>
+      <div class="q-text">Which domains do your AI systems operate in?</div>
+      <div class="q-help">Select all that apply. Some domains trigger high-risk classification under the AI Act.</div>
+      <div class="check-group" data-q="q3">
+        <label class="check-option"><input type="checkbox" name="q3" value="hr"><span class="box"></span><span>HR / Recruitment</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="credit"><span class="box"></span><span>Credit / Financial</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="health"><span class="box"></span><span>Healthcare</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="safety"><span class="box"></span><span>Safety-critical</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="customer"><span class="box"></span><span>Customer service</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="ops"><span class="box"></span><span>Operations / Logistics</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="marketing"><span class="box"></span><span>Marketing / Sales</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="other"><span class="box"></span><span>Other</span></label>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <div></div>
+      <button class="btn btn-gold" onclick="nextStep()">Continue</button>
+    </div>
+  </div>
+
+  <!-- PILLAR 2: Risk Management & Governance -->
+  <div class="form-section" data-step="1">
+    <h2>Risk Management &amp; Governance</h2>
+    <p class="section-desc">Assess your organisational preparedness for AI Act compliance obligations.</p>
+
+    <div class="q-block">
+      <div class="q-num">04</div>
+      <div class="q-text">Do you have an AI governance framework or policy?</div>
+      <div class="radio-group" data-q="q4">
+        <label class="radio-option"><input type="radio" name="q4" value="0"><span class="dot"></span><span>No governance framework exists</span></label>
+        <label class="radio-option"><input type="radio" name="q4" value="1"><span class="dot"></span><span>Informal guidelines only</span></label>
+        <label class="radio-option"><input type="radio" name="q4" value="2"><span class="dot"></span><span>Formal policy in development</span></label>
+        <label class="radio-option"><input type="radio" name="q4" value="3"><span class="dot"></span><span>Established governance framework with regular review</span></label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">05</div>
+      <div class="q-text">Is there a designated person or team responsible for AI compliance?</div>
+      <div class="radio-group" data-q="q5">
+        <label class="radio-option"><input type="radio" name="q5" value="0"><span class="dot"></span><span>No one is responsible</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="1"><span class="dot"></span><span>It falls loosely under IT or legal</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="2"><span class="dot"></span><span>A specific person has been assigned</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="3"><span class="dot"></span><span>Dedicated AI compliance team or committee</span></label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">06</div>
+      <div class="q-text">Do you conduct risk assessments on your AI systems?</div>
+      <div class="q-help">The AI Act requires ongoing risk assessment for high-risk AI systems.</div>
+      <div class="radio-group" data-q="q6">
+        <label class="radio-option"><input type="radio" name="q6" value="0"><span class="dot"></span><span>No risk assessments performed</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="1"><span class="dot"></span><span>Ad-hoc assessments only</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="2"><span class="dot"></span><span>Structured assessments for some systems</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="3"><span class="dot"></span><span>Systematic risk management for all AI systems</span></label>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-outline" onclick="prevStep()">Back</button>
+      <button class="btn btn-gold" onclick="nextStep()">Continue</button>
+    </div>
+  </div>
+
+  <!-- PILLAR 3: Transparency & Human Oversight -->
+  <div class="form-section" data-step="2">
+    <h2>Transparency &amp; Human Oversight</h2>
+    <p class="section-desc">The AI Act places strong emphasis on transparency and human control over AI systems.</p>
+
+    <div class="q-block">
+      <div class="q-num">07</div>
+      <div class="q-text">Do users know when they are interacting with an AI system?</div>
+      <div class="q-help">The AI Act requires clear disclosure when AI is used in customer-facing interactions.</div>
+      <div class="radio-group" data-q="q7">
+        <label class="radio-option"><input type="radio" name="q7" value="0"><span class="dot"></span><span>No disclosure — users may not know</span></label>
+        <label class="radio-option"><input type="radio" name="q7" value="1"><span class="dot"></span><span>Disclosed in terms & conditions only</span></label>
+        <label class="radio-option"><input type="radio" name="q7" value="2"><span class="dot"></span><span>Clear notification at point of interaction</span></label>
+        <label class="radio-option"><input type="radio" name="q7" value="3"><span class="dot"></span><span>Full transparency with opt-out available</span></label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">08</div>
+      <div class="q-text">Can a human override or intervene in AI-driven decisions?</div>
+      <div class="radio-group" data-q="q8">
+        <label class="radio-option"><input type="radio" name="q8" value="0"><span class="dot"></span><span>AI decisions are fully automated — no override</span></label>
+        <label class="radio-option"><input type="radio" name="q8" value="1"><span class="dot"></span><span>Override is possible but not standardised</span></label>
+        <label class="radio-option"><input type="radio" name="q8" value="2"><span class="dot"></span><span>Human-in-the-loop for important decisions</span></label>
+        <label class="radio-option"><input type="radio" name="q8" value="3"><span class="dot"></span><span>Formal human oversight protocol for all high-impact decisions</span></label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">09</div>
+      <div class="q-text">How do you handle bias and fairness in your AI systems?</div>
+      <div class="radio-group" data-q="q9">
+        <label class="radio-option"><input type="radio" name="q9" value="0"><span class="dot"></span><span>We haven't addressed bias</span></label>
+        <label class="radio-option"><input type="radio" name="q9" value="1"><span class="dot"></span><span>Awareness exists but no formal testing</span></label>
+        <label class="radio-option"><input type="radio" name="q9" value="2"><span class="dot"></span><span>Some bias testing during development</span></label>
+        <label class="radio-option"><input type="radio" name="q9" value="3"><span class="dot"></span><span>Regular bias audits with documented mitigation</span></label>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-outline" onclick="prevStep()">Back</button>
+      <button class="btn btn-gold" onclick="nextStep()">Continue</button>
+    </div>
+  </div>
+
+  <!-- PILLAR 4: Technical Documentation & Data Governance -->
+  <div class="form-section" data-step="3">
+    <h2>Documentation &amp; Data Governance</h2>
+    <p class="section-desc">The AI Act requires extensive documentation and data quality management.</p>
+
+    <div class="q-block">
+      <div class="q-num">10</div>
+      <div class="q-text">Do you maintain technical documentation for your AI systems?</div>
+      <div class="q-help">Including model cards, training data records, performance metrics, and design decisions.</div>
+      <div class="radio-group" data-q="q10">
+        <label class="radio-option"><input type="radio" name="q10" value="0"><span class="dot"></span><span>No documentation exists</span></label>
+        <label class="radio-option"><input type="radio" name="q10" value="1"><span class="dot"></span><span>Minimal notes — mostly in developers' heads</span></label>
+        <label class="radio-option"><input type="radio" name="q10" value="2"><span class="dot"></span><span>Structured documentation for key systems</span></label>
+        <label class="radio-option"><input type="radio" name="q10" value="3"><span class="dot"></span><span>Comprehensive documentation with audit trails</span></label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">11</div>
+      <div class="q-text">How do you manage training data quality and provenance?</div>
+      <div class="radio-group" data-q="q11">
+        <label class="radio-option"><input type="radio" name="q11" value="0"><span class="dot"></span><span>No data governance for AI training data</span></label>
+        <label class="radio-option"><input type="radio" name="q11" value="1"><span class="dot"></span><span>Basic data quality checks</span></label>
+        <label class="radio-option"><input type="radio" name="q11" value="2"><span class="dot"></span><span>Documented data sources and quality processes</span></label>
+        <label class="radio-option"><input type="radio" name="q11" value="3"><span class="dot"></span><span>Full data lineage, quality monitoring, and governance framework</span></label>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">12</div>
+      <div class="q-text">Do you have logging and monitoring for AI system performance in production?</div>
+      <div class="radio-group" data-q="q12">
+        <label class="radio-option"><input type="radio" name="q12" value="0"><span class="dot"></span><span>No monitoring in place</span></label>
+        <label class="radio-option"><input type="radio" name="q12" value="1"><span class="dot"></span><span>Basic uptime monitoring only</span></label>
+        <label class="radio-option"><input type="radio" name="q12" value="2"><span class="dot"></span><span>Performance metrics and drift detection</span></label>
+        <label class="radio-option"><input type="radio" name="q12" value="3"><span class="dot"></span><span>Comprehensive logging, alerting, and automated incident response</span></label>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-outline" onclick="prevStep()">Back</button>
+      <button class="btn btn-red" onclick="showLeadForm()">See My Compliance Score</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- LEAD CAPTURE -->
+<div class="lead-form" id="leadForm">
+  <h2>Almost There!</h2>
+  <p class="section-desc">Enter your details to receive your personalised EU AI Act compliance report.</p>
+
+  <div class="field"><label>Full Name *</label><input type="text" id="leadName" required></div>
+  <div class="field"><label>Business Email *</label><input type="email" id="leadEmail" required></div>
+  <div class="field"><label>Company Name *</label><input type="text" id="leadCompany" required></div>
+  <div class="field">
+    <label>Your Role</label>
+    <select id="leadRole"><option value="">Select your role...</option><option>C-Suite / Executive</option><option>VP / Director</option><option>Legal / Compliance</option><option>CTO / Technical Lead</option><option>DPO / Privacy Officer</option><option>Other</option></select>
+  </div>
+
+  <div class="form-nav">
+    <button class="btn btn-outline" onclick="backToForm()">Back</button>
+    <button class="btn btn-red" onclick="showResults()">Get My Report</button>
+  </div>
+
+  <p class="gdpr-note">Your data is processed in accordance with GDPR. We'll send your detailed compliance report and may follow up with relevant insights. No spam, ever.</p>
+</div>
+
+<!-- RESULTS -->
+<div class="results-wrap" id="resultsWrap">
+  <h2 style="font-family:'Playfair Display',Georgia,serif;text-align:center;margin-bottom:6px;">Your EU AI Act Compliance Score</h2>
+  <p style="text-align:center;color:var(--gray-500);font-size:0.88rem;margin-bottom:24px;">Based on your responses across 4 compliance pillars</p>
+
+  <div class="score-ring">
+    <svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fill" id="scoreCircle" cx="60" cy="60" r="52" stroke-dasharray="327" stroke-dashoffset="327"/></svg>
+    <div class="score-value"><div class="num" id="scoreNum">0</div><div class="lbl">out of 100</div></div>
+  </div>
+
+  <div class="pillar-scores" id="pillarScores"></div>
+
+  <h3 style="font-family:'Playfair Display',Georgia,serif;margin-bottom:12px;">Priority Recommendations</h3>
+  <ul class="rec-list" id="recList"></ul>
+
+  <div class="results-cta">
+    <h3>Need Help Getting Compliant?</h3>
+    <p>As an Apply AI Alliance member (European Commission), we can guide your organisation through every compliance requirement.</p>
+    <a href="https://calendar.app.google/gARU96EmoueEsaTv6" class="btn btn-gold" target="_blank" rel="noopener">Schedule Compliance Consultation</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 50" fill="none" height="32"><circle cx="25" cy="25" r="23" stroke="#fff" stroke-width="2"/><text x="25" y="33" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="28" font-weight="700">&#x3A3;</text><text x="60" y="28" fill="#fff" font-family="'DM Sans',sans-serif" font-size="18" font-weight="400" letter-spacing="3">KOIOS ANALYTICS</text><text x="60" y="43" fill="#b0ada5" font-family="'DM Sans',sans-serif" font-size="9.5" font-style="italic">Artificial intelligence, real solutions</text></svg></a>
+    <a href="/">Home</a>
+    <a href="/ai-readiness-assessment.html">AI Readiness</a>
+    <a href="/#services">Services</a>
+    <a href="/#about">About</a>
+    <a href="mailto:solutions@koios-analytics.com">solutions@koios-analytics.com</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 Koios Analytics (Pty) Ltd — All Rights Reserved.</div>
+</footer>
+
+<script>
+let step = 0;
+const totalSteps = 4;
+
+function updateProgress() {
+  document.querySelectorAll('.progress-seg').forEach((s, i) => {
+    s.classList.toggle('active', i === step);
+    s.classList.toggle('done', i < step);
+  });
+  document.querySelectorAll('.progress-labels span').forEach((s, i) => {
+    s.classList.toggle('active', i === step);
+    s.classList.toggle('done', i < step);
+  });
+  document.querySelectorAll('.form-section').forEach((s, i) => {
+    s.classList.toggle('active', i === step);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextStep() { if (step < totalSteps - 1) { step++; updateProgress(); } }
+function prevStep() { if (step > 0) { step--; updateProgress(); } }
+
+function showLeadForm() {
+  document.getElementById('formWrap').style.display = 'none';
+  document.querySelector('.progress-wrap').style.display = 'none';
+  document.getElementById('leadForm').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function backToForm() {
+  document.getElementById('leadForm').classList.remove('active');
+  document.getElementById('formWrap').style.display = 'block';
+  document.querySelector('.progress-wrap').style.display = 'block';
+}
+
+function getScores() {
+  const pillars = [
+    { name: 'AI Systems Inventory', qs: ['q1','q2'], color: '#e07a5f' },
+    { name: 'Risk & Governance', qs: ['q4','q5','q6'], color: '#c8a44e' },
+    { name: 'Transparency & Oversight', qs: ['q7','q8','q9'], color: '#2a9d8f' },
+    { name: 'Documentation & Data', qs: ['q10','q11','q12'], color: '#5a7abf' }
+  ];
+
+  let totalScore = 0, totalMax = 0;
+  const results = pillars.map(p => {
+    let score = 0, max = p.qs.length * 3;
+    p.qs.forEach(q => {
+      const checked = document.querySelector(`input[name="${q}"]:checked`);
+      if (checked) score += parseInt(checked.value);
+    });
+    totalScore += score; totalMax += max;
+    return { ...p, score, max, pct: Math.round((score / max) * 100) };
+  });
+
+  // Bonus for high-risk domains checked in q3
+  const highRiskDomains = ['hr','credit','health','safety'];
+  const q3Checked = [...document.querySelectorAll('input[name="q3"]:checked')].map(i => i.value);
+  const hasHighRisk = q3Checked.some(v => highRiskDomains.includes(v));
+
+  return { results, total: Math.round((totalScore / totalMax) * 100), hasHighRisk };
+}
+
+function showResults() {
+  const name = document.getElementById('leadName').value;
+  const email = document.getElementById('leadEmail').value;
+  const company = document.getElementById('leadCompany').value;
+  const role = document.getElementById('leadRole').value;
+  if (!name || !email) { alert('Please enter your name and email.'); return; }
+
+  document.getElementById('leadForm').classList.remove('active');
+  document.getElementById('resultsWrap').classList.add('active');
+
+  const { results, total, hasHighRisk } = getScores();
+
+  // ── GOOGLE SHEETS LEAD CAPTURE ──────────────────
+  // Replace GOOGLE_SCRIPT_URL with your Google Apps Script web app URL
+  // See SHEETS-SETUP.md for instructions
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyqr7G6AuFHdMD25sRGjCfvBkUlzLQOLwGAX0KXBbt-CYzt7npQALHnMXVQGCJsTRxfsw/exec';
+  if (GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
+    const answers = {};
+    for (let i = 1; i <= 12; i++) {
+      const checked = document.querySelector('input[name="q' + i + '"]:checked');
+      answers['q' + i] = checked ? checked.value : '';
+    }
+    const q3Checked = [...document.querySelectorAll('input[name="q3"]:checked')].map(i => i.value);
+    answers.q3 = q3Checked.join(', ');
+
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        source: 'eu-ai-compliance',
+        timestamp: new Date().toISOString(),
+        name, email, company, role,
+        totalScore: total,
+        hasHighRisk,
+        pillarScores: results.map(p => p.name + ': ' + p.pct + '%').join(' | '),
+        ...answers
+      })
+    }).catch(() => {});
+  }
+  // ────────────────────────────────────────────────
+
+  // Animate score ring
+  const circle = document.getElementById('scoreCircle');
+  const offset = 327 - (327 * total / 100);
+  setTimeout(() => { circle.style.strokeDashoffset = offset; }, 100);
+  let counter = 0;
+  const numEl = document.getElementById('scoreNum');
+  const interval = setInterval(() => { counter++; numEl.textContent = counter; if (counter >= total) clearInterval(interval); }, 15);
+
+  // Pillar cards
+  const pillarWrap = document.getElementById('pillarScores');
+  pillarWrap.innerHTML = results.map(p => `
+    <div class="pillar-card">
+      <h4>${p.name}</h4>
+      <div class="pillar-bar-bg"><div class="pillar-bar-fill" style="width:0%;background:${p.color}"></div></div>
+      <div class="pillar-score-num">${p.pct}%</div>
+    </div>
+  `).join('');
+  setTimeout(() => {
+    pillarWrap.querySelectorAll('.pillar-bar-fill').forEach((bar, i) => { bar.style.width = results[i].pct + '%'; });
+  }, 200);
+
+  // Recommendations
+  const recs = [];
+  if (hasHighRisk) recs.push('<strong>High-risk domains detected.</strong> Your AI systems may fall under high-risk classification requiring conformity assessment, CE marking, and registration in the EU database.');
+  results.forEach(p => {
+    if (p.pct < 34) recs.push(`<strong>${p.name}: Critical gap.</strong> Immediate action needed — this pillar scores below the minimum threshold for AI Act compliance.`);
+    else if (p.pct < 67) recs.push(`<strong>${p.name}: Developing.</strong> Foundation exists but significant work needed before compliance deadlines.`);
+  });
+  if (total < 50) recs.push('<strong>Overall:</strong> We recommend an urgent compliance gap analysis. The AI Act enforcement begins August 2025 for prohibited practices, with full obligations phasing in through 2027.');
+  else if (total < 75) recs.push('<strong>Overall:</strong> Good foundation, but gaps remain. A structured compliance roadmap would help you prioritise and meet deadlines.');
+  else recs.push('<strong>Overall:</strong> Strong compliance posture. Consider a formal audit to validate your readiness and document it for regulators.');
+
+  document.getElementById('recList').innerHTML = recs.map(r => `<li>${r}</li>`).join('');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Scale button handler
+document.querySelectorAll('.scale-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.parentElement.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  });
+});
+
+// Mobile nav
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
+</script>
+
+</body>
+</html>
