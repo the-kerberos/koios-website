@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koios Analytics — Strategic AI Partner | From MIT to Your Business</title>
+  <meta name="description" content="Strategic AI partner services for mid-market companies. From 18% to 81% churn prediction precision. AI leadership backed by the European Commission and MIT.">
+  <meta name="keywords" content="strategic AI partner, AI strategy, EU AI Act compliance, churn prediction, Odoo AI integration, AI consulting Belgium, AI consulting Europe">
+  <meta name="author" content="Koios Analytics">
+  <link rel="canonical" href="https://koios-analytics.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Koios Analytics — Strategic AI Partner Services">
+  <meta property="og:description" content="From teaching AI strategy at MIT to implementing it in your business. Strategic AI partner for mid-market companies.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://koios-analytics.com/">
+  <meta property="og:image" content="https://koios-analytics.com/assets/og-image.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Koios Analytics",
+    "description": "Strategic AI partner services for mid-market companies",
+    "url": "https://koios-analytics.com",
+    "email": "solutions@koios-analytics.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Fabien Zablocki",
+      "jobTitle": "Strategic AI Partner",
+      "alumniOf": "MIT Sloan"
+    },
+    "areaServed": ["Europe", "South Africa"],
+    "serviceType": ["AI Strategy Consulting", "Fractional CTO", "AI Implementation", "EU AI Act Compliance"]
+  }
+  </script>
+
+  <!-- Google Analytics placeholder — replace GA_MEASUREMENT_ID with your actual ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #0f1d35;
+      --navy-light: #152848;
+      --gold: #c8a44e;
+      --gold-light: #e0c476;
+      --gold-pale: #f5ebd4;
+      --cream: #f8f7f4;
+      --gray-50: #f3f2ee;
+      --gray-100: #e8e6e1;
+      --gray-200: #d3d1c7;
+      --gray-300: #b0ada5;
+      --gray-400: #8a877f;
+      --gray-500: #6b6860;
+      --gray-600: #4d4b45;
+      --teal: #2a9d8f;
+      --teal-dark: #1f7a6f;
+      --red-soft: #e07a5f;
+      --section-pad: clamp(60px, 8vw, 100px);
+      --h-pad: clamp(20px, 5vw, 64px);
+      --max-w: 1080px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--navy);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+
+    /* ═══ ANIMATION ═══ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(.22,.61,.36,1), transform 0.7s cubic-bezier(.22,.61,.36,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ═══ UTILITY BAR ═══ */
+    .util-bar {
+      background: var(--navy);
+      color: var(--gray-300);
+      font-size: 0.75rem;
+      padding: 7px var(--h-pad);
+      text-align: center;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid rgba(200,164,78,0.1);
+    }
+    .util-bar strong { color: var(--gold); font-weight: 600; }
+
+    /* ═══ NAVIGATION ═══ */
+    .nav {
+      background: var(--navy-mid);
+      padding: 0 var(--h-pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(200,164,78,0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo img, .nav-logo svg {
+      height: 40px;
+      width: auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.015em;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links .cta-btn {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 9px 22px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-links .cta-btn:hover { background: var(--gold-light); color: var(--navy); }
+
+    /* language toggle */
+    .lang-toggle {
+      display: flex;
+      gap: 2px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 5px;
+      padding: 2px;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--gray-400);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+    }
+    .lang-btn:hover { color: var(--gray-200); }
+    .lang-btn.active {
+      background: rgba(200,164,78,0.15);
+      color: var(--gold);
+    }
+
+    /* mobile menu */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gray-300);
+      margin: 5px 0;
+      transition: all 0.3s;
+    }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      background: linear-gradient(170deg, var(--navy) 0%, var(--navy-mid) 50%, var(--navy-light) 100%);
+      padding: clamp(70px,10vw,120px) var(--h-pad) clamp(60px,8vw,100px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(200,164,78,0.07) 0%, transparent 65%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 22px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.1rem, 4.5vw, 3.3rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.35s forwards;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--gray-300);
+      line-height: 1.65;
+      max-width: 620px;
+      margin: 0 auto 36px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.5s forwards;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.65s forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 30px;
+      border-radius: 7px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(200,164,78,0.25);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.2);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+    .btn-dark {
+      background: var(--navy);
+      color: var(--gold-light);
+      border-color: var(--navy);
+    }
+    .btn-dark:hover {
+      background: var(--navy-mid);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(10,22,40,0.3);
+    }
+
+    /* ═══ CREDIBILITY BAR ═══ */
+    .cred-bar {
+      background: var(--navy);
+      border-top: 1px solid rgba(200,164,78,0.1);
+      padding: 24px var(--h-pad);
+      display: flex;
+      justify-content: center;
+      gap: clamp(24px, 4vw, 56px);
+      flex-wrap: wrap;
+    }
+    .cred-item {
+      color: var(--gray-300);
+      font-size: 0.82rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+    }
+    .cred-check {
+      color: var(--teal);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    /* ═══ SECTION HELPERS ═══ */
+    .section { padding: var(--section-pad) var(--h-pad); }
+    .section-dark { background: var(--navy); color: #fff; }
+    .section-alt { background: var(--gray-50); }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+
+    .section-head {
+      text-align: center;
+      max-width: 660px;
+      margin: 0 auto 52px;
+    }
+    .section-head .eyebrow {
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .section-head h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.3rem);
+      font-weight: 700;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .section-head p {
+      font-size: 1rem;
+      color: var(--gray-500);
+      line-height: 1.65;
+    }
+    .section-dark .section-head p { color: var(--gray-300); }
+
+    /* ═══ SOCIAL PROOF STATS ═══ */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .stat-card {
+      text-align: center;
+      padding: 28px 16px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid var(--gray-100);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .stat-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(10,22,40,0.06);
+    }
+    .stat-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .stat-number.gold { color: var(--gold); }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+
+    /* ═══ SERVICES ═══ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .svc-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 32px 28px;
+      border: 1px solid var(--gray-100);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      position: relative;
+    }
+    .svc-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--gold);
+      border-radius: 10px 0 0 10px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .svc-card:hover {
+      border-color: rgba(200,164,78,0.4);
+      box-shadow: 0 6px 28px rgba(10,22,40,0.07);
+      transform: translateY(-2px);
+    }
+    .svc-card:hover::after { opacity: 1; }
+    .svc-icon { font-size: 1.4rem; margin-bottom: 14px; }
+    .svc-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--navy);
+    }
+    .svc-card ul {
+      list-style: none;
+      margin-bottom: 18px;
+    }
+    .svc-card li {
+      font-size: 0.86rem;
+      color: var(--gray-500);
+      padding: 3px 0 3px 18px;
+      position: relative;
+    }
+    .svc-card li::before {
+      content: '\2192';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: 0.78rem;
+      top: 4px;
+    }
+    .svc-deliverable {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding-top: 14px;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    /* ═══ CASE STUDIES ═══ */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .case-card {
+      background: var(--navy-mid);
+      border-radius: 10px;
+      padding: 28px;
+      border: 1px solid rgba(200,164,78,0.08);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .case-card:hover {
+      border-color: rgba(200,164,78,0.3);
+      transform: translateY(-2px);
+    }
+    .case-industry {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .case-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.35;
+    }
+    .case-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .metric-box {
+      background: rgba(255,255,255,0.04);
+      border-radius: 7px;
+      padding: 12px 10px;
+    }
+    .metric-val {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 2px;
+    }
+    .metric-lbl {
+      font-size: 0.68rem;
+      color: var(--gray-300);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .case-result {
+      font-size: 0.82rem;
+      color: var(--teal);
+      font-weight: 500;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ═══ EU AI ACT ═══ */
+    .eu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 960px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .eu-checks {
+      list-style: none;
+    }
+    .eu-checks li {
+      padding: 11px 0;
+      font-size: 0.9rem;
+      color: var(--gray-500);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+    .eu-checks .chk {
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .eu-highlight {
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      border-radius: 14px;
+      padding: 40px 28px;
+      text-align: center;
+      border: 1px solid rgba(200,164,78,0.12);
+    }
+    .eu-big {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--red-soft);
+      margin-bottom: 6px;
+    }
+    .eu-caption {
+      font-size: 0.88rem;
+      color: var(--gray-300);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* ═══ BROADER EXPERTISE ═══ */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .exp-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 28px 24px;
+      border: 1px solid var(--gray-100);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .exp-card:hover {
+      border-color: rgba(200,164,78,0.4);
+      box-shadow: 0 4px 20px rgba(10,22,40,0.06);
+    }
+    .exp-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .exp-card p {
+      font-size: 0.84rem;
+      color: var(--gray-500);
+      line-height: 1.6;
+    }
+
+    /* ═══ CREDENTIAL BADGES ═══ */
+    .badge-strip {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .badge-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .badge-text strong {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .badge-text span {
+      font-size: 0.76rem;
+      color: var(--gray-500);
+    }
+
+    /* ═══ ABOUT ═══ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 960px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .about-text h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .about-text p {
+      font-size: 0.9rem;
+      color: var(--gray-300);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .about-text a {
+      color: var(--gold-light);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .about-text a:hover { color: var(--gold); }
+
+    /* ═══ CTA BAND ═══ */
+    .cta-band {
+      background: linear-gradient(135deg, var(--gold), #b8943e);
+      padding: clamp(48px, 7vw, 80px) var(--h-pad);
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .cta-band p {
+      font-size: 1rem;
+      color: rgba(10,22,40,0.65);
+      margin-bottom: 28px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ═══ FOOTER ═══ */
+    .footer {
+      background: var(--navy);
+      padding: 52px var(--h-pad) 32px;
+      color: var(--gray-300);
+      border-top: 1px solid rgba(200,164,78,0.08);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 36px;
+      max-width: var(--max-w);
+      margin: 0 auto 36px;
+    }
+    .footer-brand img, .footer-brand svg {
+      height: 36px;
+      margin-bottom: 14px;
+    }
+    .footer-brand p {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      line-height: 1.55;
+      max-width: 260px;
+    }
+    .footer-col h4 {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gray-400);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .footer-col a {
+      display: block;
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: 0.84rem;
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--gold-light); }
+    .footer-copy {
+      text-align: center;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.72rem;
+      color: var(--gray-400);
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 900px) {
+      .services-grid, .cases-grid, .eu-grid, .about-grid, .expertise-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 70px; left: 0; right: 0;
+        background: var(--navy-mid);
+        padding: 20px var(--h-pad) 28px;
+        gap: 8px;
+        border-bottom: 1px solid rgba(200,164,78,0.1);
+        z-index: 99;
+      }
+      .nav-links.open a {
+        padding: 10px 0;
+        font-size: 1rem;
+      }
+      .nav-links.open .cta-btn {
+        text-align: center;
+        margin-top: 8px;
+      }
+      .menu-toggle { display: block; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .cred-bar { gap: 12px 24px; }
+      .cred-item { font-size: 0.75rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- UTILITY BAR -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="util-bar">
+  <strong>Apply AI Alliance</strong> member — European Commission &middot; Strategic AI leadership across Europe &amp; South Africa
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- NAVIGATION -->
+<!-- ═══════════════════════════════════════════════ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="/" class="nav-logo" aria-label="Koios Analytics home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 50" fill="none" height="40" aria-label="Koios Analytics">
+      <circle cx="25" cy="25" r="23" stroke="#fff" stroke-width="2"/>
+      <text x="25" y="33" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="28" font-weight="700">&#x3A3;</text>
+      <text x="60" y="28" fill="#fff" font-family="'DM Sans',sans-serif" font-size="18" font-weight="400" letter-spacing="3">KOIOS ANALYTICS</text>
+      <text x="60" y="43" fill="#b0ada5" font-family="'DM Sans',sans-serif" font-size="9.5" font-style="italic">Artificial intelligence, real solutions</text>
+    </svg>
+  </a>
+  <button class="menu-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="https://tools.koios-analytics.com/ai-readiness-assessment.html">AI Readiness</a></li>
+    <li><a href="odoo-partnership.html">Odoo Partnership</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#about">About</a></li>
+    <li class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="nl">NL</button>
+    </li>
+    <li><a href="https://calendar.app.google/gARU96EmoueEsaTv6" class="cta-btn" target="_blank" rel="noopener">Schedule Call</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Strategic AI Partnership</p>
+
+    <!-- ╔═══════════════════════════════════════════╗
+         ║  HERO HEADLINE — OPTION D                 ║
+         ║  (Classroom to Boardroom)                 ║
+         ║  Swap this h1 to change positioning.      ║
+         ║                                           ║
+         ║  Option E (85% failure stat):             ║
+         ║  "85% of AI Projects Fail Before          ║
+         ║   Production. <em>Yours Won't.</em>"      ║
+         ║                                           ║
+         ║  Option F (System-led):                   ║
+         ║  "Your Business Has AI Potential.          ║
+         ║   <em>You Need a System to Unlock         ║
+         ║   It.</em>"                               ║
+         ║                                           ║
+         ║  Option G (Founder-forward):              ║
+         ║  "I've Guided Thousands of Executives     ║
+         ║   Through AI Transformation.              ║
+         ║   <em>Now I'll Guide Yours.</em>"         ║
+         ╚═══════════════════════════════════════════╝ -->
+    <h1>From Teaching AI Strategy at MIT to <em>Implementing It in Your Business</em></h1>
+
+    <p class="hero-sub">After guiding thousands of executives through AI transformation at MIT Sloan, I now bring that same structured methodology directly to mid-market companies as their strategic AI partner.</p>
+
+    <div class="hero-buttons">
+      <a href="https://tools.koios-analytics.com/ai-readiness-assessment.html" class="btn btn-gold">Get Your AI Readiness Assessment</a>
+      <a href="https://calendar.app.google/gARU96EmoueEsaTv6" class="btn btn-outline" target="_blank" rel="noopener">Schedule Strategy Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CREDIBILITY BAR -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="cred-bar">
+  <div class="cred-item"><span class="cred-check">&#10003;</span> MIT AI Strategy Expert</div>
+  <div class="cred-item"><span class="cred-check">&#10003;</span> EU AI Policy Advisor</div>
+  <div class="cred-item"><span class="cred-check">&#10003;</span> 15+ Years Software Leadership</div>
+  <div class="cred-item"><span class="cred-check">&#10003;</span> Proprietary AI Transformation Platform</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SOCIAL PROOF -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section" id="proof">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <p class="eyebrow">Trusted by Industry Leaders</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-number gold">18% → 81%</div>
+        <div class="stat-label">Churn prediction precision<br>Vox Telecom</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-1">
+        <div class="stat-number">1,000+</div>
+        <div class="stat-label">Executives guided through<br>AI strategy at MIT Sloan</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-2">
+        <div class="stat-number gold">6</div>
+        <div class="stat-label">Industries with production<br>AI deployments</div>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <div class="stat-number">EC</div>
+        <div class="stat-label">Apply AI Alliance Member<br>European Commission</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SERVICES -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section section-alt" id="services">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <p class="eyebrow">What We Deliver</p>
+      <h2>Strategic AI Partner Services</h2>
+      <p>Bridge the AI leadership gap with strategic oversight and production-grade implementation across telecommunications, agriculture, defense, and manufacturing.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="svc-card reveal">
+        <div class="svc-icon">&#x1F4CB;</div>
+        <h3>AI Strategy &amp; Roadmap Development</h3>
+        <ul>
+          <li>Comprehensive AI readiness assessment</li>
+          <li>Custom implementation roadmap</li>
+          <li>Technology stack recommendations</li>
+          <li>EU AI Act compliance framework</li>
+        </ul>
+        <div class="svc-deliverable">Deliverable: Comprehensive strategic roadmap</div>
+      </div>
+
+      <div class="svc-card reveal reveal-delay-1">
+        <div class="svc-icon">&#x1F680;</div>
+        <h3>Implementation Oversight</h3>
+        <ul>
+          <li>Technical team guidance</li>
+          <li>Vendor selection support</li>
+          <li>MLOps &amp; LLMOps production pipelines</li>
+          <li>Performance monitoring &amp; drift detection</li>
+        </ul>
+        <div class="svc-deliverable">Deliverable: Monthly executive reports</div>
+      </div>
+
+      <div class="svc-card reveal reveal-delay-2">
+        <div class="svc-icon">&#x1F3AF;</div>
+        <h3>Specialised Expertise</h3>
+        <ul>
+          <li>Churn prediction &amp; customer analytics</li>
+          <li>Agricultural AI &amp; IoT data platforms</li>
+          <li>Generative AI &amp; agentic AI integration</li>
+          <li>ERP/CRM AI integration (Odoo specialist)</li>
+        </ul>
+        <div class="svc-deliverable">Deliverable: Industry-specific AI solutions</div>
+      </div>
+
+      <div class="svc-card reveal reveal-delay-3">
+        <div class="svc-icon">&#x1F4BC;</div>
+        <h3>Embedded AI Leadership</h3>
+        <ul>
+          <li>2&ndash;3 days/week strategic presence</li>
+          <li>C-suite &amp; board communication</li>
+          <li>Team capability building</li>
+          <li>Technology decision authority</li>
+        </ul>
+        <div class="svc-deliverable">Deliverable: Ongoing strategic leadership</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CASE STUDIES -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section section-dark" id="results">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <p class="eyebrow">Proven Results</p>
+      <h2>Results Across Industries</h2>
+      <p>Real outcomes from strategic AI implementation &mdash; not theoretical projections.</p>
+    </div>
+    <div class="cases-grid">
+
+      <div class="case-card reveal">
+        <div class="case-industry">&#x1F3E2; Telecommunications</div>
+        <h3>Churn Prediction &amp; NLP Analytics &mdash; Vox Telecom</h3>
+        <div class="case-metrics">
+          <div class="metric-box">
+            <div class="metric-val">81%</div>
+            <div class="metric-lbl">Precision (from 18%)</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">74%</div>
+            <div class="metric-lbl">Recall</div>
+          </div>
+        </div>
+        <div class="case-result">&euro;2.3M estimated annual churn reduction &middot; NLP sentiment analysis with Afrikaans auto-detect &amp; translate &middot; Full MLOps pipeline</div>
+      </div>
+
+      <div class="case-card reveal reveal-delay-1">
+        <div class="case-industry">&#x1F33E; Agriculture</div>
+        <h3>Hydroponics IoT Data Platform &mdash; Stellenbosch University</h3>
+        <div class="case-metrics">
+          <div class="metric-box">
+            <div class="metric-val">25+</div>
+            <div class="metric-lbl">Sensor Parameters</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">500K</div>
+            <div class="metric-lbl">Data Points</div>
+          </div>
+        </div>
+        <div class="case-result">IoT sensor pipeline &middot; Predictive crop analytics for yield, quality &amp; flavour &middot; AWS cloud architecture</div>
+      </div>
+
+      <div class="case-card reveal reveal-delay-2">
+        <div class="case-industry">&#x1F6E1;&#xFE0F; Defense</div>
+        <h3>Ballistic Simulation Optimisation &mdash; KNDS Belgium</h3>
+        <div class="case-metrics">
+          <div class="metric-box">
+            <div class="metric-val">50&times;</div>
+            <div class="metric-lbl">Efficiency Gain</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">PINNs</div>
+            <div class="metric-lbl">Novel Approach</div>
+          </div>
+        </div>
+        <div class="case-result">Physics-informed neural networks &middot; Surrogate modelling &middot; Reduced R&amp;D costs</div>
+      </div>
+
+      <div class="case-card reveal reveal-delay-3">
+        <div class="case-industry">&#x1F3A8; Consumer Tech</div>
+        <h3>Generative AI Integration &mdash; Celebr8tly</h3>
+        <div class="case-metrics">
+          <div class="metric-box">
+            <div class="metric-val">GenAI</div>
+            <div class="metric-lbl">Image Generation</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">SaaS</div>
+            <div class="metric-lbl">Platform Integration</div>
+          </div>
+        </div>
+        <div class="case-result">AI-powered personalised graphics for celebration platform &middot; End-to-end product strategy</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- BROADER EXPERTISE -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section section-alt" id="expertise">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <p class="eyebrow">Additional Capabilities</p>
+      <h2>Beyond Strategy &mdash; We Build &amp; Ship</h2>
+    </div>
+    <div class="expertise-grid">
+      <div class="exp-card reveal">
+        <div class="svc-icon">&#x1F4DE;</div>
+        <h3>Agentic AI</h3>
+        <p>AI-powered voice agents for appointment booking and customer service. Production architecture with Vapi, Twilio, and real-time calendar integration for hands-on professionals who can't answer the phone.</p>
+      </div>
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="svc-icon">&#x2699;&#xFE0F;</div>
+        <h3>MLOps &amp; LLMOps</h3>
+        <p>Production deployment pipelines, model versioning, automated retraining, drift detection with Evidently, and Prometheus/Grafana monitoring. We don't just train models &mdash; we keep them running.</p>
+      </div>
+      <div class="exp-card reveal reveal-delay-2">
+        <div class="svc-icon">&#x1F30D;</div>
+        <h3>Multilingual NLP</h3>
+        <p>Sentiment analysis, zero-shot topic classification, and automatic language detection with Afrikaans&#x2011;to&#x2011;English translation. Built for real production workloads at Vox Telecom.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CREDENTIAL BADGES -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section" id="credentials" style="padding-top: 0; padding-bottom: var(--section-pad);">
+  <div class="section-inner">
+    <div class="section-head reveal" style="margin-bottom: 32px;">
+      <p class="eyebrow">Credentials</p>
+    </div>
+    <div class="badge-strip">
+      <div class="badge-item reveal">
+        <div class="badge-icon">
+          <svg viewBox="0 0 40 40" width="40" height="40"><circle cx="20" cy="20" r="18" fill="none" stroke="#c8a44e" stroke-width="1.5"/><text x="20" y="24" text-anchor="middle" fill="#c8a44e" font-family="Georgia,serif" font-size="14" font-weight="700">EC</text></svg>
+        </div>
+        <div class="badge-text">
+          <strong>European Commission</strong>
+          <span>Apply AI Alliance Member</span>
+        </div>
+      </div>
+      <div class="badge-item reveal reveal-delay-1">
+        <div class="badge-icon">
+          <svg viewBox="0 0 40 40" width="40" height="40"><circle cx="20" cy="20" r="18" fill="none" stroke="#c8a44e" stroke-width="1.5"/><text x="20" y="24" text-anchor="middle" fill="#c8a44e" font-family="'DM Sans',sans-serif" font-size="10" font-weight="700">MIT</text></svg>
+        </div>
+        <div class="badge-text">
+          <strong>MIT Sloan</strong>
+          <span>AI Strategy Facilitator</span>
+        </div>
+      </div>
+      <div class="badge-item reveal reveal-delay-2">
+        <div class="badge-icon">
+          <svg viewBox="0 0 40 40" width="40" height="40"><circle cx="20" cy="20" r="18" fill="none" stroke="#c8a44e" stroke-width="1.5"/><text x="20" y="24" text-anchor="middle" fill="#c8a44e" font-family="Georgia,serif" font-size="14" font-weight="700">&#x3A3;</text></svg>
+        </div>
+        <div class="badge-text">
+          <strong>MSc Computer Science</strong>
+          <span>Cum laude &middot; AI specialisation</span>
+        </div>
+      </div>
+      <div class="badge-item reveal reveal-delay-3">
+        <div class="badge-icon">
+          <svg viewBox="0 0 40 40" width="40" height="40"><circle cx="20" cy="20" r="18" fill="none" stroke="#2a9d8f" stroke-width="1.5"/><text x="20" y="18" text-anchor="middle" fill="#2a9d8f" font-family="'DM Sans',sans-serif" font-size="9" font-weight="600">ISO</text><text x="20" y="28" text-anchor="middle" fill="#2a9d8f" font-family="'DM Sans',sans-serif" font-size="8" font-weight="400">27001</text></svg>
+        </div>
+        <div class="badge-text">
+          <strong>Security Policies</strong>
+          <span>ISO 27001-aligned framework</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- EU AI ACT -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section" id="eu-ai">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <p class="eyebrow">Compliance Leadership</p>
+      <h2>EU AI Act Expertise</h2>
+      <p>Navigate Europe's landmark AI regulation with confidence and turn compliance into competitive advantage.</p>
+    </div>
+    <div class="eu-grid">
+      <div class="reveal">
+        <ul class="eu-checks">
+          <li><span class="chk">&#10003;</span> Apply AI Alliance member &mdash; European Commission</li>
+          <li><span class="chk">&#10003;</span> Risk assessment &amp; management protocols for high-risk AI systems</li>
+          <li><span class="chk">&#10003;</span> Documentation &amp; audit trail systems design</li>
+          <li><span class="chk">&#10003;</span> High-risk AI system classification guidance</li>
+          <li><span class="chk">&#10003;</span> Compliance framework development for existing AI deployments</li>
+        </ul>
+      </div>
+      <div class="eu-highlight reveal reveal-delay-1">
+        <div class="eu-big">&euro;35M</div>
+        <div class="eu-caption">Maximum penalty for non-compliance<br>(7% of global turnover)</div>
+        <a href="https://tools.koios-analytics.com/ai-readiness-assessment.html" class="btn btn-gold">Get EU AI Compliance Assessment</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ABOUT -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="section section-dark" id="about">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <p class="eyebrow">About Koios Analytics</p>
+      <h2>Strategic AI Leadership, Not Slide Decks</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h3>Our Approach</h3>
+        <p>Koios Analytics is a strategic AI partner for mid-market companies. We combine deep technical expertise with strategic leadership &mdash; bridging the AI leadership gap so companies get access to senior AI strategy without the cost of a full-time executive hire.</p>
+        <p>We don't believe in AI for AI's sake. Every engagement starts with a rigorous readiness assessment and delivers measurable business outcomes. Our unique combination of strategic insight, technical depth, and regulatory expertise means we help companies implement AI that actually works &mdash; and stays compliant.</p>
+      </div>
+      <div class="about-text reveal reveal-delay-1">
+        <h3>Our Founder</h3>
+        <p>Fabien Zablocki, MSc Computer Science (<em>cum laude</em>), brings 15+ years of software leadership and 5+ years in AI implementation. As a member of the European Commission's Apply AI Alliance and an MIT Sloan AI Strategy Facilitator, he has guided organisations from initial AI readiness assessment through to production-grade deployment &mdash; including an 18% to 81% precision improvement in customer churn prediction for Vox Telecom.</p>
+        <p>Want to know more? <a href="https://myprofilegpt.onrender.com" target="_blank" rel="noopener">Ask his digital twin</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CTA BAND -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="cta-band">
+  <h2>Ready to Bridge Your AI Leadership Gap?</h2>
+  <p>Get a complimentary AI readiness assessment based on real-world transformation experience across four industries.</p>
+  <a href="https://tools.koios-analytics.com/ai-readiness-assessment.html" class="btn btn-dark">Get Your AI Readiness Assessment</a>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 50" fill="none" height="36" aria-label="Koios Analytics">
+        <circle cx="25" cy="25" r="23" stroke="#fff" stroke-width="2"/>
+        <text x="25" y="33" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="28" font-weight="700">&#x3A3;</text>
+        <text x="60" y="28" fill="#fff" font-family="'DM Sans',sans-serif" font-size="18" font-weight="400" letter-spacing="3">KOIOS ANALYTICS</text>
+        <text x="60" y="43" fill="#b0ada5" font-family="'DM Sans',sans-serif" font-size="9.5" font-style="italic">Artificial intelligence, real solutions</text>
+      </svg>
+      <p>Strategic AI leadership for mid-market companies. Strategic AI partner services backed by the European Commission and MIT.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">AI Strategy &amp; Roadmap</a>
+      <a href="#services">Implementation Oversight</a>
+      <a href="odoo-partnership.html">Odoo AI Integration</a>
+      <a href="#eu-ai">EU AI Act Compliance</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="https://tools.koios-analytics.com/ai-readiness-assessment.html">AI Readiness Assessment</a>
+      <a href="odoo-partnership.html">Odoo Partnership</a>
+      <a href="#results">Case Studies</a>
+      <a href="#about">About</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:solutions@koios-analytics.com">solutions@koios-analytics.com</a>
+      <a href="https://calendar.app.google/gARU96EmoueEsaTv6" target="_blank" rel="noopener">Schedule Strategy Call</a>
+      <a href="https://www.linkedin.com/company/koios-analytics/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    &copy; 2026 Koios Analytics (Pty) Ltd &mdash; All Rights Reserved.
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SCRIPTS -->
+<!-- ═══════════════════════════════════════════════ -->
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+  });
+
+  // ═══════════════════════════════════════════════
+  // TRANSLATION SYSTEM
+  // ═══════════════════════════════════════════════
+  const T = {
+    en: {
+      utilBar: '<strong>Apply AI Alliance</strong> member — European Commission · Strategic AI leadership across Europe & South Africa',
+      navServices: 'Services', navAIReadiness: 'AI Readiness', navOdoo: 'Odoo Partnership', navResults: 'Results', navAbout: 'About', navCTA: 'Schedule Call',
+      heroEyebrow: 'Strategic AI Partnership',
+      heroH1: 'From Teaching AI Strategy at MIT to <em>Implementing It in Your Business</em>',
+      heroSub: 'After guiding thousands of executives through AI transformation at MIT Sloan, I now bring that same structured methodology directly to mid-market companies as their strategic AI partner.',
+      heroCTA1: 'Get Your AI Readiness Assessment', heroCTA2: 'Schedule Strategy Call',
+      cred1: '✓ MIT AI Strategy Expert', cred2: '✓ EU AI Policy Advisor', cred3: '✓ 15+ Years Software Leadership', cred4: '✓ Proprietary AI Transformation Platform',
+      proofEyebrow: 'Trusted by Industry Leaders',
+      stat1num: '18% → 81%', stat1lbl: 'Churn prediction precision<br>Vox Telecom',
+      stat2num: '1,000+', stat2lbl: 'Executives guided through<br>AI strategy at MIT Sloan',
+      stat3num: '6', stat3lbl: 'Industries with production<br>AI deployments',
+      stat4num: 'EC', stat4lbl: 'Apply AI Alliance Member<br>European Commission',
+      svcEyebrow: 'What We Deliver', svcH2: 'Strategic AI Partner Services', svcSub: 'Bridge the AI leadership gap with strategic oversight and production-grade implementation across telecommunications, agriculture, defense, and manufacturing.',
+      svc1title: 'AI Strategy & Roadmap Development', svc1li1: 'Comprehensive AI readiness assessment', svc1li2: 'Custom implementation roadmap', svc1li3: 'Technology stack recommendations', svc1li4: 'EU AI Act compliance framework', svc1del: 'Deliverable: Comprehensive strategic roadmap',
+      svc2title: 'Implementation Oversight', svc2li1: 'Technical team guidance', svc2li2: 'Vendor selection support', svc2li3: 'MLOps & LLMOps production pipelines', svc2li4: 'Performance monitoring & drift detection', svc2del: 'Deliverable: Monthly executive reports',
+      svc3title: 'Specialised Expertise', svc3li1: 'Churn prediction & customer analytics', svc3li2: 'Agricultural AI & IoT data platforms', svc3li3: 'Generative AI & agentic AI integration', svc3li4: 'ERP/CRM AI integration (Odoo specialist)', svc3del: 'Deliverable: Industry-specific AI solutions',
+      svc4title: 'Embedded AI Leadership', svc4li1: '2–3 days/week strategic presence', svc4li2: 'C-suite & board communication', svc4li3: 'Team capability building', svc4li4: 'Technology decision authority', svc4del: 'Deliverable: Ongoing strategic leadership',
+      casesEyebrow: 'Proven Results', casesH2: 'Results Across Industries', casesSub: 'Real outcomes from strategic AI implementation — not theoretical projections.',
+      case1ind: '🏢 Telecommunications', case1title: 'Churn Prediction & NLP Analytics — Vox Telecom', case1m1v: '81%', case1m1l: 'Precision (from 18%)', case1m2v: '74%', case1m2l: 'Recall', case1res: '€2.3M estimated annual churn reduction · NLP sentiment analysis with Afrikaans auto-detect & translate · Full MLOps pipeline',
+      case2ind: '🌾 Agriculture', case2title: 'Hydroponics IoT Data Platform — Stellenbosch University', case2m1v: '25+', case2m1l: 'Sensor Parameters', case2m2v: '500K', case2m2l: 'Data Points', case2res: 'IoT sensor pipeline · Predictive crop analytics for yield, quality & flavour · AWS cloud architecture',
+      case3ind: '🛡️ Defense', case3title: 'Ballistic Simulation Optimisation — KNDS Belgium', case3m1v: '50×', case3m1l: 'Efficiency Gain', case3m2v: 'PINNs', case3m2l: 'Novel Approach', case3res: 'Physics-informed neural networks · Surrogate modelling · Reduced R&D costs',
+      case4ind: '🎨 Consumer Tech', case4title: 'Generative AI Integration — Celebr8tly', case4m1v: 'GenAI', case4m1l: 'Image Generation', case4m2v: 'SaaS', case4m2l: 'Platform Integration', case4res: 'AI-powered personalised graphics for celebration platform · End-to-end product strategy',
+      expEyebrow: 'Additional Capabilities', expH2: 'Beyond Strategy — We Build & Ship',
+      exp1title: 'Agentic AI', exp1p: 'AI-powered voice agents for appointment booking and customer service. Production architecture with Vapi, Twilio, and real-time calendar integration for hands-on professionals who can\'t answer the phone.',
+      exp2title: 'MLOps & LLMOps', exp2p: 'Production deployment pipelines, model versioning, automated retraining, drift detection with Evidently, and Prometheus/Grafana monitoring. We don\'t just train models — we keep them running.',
+      exp3title: 'Multilingual NLP', exp3p: 'Sentiment analysis, zero-shot topic classification, and automatic language detection with Afrikaans‑to‑English translation. Built for real production workloads at Vox Telecom.',
+      credEyebrow: 'Credentials', cred_ec: 'European Commission', cred_ecSub: 'Apply AI Alliance Member', cred_mit: 'MIT Sloan', cred_mitSub: 'AI Strategy Facilitator', cred_msc: 'MSc Computer Science', cred_mscSub: 'Cum laude · AI specialisation', cred_iso: 'Security Policies', cred_isoSub: 'ISO 27001-aligned framework',
+      euEyebrow: 'Compliance Leadership', euH2: 'EU AI Act Expertise', euSub: 'Navigate Europe\'s landmark AI regulation with confidence and turn compliance into competitive advantage.',
+      eu1: 'Apply AI Alliance member — European Commission', eu2: 'Risk assessment & management protocols for high-risk AI systems', eu3: 'Documentation & audit trail systems design', eu4: 'High-risk AI system classification guidance', eu5: 'Compliance framework development for existing AI deployments',
+      euBig: '€35M', euCaption: 'Maximum penalty for non-compliance<br>(7% of global turnover)', euCTA: 'Get EU AI Compliance Assessment',
+      aboutEyebrow: 'About Koios Analytics', aboutH2: 'Strategic AI Leadership, Not Slide Decks',
+      about1title: 'Our Approach', about1p1: 'Koios Analytics is a strategic AI partner for mid-market companies. We combine deep technical expertise with strategic leadership — bridging the AI leadership gap so companies get access to senior AI strategy without the cost of a full-time executive hire.', about1p2: 'We don\'t believe in AI for AI\'s sake. Every engagement starts with a rigorous readiness assessment and delivers measurable business outcomes. Our unique combination of strategic insight, technical depth, and regulatory expertise means we help companies implement AI that actually works — and stays compliant.',
+      about2title: 'Our Founder', about2p1: 'Fabien Zablocki, MSc Computer Science (cum laude), brings 15+ years of software leadership and 5+ years in AI implementation. As a member of the European Commission\'s Apply AI Alliance and an MIT Sloan AI Strategy Facilitator, he has guided organisations from initial AI readiness assessment through to production-grade deployment — including an 18% to 81% precision improvement in customer churn prediction for Vox Telecom.', about2p2link: 'Ask his digital twin',
+      ctaH2: 'Ready to Bridge Your AI Leadership Gap?', ctaSub: 'Get a complimentary AI readiness assessment based on real-world transformation experience across six industries.', ctaBtn: 'Get Your AI Readiness Assessment',
+      footServices: 'Services', footResources: 'Resources', footContact: 'Contact', footCopy: '© 2026 Koios Analytics (Pty) Ltd — All Rights Reserved.'
+    },
+    fr: {
+      utilBar: 'Membre de <strong>Apply AI Alliance</strong> — Commission européenne · Leadership IA stratégique en Europe et Afrique du Sud',
+      navServices: 'Services', navAIReadiness: 'Évaluation IA', navOdoo: 'Partenariat Odoo', navResults: 'Résultats', navAbout: 'À propos', navCTA: 'Planifier un appel',
+      heroEyebrow: 'Partenaire IA Stratégique',
+      heroH1: 'De l\'enseignement de la stratégie IA au MIT à <em>son implémentation dans votre entreprise</em>',
+      heroSub: 'Après avoir guidé des milliers de dirigeants à travers la transformation IA au MIT Sloan, j\'apporte désormais cette même méthodologie structurée directement aux entreprises de taille intermédiaire en tant que partenaire IA stratégique.',
+      heroCTA1: 'Évaluation de maturité IA', heroCTA2: 'Planifier un appel stratégique',
+      cred1: '✓ Expert stratégie IA MIT', cred2: '✓ Conseiller politique IA UE', cred3: '✓ 15+ ans leadership logiciel', cred4: '✓ Plateforme de transformation IA propriétaire',
+      proofEyebrow: 'Reconnu par les leaders de l\'industrie',
+      stat1num: '18% → 81%', stat1lbl: 'Précision de prédiction du churn<br>Vox Telecom',
+      stat2num: '1 000+', stat2lbl: 'Dirigeants guidés en stratégie IA<br>au MIT Sloan',
+      stat3num: '6', stat3lbl: 'Industries avec déploiements IA<br>en production',
+      stat4num: 'CE', stat4lbl: 'Membre Apply AI Alliance<br>Commission européenne',
+      svcEyebrow: 'Ce que nous livrons', svcH2: 'Services de partenariat IA stratégique', svcSub: 'Combler le déficit de leadership IA avec une supervision stratégique et une implémentation de qualité production dans les télécoms, l\'agriculture, la défense et l\'industrie.',
+      svc1title: 'Stratégie IA et feuille de route', svc1li1: 'Évaluation complète de maturité IA', svc1li2: 'Feuille de route d\'implémentation sur mesure', svc1li3: 'Recommandations de stack technologique', svc1li4: 'Cadre de conformité AI Act européen', svc1del: 'Livrable : feuille de route stratégique complète',
+      svc2title: 'Supervision d\'implémentation', svc2li1: 'Guidance de l\'équipe technique', svc2li2: 'Support à la sélection de fournisseurs', svc2li3: 'Pipelines MLOps et LLMOps en production', svc2li4: 'Monitoring de performance et détection de dérive', svc2del: 'Livrable : rapports exécutifs mensuels',
+      svc3title: 'Expertise spécialisée', svc3li1: 'Prédiction du churn et analytique client', svc3li2: 'IA agricole et plateformes de données IoT', svc3li3: 'Intégration d\'IA générative et agentique', svc3li4: 'Intégration IA ERP/CRM (spécialiste Odoo)', svc3del: 'Livrable : solutions IA sectorielles',
+      svc4title: 'Leadership IA intégré', svc4li1: '2–3 jours/semaine de présence stratégique', svc4li2: 'Communication avec la direction et le conseil', svc4li3: 'Renforcement des compétences de l\'équipe', svc4li4: 'Autorité de décision technologique', svc4del: 'Livrable : leadership stratégique continu',
+      casesEyebrow: 'Résultats prouvés', casesH2: 'Résultats dans tous les secteurs', casesSub: 'Des résultats concrets d\'implémentation IA stratégique — pas des projections théoriques.',
+      case1ind: '🏢 Télécommunications', case1title: 'Prédiction du churn et NLP — Vox Telecom', case1m1v: '81%', case1m1l: 'Précision (depuis 18%)', case1m2v: '74%', case1m2l: 'Rappel', case1res: 'Réduction annuelle estimée de 2,3M€ du churn · Analyse de sentiment NLP avec détection automatique de l\'afrikaans · Pipeline MLOps complet',
+      case2ind: '🌾 Agriculture', case2title: 'Plateforme IoT hydroponique — Université de Stellenbosch', case2m1v: '25+', case2m1l: 'Paramètres capteurs', case2m2v: '500K', case2m2l: 'Points de données', case2res: 'Pipeline capteurs IoT · Analyse prédictive des cultures · Architecture cloud AWS',
+      case3ind: '🛡️ Défense', case3title: 'Optimisation de simulation balistique — KNDS Belgique', case3m1v: '50×', case3m1l: 'Gain d\'efficacité', case3m2v: 'PINNs', case3m2l: 'Approche innovante', case3res: 'Réseaux de neurones informés par la physique · Modélisation de substitution · Réduction des coûts R&D',
+      case4ind: '🎨 Tech grand public', case4title: 'Intégration d\'IA générative — Celebr8tly', case4m1v: 'GenAI', case4m1l: 'Génération d\'images', case4m2v: 'SaaS', case4m2l: 'Intégration plateforme', case4res: 'Graphiques personnalisés par IA pour plateforme de célébration · Stratégie produit de bout en bout',
+      expEyebrow: 'Capacités additionnelles', expH2: 'Au-delà de la stratégie — nous construisons et livrons',
+      exp1title: 'IA agentique', exp1p: 'Agents vocaux IA pour la prise de rendez-vous et le service client. Architecture de production avec Vapi, Twilio et intégration calendrier en temps réel.',
+      exp2title: 'MLOps et LLMOps', exp2p: 'Pipelines de déploiement en production, versioning de modèles, réentraînement automatisé, détection de dérive avec Evidently et monitoring Prometheus/Grafana.',
+      exp3title: 'NLP multilingue', exp3p: 'Analyse de sentiment, classification de sujets zero-shot et détection automatique de langue avec traduction afrikaans-anglais. Construit pour des charges de production réelles.',
+      credEyebrow: 'Accréditations', cred_ec: 'Commission européenne', cred_ecSub: 'Membre Apply AI Alliance', cred_mit: 'MIT Sloan', cred_mitSub: 'Facilitateur stratégie IA', cred_msc: 'MSc informatique', cred_mscSub: 'Cum laude · Spécialisation IA', cred_iso: 'Politiques de sécurité', cred_isoSub: 'Cadre aligné ISO 27001',
+      euEyebrow: 'Leadership conformité', euH2: 'Expertise AI Act européen', euSub: 'Naviguez la réglementation IA européenne avec confiance et transformez la conformité en avantage concurrentiel.',
+      eu1: 'Membre Apply AI Alliance — Commission européenne', eu2: 'Protocoles d\'évaluation et de gestion des risques pour les systèmes IA à haut risque', eu3: 'Conception de systèmes de documentation et pistes d\'audit', eu4: 'Guidance de classification des systèmes IA à haut risque', eu5: 'Développement de cadres de conformité pour les déploiements IA existants',
+      euBig: '35M€', euCaption: 'Pénalité maximale pour non-conformité<br>(7% du chiffre d\'affaires mondial)', euCTA: 'Évaluation de conformité AI Act',
+      aboutEyebrow: 'À propos de Koios Analytics', aboutH2: 'Leadership IA stratégique, pas des présentations',
+      about1title: 'Notre approche', about1p1: 'Koios Analytics est un partenaire IA stratégique pour les entreprises de taille intermédiaire. Nous combinons une expertise technique approfondie avec un leadership stratégique — comblant le déficit de leadership IA pour que les entreprises accèdent à une stratégie IA senior sans le coût d\'un recrutement à temps plein.', about1p2: 'Nous ne croyons pas en l\'IA pour l\'IA. Chaque engagement commence par une évaluation rigoureuse de maturité et produit des résultats commerciaux mesurables.',
+      about2title: 'Notre fondateur', about2p1: 'Fabien Zablocki, MSc informatique (cum laude), apporte 15+ ans de leadership logiciel et 5+ ans d\'implémentation IA. En tant que membre de l\'Apply AI Alliance de la Commission européenne et facilitateur de stratégie IA au MIT Sloan, il a guidé des organisations de l\'évaluation initiale de maturité IA jusqu\'au déploiement en production.', about2p2link: 'Interrogez son jumeau numérique',
+      ctaH2: 'Prêt à combler votre déficit de leadership IA ?', ctaSub: 'Obtenez une évaluation gratuite de maturité IA basée sur une expérience concrète de transformation dans six industries.', ctaBtn: 'Évaluation de maturité IA',
+      footServices: 'Services', footResources: 'Ressources', footContact: 'Contact', footCopy: '© 2026 Koios Analytics (Pty) Ltd — Tous droits réservés.'
+    },
+    nl: {
+      utilBar: 'Lid van <strong>Apply AI Alliance</strong> — Europese Commissie · Strategisch AI-leiderschap in Europa en Zuid-Afrika',
+      navServices: 'Diensten', navAIReadiness: 'AI-gereedheid', navOdoo: 'Odoo-partnerschap', navResults: 'Resultaten', navAbout: 'Over ons', navCTA: 'Gesprek plannen',
+      heroEyebrow: 'Strategisch AI-partnerschap',
+      heroH1: 'Van AI-strategie doceren aan MIT tot <em>implementatie in uw bedrijf</em>',
+      heroSub: 'Na duizenden leidinggevenden te hebben begeleid bij AI-transformatie aan MIT Sloan, breng ik diezelfde gestructureerde methodologie nu rechtstreeks naar middelgrote bedrijven als hun strategische AI-partner.',
+      heroCTA1: 'AI-gereedheidstoets', heroCTA2: 'Strategiegesprek plannen',
+      cred1: '✓ MIT AI-strategiedeskundige', cred2: '✓ EU AI-beleidsadviseur', cred3: '✓ 15+ jaar softwareleiderschap', cred4: '✓ Eigen AI-transformatieplatform',
+      proofEyebrow: 'Vertrouwd door marktleiders',
+      stat1num: '18% → 81%', stat1lbl: 'Churnpredictie precisie<br>Vox Telecom',
+      stat2num: '1.000+', stat2lbl: 'Leidinggevenden begeleid in<br>AI-strategie aan MIT Sloan',
+      stat3num: '6', stat3lbl: 'Industrieën met AI-systemen<br>in productie',
+      stat4num: 'EC', stat4lbl: 'Lid Apply AI Alliance<br>Europese Commissie',
+      svcEyebrow: 'Wat wij leveren', svcH2: 'Strategisch AI-partnerdiensten', svcSub: 'Overbrugging van het AI-leiderschapstekort met strategisch toezicht en productiekwaliteit implementatie in telecom, landbouw, defensie en industrie.',
+      svc1title: 'AI-strategie en routekaart', svc1li1: 'Uitgebreide AI-gereedheidstoets', svc1li2: 'Implementatieroutekaart op maat', svc1li3: 'Aanbevelingen voor technologiestack', svc1li4: 'EU AI Act-nalevingskader', svc1del: 'Oplevering: uitgebreide strategische routekaart',
+      svc2title: 'Implementatiebegeleiding', svc2li1: 'Begeleiding van het technische team', svc2li2: 'Ondersteuning bij leveranciersselectie', svc2li3: 'MLOps- en LLMOps-productiepijplijnen', svc2li4: 'Prestatiebewaking en driftdetectie', svc2del: 'Oplevering: maandelijkse directierapporten',
+      svc3title: 'Gespecialiseerde expertise', svc3li1: 'Churnpredictie en klantanalyse', svc3li2: 'Agrarische AI en IoT-dataplatforms', svc3li3: 'Generatieve AI en agentische AI-integratie', svc3li4: 'ERP/CRM AI-integratie (Odoo-specialist)', svc3del: 'Oplevering: sectorspecifieke AI-oplossingen',
+      svc4title: 'Ingebed AI-leiderschap', svc4li1: '2–3 dagen/week strategische aanwezigheid', svc4li2: 'Communicatie met directie en bestuur', svc4li3: 'Opbouw van teamcapaciteiten', svc4li4: 'Beslissingsbevoegdheid technologie', svc4del: 'Oplevering: doorlopend strategisch leiderschap',
+      casesEyebrow: 'Bewezen resultaten', casesH2: 'Resultaten in alle sectoren', casesSub: 'Echte resultaten van strategische AI-implementatie — geen theoretische projecties.',
+      case1ind: '🏢 Telecommunicatie', case1title: 'Churnpredictie en NLP-analyse — Vox Telecom', case1m1v: '81%', case1m1l: 'Precisie (van 18%)', case1m2v: '74%', case1m2l: 'Recall', case1res: '€2,3M geschatte jaarlijkse churnreductie · NLP-sentimentanalyse met Afrikaans auto-detectie en vertaling · Volledige MLOps-pijplijn',
+      case2ind: '🌾 Landbouw', case2title: 'Hydroponisch IoT-dataplatform — Universiteit Stellenbosch', case2m1v: '25+', case2m1l: 'Sensorparameters', case2m2v: '500K', case2m2l: 'Datapunten', case2res: 'IoT-sensorpijplijn · Voorspellende gewasanalyse voor opbrengst, kwaliteit en smaak · AWS-cloudarchitectuur',
+      case3ind: '🛡️ Defensie', case3title: 'Ballistische simulatie-optimalisatie — KNDS België', case3m1v: '50×', case3m1l: 'Efficiëntiewinst', case3m2v: 'PINNs', case3m2l: 'Innovatieve aanpak', case3res: 'Physics-informed neurale netwerken · Surrogaatmodellering · Lagere R&D-kosten',
+      case4ind: '🎨 Consumententech', case4title: 'Generatieve AI-integratie — Celebr8tly', case4m1v: 'GenAI', case4m1l: 'Beeldgeneratie', case4m2v: 'SaaS', case4m2l: 'Platformintegratie', case4res: 'AI-aangedreven gepersonaliseerde graphics voor feestplatform · End-to-end productstrategie',
+      expEyebrow: 'Aanvullende capaciteiten', expH2: 'Verder dan strategie — wij bouwen en leveren',
+      exp1title: 'Agentische AI', exp1p: 'AI-aangedreven spraakagenten voor afspraakboeking en klantenservice. Productiearchitectuur met Vapi, Twilio en realtime kalenderintegratie.',
+      exp2title: 'MLOps en LLMOps', exp2p: 'Productie-implementatiepijplijnen, modelversioning, geautomatiseerde hertraining, driftdetectie met Evidently en Prometheus/Grafana-monitoring.',
+      exp3title: 'Meertalige NLP', exp3p: 'Sentimentanalyse, zero-shot onderwerpclassificatie en automatische taaldetectie met Afrikaans-naar-Engels vertaling. Gebouwd voor echte productiebelasting.',
+      credEyebrow: 'Referenties', cred_ec: 'Europese Commissie', cred_ecSub: 'Lid Apply AI Alliance', cred_mit: 'MIT Sloan', cred_mitSub: 'AI-strategiefacilitator', cred_msc: 'MSc informatica', cred_mscSub: 'Cum laude · AI-specialisatie', cred_iso: 'Beveiligingsbeleid', cred_isoSub: 'ISO 27001-gebaseerd kader',
+      euEyebrow: 'Nalevingsleiderschap', euH2: 'EU AI Act-expertise', euSub: 'Navigeer met vertrouwen door de Europese AI-regelgeving en zet naleving om in concurrentievoordeel.',
+      eu1: 'Lid Apply AI Alliance — Europese Commissie', eu2: 'Risicobeoordeling en managementprotocollen voor AI-systemen met hoog risico', eu3: 'Ontwerp van documentatie- en audittrailsystemen', eu4: 'Begeleiding bij classificatie van AI-systemen met hoog risico', eu5: 'Ontwikkeling van nalevingskaders voor bestaande AI-implementaties',
+      euBig: '€35M', euCaption: 'Maximale boete voor niet-naleving<br>(7% van de wereldwijde omzet)', euCTA: 'EU AI Act-nalevingstoets',
+      aboutEyebrow: 'Over Koios Analytics', aboutH2: 'Strategisch AI-leiderschap, geen diavoorstellingen',
+      about1title: 'Onze aanpak', about1p1: 'Koios Analytics is een strategische AI-partner voor middelgrote bedrijven. Wij combineren diepgaande technische expertise met strategisch leiderschap — het overbruggen van het AI-leiderschapstekort zodat bedrijven toegang krijgen tot senior AI-strategie zonder de kosten van een fulltime executive.', about1p2: 'Wij geloven niet in AI om de AI. Elk engagement begint met een grondige gereedheidstoets en levert meetbare bedrijfsresultaten.',
+      about2title: 'Onze oprichter', about2p1: 'Fabien Zablocki, MSc informatica (cum laude), brengt 15+ jaar softwareleiderschap en 5+ jaar AI-implementatie. Als lid van de Apply AI Alliance van de Europese Commissie en MIT Sloan AI-strategiefacilitator heeft hij organisaties begeleid van initiële AI-gereedheidstoets tot productieklaar deployment.', about2p2link: 'Vraag het aan zijn digitale tweeling',
+      ctaH2: 'Klaar om uw AI-leiderschapstekort te overbruggen?', ctaSub: 'Ontvang een gratis AI-gereedheidstoets op basis van praktijkervaring met transformatie in zes industrieën.', ctaBtn: 'AI-gereedheidstoets',
+      footServices: 'Diensten', footResources: 'Bronnen', footContact: 'Contact', footCopy: '© 2026 Koios Analytics (Pty) Ltd — Alle rechten voorbehouden.'
+    }
+  };
+
+  // Map of CSS selectors to translation keys
+  const MAP = [
+    ['.util-bar', 'utilBar', 'html'],
+    ['.nav-links a[href="#services"]', 'navServices'],
+    ['.nav-links a[href*="ai-readiness"]', 'navAIReadiness'],
+    ['.nav-links a[href*="odoo"]', 'navOdoo'],
+    ['.nav-links a[href="#results"]', 'navResults'],
+    ['.nav-links a[href="#about"]', 'navAbout'],
+    ['.nav-links .cta-btn', 'navCTA'],
+    ['.hero-eyebrow', 'heroEyebrow'],
+    ['.hero h1', 'heroH1', 'html'],
+    ['.hero-sub', 'heroSub'],
+    ['.hero-buttons .btn-gold', 'heroCTA1'],
+    ['.hero-buttons .btn-outline', 'heroCTA2'],
+    ['.cred-bar .cred-item:nth-child(1)', 'cred1'],
+    ['.cred-bar .cred-item:nth-child(2)', 'cred2'],
+    ['.cred-bar .cred-item:nth-child(3)', 'cred3'],
+    ['.cred-bar .cred-item:nth-child(4)', 'cred4'],
+    ['#proof .eyebrow', 'proofEyebrow'],
+    ['.stat-card:nth-child(1) .stat-number', 'stat1num'],
+    ['.stat-card:nth-child(1) .stat-label', 'stat1lbl', 'html'],
+    ['.stat-card:nth-child(2) .stat-number', 'stat2num'],
+    ['.stat-card:nth-child(2) .stat-label', 'stat2lbl', 'html'],
+    ['.stat-card:nth-child(3) .stat-number', 'stat3num'],
+    ['.stat-card:nth-child(3) .stat-label', 'stat3lbl', 'html'],
+    ['.stat-card:nth-child(4) .stat-number', 'stat4num'],
+    ['.stat-card:nth-child(4) .stat-label', 'stat4lbl', 'html'],
+    ['#services .eyebrow', 'svcEyebrow'],
+    ['#services .section-head h2', 'svcH2'],
+    ['#services .section-head p:not(.eyebrow)', 'svcSub'],
+    ['.svc-card:nth-child(1) h3', 'svc1title'], ['.svc-card:nth-child(1) li:nth-child(1)', 'svc1li1'], ['.svc-card:nth-child(1) li:nth-child(2)', 'svc1li2'], ['.svc-card:nth-child(1) li:nth-child(3)', 'svc1li3'], ['.svc-card:nth-child(1) li:nth-child(4)', 'svc1li4'], ['.svc-card:nth-child(1) .svc-deliverable', 'svc1del'],
+    ['.svc-card:nth-child(2) h3', 'svc2title'], ['.svc-card:nth-child(2) li:nth-child(1)', 'svc2li1'], ['.svc-card:nth-child(2) li:nth-child(2)', 'svc2li2'], ['.svc-card:nth-child(2) li:nth-child(3)', 'svc2li3'], ['.svc-card:nth-child(2) li:nth-child(4)', 'svc2li4'], ['.svc-card:nth-child(2) .svc-deliverable', 'svc2del'],
+    ['.svc-card:nth-child(3) h3', 'svc3title'], ['.svc-card:nth-child(3) li:nth-child(1)', 'svc3li1'], ['.svc-card:nth-child(3) li:nth-child(2)', 'svc3li2'], ['.svc-card:nth-child(3) li:nth-child(3)', 'svc3li3'], ['.svc-card:nth-child(3) li:nth-child(4)', 'svc3li4'], ['.svc-card:nth-child(3) .svc-deliverable', 'svc3del'],
+    ['.svc-card:nth-child(4) h3', 'svc4title'], ['.svc-card:nth-child(4) li:nth-child(1)', 'svc4li1'], ['.svc-card:nth-child(4) li:nth-child(2)', 'svc4li2'], ['.svc-card:nth-child(4) li:nth-child(3)', 'svc4li3'], ['.svc-card:nth-child(4) li:nth-child(4)', 'svc4li4'], ['.svc-card:nth-child(4) .svc-deliverable', 'svc4del'],
+    ['#results .eyebrow', 'casesEyebrow'], ['#results .section-head h2', 'casesH2'], ['#results .section-head p:not(.eyebrow)', 'casesSub'],
+    ['.case-card:nth-child(1) .case-industry', 'case1ind'], ['.case-card:nth-child(1) h3', 'case1title'], ['.case-card:nth-child(1) .metric-val:nth-of-type(1)', 'case1m1v'], ['.case-card:nth-child(1) .metric-lbl:nth-of-type(1)', 'case1m1l'], ['.case-card:nth-child(1) .case-result', 'case1res'],
+    ['.case-card:nth-child(2) .case-industry', 'case2ind'], ['.case-card:nth-child(2) h3', 'case2title'], ['.case-card:nth-child(2) .case-result', 'case2res'],
+    ['.case-card:nth-child(3) .case-industry', 'case3ind'], ['.case-card:nth-child(3) h3', 'case3title'], ['.case-card:nth-child(3) .case-result', 'case3res'],
+    ['.case-card:nth-child(4) .case-industry', 'case4ind'], ['.case-card:nth-child(4) h3', 'case4title'], ['.case-card:nth-child(4) .case-result', 'case4res'],
+    ['#expertise .eyebrow', 'expEyebrow'], ['#expertise .section-head h2', 'expH2', 'html'],
+    ['.exp-card:nth-child(1) h3', 'exp1title'], ['.exp-card:nth-child(1) p', 'exp1p'],
+    ['.exp-card:nth-child(2) h3', 'exp2title'], ['.exp-card:nth-child(2) p', 'exp2p'],
+    ['.exp-card:nth-child(3) h3', 'exp3title'], ['.exp-card:nth-child(3) p', 'exp3p'],
+    ['#credentials .eyebrow', 'credEyebrow'],
+    ['.badge-item:nth-child(1) strong', 'cred_ec'], ['.badge-item:nth-child(1) span', 'cred_ecSub'],
+    ['.badge-item:nth-child(2) strong', 'cred_mit'], ['.badge-item:nth-child(2) span', 'cred_mitSub'],
+    ['.badge-item:nth-child(3) strong', 'cred_msc'], ['.badge-item:nth-child(3) span', 'cred_mscSub'],
+    ['.badge-item:nth-child(4) strong', 'cred_iso'], ['.badge-item:nth-child(4) span', 'cred_isoSub'],
+    ['#eu-ai .eyebrow', 'euEyebrow'], ['#eu-ai .section-head h2', 'euH2'], ['#eu-ai .section-head p:not(.eyebrow)', 'euSub'],
+    ['.eu-checks li:nth-child(1)', 'eu1', 'check'], ['.eu-checks li:nth-child(2)', 'eu2', 'check'], ['.eu-checks li:nth-child(3)', 'eu3', 'check'], ['.eu-checks li:nth-child(4)', 'eu4', 'check'], ['.eu-checks li:nth-child(5)', 'eu5', 'check'],
+    ['.eu-big', 'euBig'], ['.eu-caption', 'euCaption', 'html'], ['.eu-highlight .btn-gold', 'euCTA'],
+    ['#about .eyebrow', 'aboutEyebrow'], ['#about .section-head h2', 'aboutH2'],
+    ['.about-text:nth-child(1) h3', 'about1title'],
+    ['.about-text:nth-child(2) h3', 'about2title'],
+    ['.cta-band h2', 'ctaH2'], ['.cta-band p', 'ctaSub'], ['.cta-band .btn-dark', 'ctaBtn'],
+    ['.footer-col:nth-child(2) h4', 'footServices'], ['.footer-col:nth-child(3) h4', 'footResources'], ['.footer-col:nth-child(4) h4', 'footContact'], ['.footer-copy', 'footCopy']
+  ];
+
+  function applyLang(lang) {
+    const dict = T[lang]; if (!dict) return;
+    MAP.forEach(([sel, key, mode]) => {
+      const el = document.querySelector(sel); if (!el || !dict[key]) return;
+      if (mode === 'html') el.innerHTML = dict[key];
+      else if (mode === 'check') el.innerHTML = '<span class="chk">✓</span> ' + dict[key];
+      else el.textContent = dict[key];
+    });
+    // Handle about paragraphs separately (multiple <p> children)
+    const about1 = document.querySelector('.about-text:nth-child(1)');
+    if (about1 && dict.about1p1) { const ps = about1.querySelectorAll('p'); if(ps[0]) ps[0].textContent = dict.about1p1; if(ps[1]) ps[1].textContent = dict.about1p2; }
+    const about2 = document.querySelector('.about-text:nth-child(2)');
+    if (about2 && dict.about2p1) { const ps = about2.querySelectorAll('p'); if(ps[0]) ps[0].textContent = dict.about2p1; if(ps[1]) ps[1].innerHTML = 'Want to know more? <a href="https://myprofilegpt.onrender.com" target="_blank" rel="noopener">' + dict.about2p2link + '</a>.'; }
+    document.documentElement.lang = lang === 'nl' ? 'nl' : lang === 'fr' ? 'fr' : 'en';
+  }
+
+  // Language toggle
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyLang(btn.dataset.lang);
+      try { localStorage.setItem('koios-lang', btn.dataset.lang); } catch(e) {}
+    });
+  });
+  // Restore saved language
+  try {
+    const saved = localStorage.getItem('koios-lang');
+    if (saved && saved !== 'en') {
+      const btn = document.querySelector('.lang-btn[data-lang="' + saved + '"]');
+      if (btn) btn.click();
+    }
+  } catch(e) {}
+</script>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ASK KOIOS AI — CHAT WIDGET -->
+<!-- Update CHATBOT_URL with your Render.com URL -->
+<!-- ═══════════════════════════════════════════════ -->
+<style>
+  .koios-chat-fab { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #c8a44e, #b8943e); border: none; cursor: pointer; box-shadow: 0 4px 20px rgba(10,22,40,0.3); z-index: 9999; display: flex; align-items: center; justify-content: center; transition: transform 0.2s, box-shadow 0.2s; }
+  .koios-chat-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(10,22,40,0.4); }
+  .koios-chat-fab svg { width: 26px; height: 26px; }
+  .koios-chat-fab .close-icon { display: none; }
+  .koios-chat-fab.open .chat-icon { display: none; }
+  .koios-chat-fab.open .close-icon { display: block; }
+  .koios-chat-panel { position: fixed; bottom: 92px; right: 24px; width: 380px; max-height: 520px; background: #fff; border-radius: 14px; box-shadow: 0 12px 48px rgba(10,22,40,0.18); z-index: 9998; display: none; flex-direction: column; overflow: hidden; font-family: 'DM Sans', -apple-system, sans-serif; }
+  .koios-chat-panel.open { display: flex; }
+  .koios-chat-header { background: #0a1628; padding: 16px 18px; display: flex; align-items: center; gap: 10px; }
+  .koios-chat-header-icon { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #c8a44e, #e0c476); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #0a1628; font-family: Georgia, serif; flex-shrink: 0; }
+  .koios-chat-header-text h4 { color: #fff; font-size: 0.88rem; font-weight: 600; margin: 0; line-height: 1.3; }
+  .koios-chat-header-text span { color: #b0ada5; font-size: 0.72rem; }
+  .koios-chat-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; max-height: 340px; min-height: 200px; }
+  .koios-msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 0.84rem; line-height: 1.55; word-wrap: break-word; }
+  .koios-msg a { color: #c8a44e; text-decoration: underline; text-underline-offset: 2px; }
+  .koios-msg-bot { background: #f3f2ee; color: #0a1628; align-self: flex-start; border-bottom-left-radius: 4px; }
+  .koios-msg-user { background: #0a1628; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .koios-msg-typing { background: #f3f2ee; color: #8a877f; align-self: flex-start; border-bottom-left-radius: 4px; font-style: italic; }
+  .koios-chat-input-wrap { padding: 12px 14px; border-top: 1px solid #e8e6e1; display: flex; gap: 8px; align-items: center; }
+  .koios-chat-input { flex: 1; border: 1px solid #e8e6e1; border-radius: 8px; padding: 10px 14px; font-size: 0.84rem; font-family: inherit; outline: none; transition: border-color 0.2s; color: #0a1628; }
+  .koios-chat-input:focus { border-color: #c8a44e; }
+  .koios-chat-input::placeholder { color: #b0ada5; }
+  .koios-chat-send { width: 36px; height: 36px; border-radius: 8px; background: #c8a44e; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; flex-shrink: 0; }
+  .koios-chat-send:hover { background: #e0c476; }
+  .koios-chat-send:disabled { background: #d3d1c7; cursor: not-allowed; }
+  .koios-chat-send svg { width: 16px; height: 16px; }
+  .koios-chat-quick { padding: 0 14px 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .koios-quick-btn { background: none; border: 1px solid #e8e6e1; border-radius: 16px; padding: 5px 12px; font-size: 0.72rem; color: #6b6860; cursor: pointer; font-family: inherit; transition: all 0.2s; white-space: nowrap; }
+  .koios-quick-btn:hover { border-color: #c8a44e; color: #c8a44e; }
+  @media (max-width: 480px) { .koios-chat-panel { right: 8px; left: 8px; bottom: 84px; width: auto; max-height: 70vh; } }
+</style>
+
+<button class="koios-chat-fab" id="koiosChatFab" aria-label="Ask Koios AI">
+  <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="#0a1628" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="#0a1628" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+</button>
+
+<div class="koios-chat-panel" id="koiosChatPanel">
+  <div class="koios-chat-header">
+    <div class="koios-chat-header-icon">&Sigma;</div>
+    <div class="koios-chat-header-text">
+      <h4>Ask Koios AI</h4>
+      <span>Powered by AI &middot; Typically replies instantly</span>
+    </div>
+  </div>
+  <div class="koios-chat-messages" id="koiosChatMessages">
+    <div class="koios-msg koios-msg-bot">Hi! I'm the Koios Analytics AI assistant. I can tell you about our services, case studies, EU AI Act expertise, or help you figure out if we're a good fit. What would you like to know?</div>
+  </div>
+  <div class="koios-chat-quick" id="koiosChatQuick">
+    <button class="koios-quick-btn" onclick="koiosSendQuick(this)">What services do you offer?</button>
+    <button class="koios-quick-btn" onclick="koiosSendQuick(this)">Show me case studies</button>
+    <button class="koios-quick-btn" onclick="koiosSendQuick(this)">EU AI Act compliance</button>
+    <button class="koios-quick-btn" onclick="koiosSendQuick(this)">Odoo AI integration</button>
+  </div>
+  <div class="koios-chat-input-wrap">
+    <input type="text" class="koios-chat-input" id="koiosChatInput" placeholder="Ask me anything about Koios..." maxlength="500" autocomplete="off">
+    <button class="koios-chat-send" id="koiosChatSend" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0a1628" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(function() {
+  const CHATBOT_URL = 'https://ask-koios-ai.onrender.com';
+  const fab = document.getElementById('koiosChatFab');
+  const panel = document.getElementById('koiosChatPanel');
+  const msgs = document.getElementById('koiosChatMessages');
+  const input = document.getElementById('koiosChatInput');
+  const sendBtn = document.getElementById('koiosChatSend');
+  const quickWrap = document.getElementById('koiosChatQuick');
+  let history = [], busy = false;
+
+  fab.addEventListener('click', () => { const o = panel.classList.toggle('open'); fab.classList.toggle('open', o); if (o) input.focus(); });
+
+  function addMsg(text, role) {
+    const d = document.createElement('div');
+    d.className = 'koios-msg koios-msg-' + role;
+    d.innerHTML = text.replace(/\n/g, '<br>').replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+    msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight; return d;
+  }
+
+  async function send(text) {
+    if (busy || !text.trim()) return;
+    busy = true; sendBtn.disabled = true; input.value = '';
+    if (quickWrap) quickWrap.style.display = 'none';
+    addMsg(text, 'user');
+    const typing = addMsg('Thinking...', 'typing');
+    try {
+      const res = await fetch(CHATBOT_URL + '/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: text, history: history }) });
+      if (!res.ok) throw new Error('API error');
+      const data = await res.json();
+      typing.remove(); addMsg(data.reply, 'bot');
+      history.push({ role: 'user', content: text }, { role: 'assistant', content: data.reply });
+      if (history.length > 20) history = history.slice(-20);
+    } catch (e) { typing.remove(); addMsg("Sorry, I'm having trouble connecting. Please try again or email solutions@koios-analytics.com.", 'bot'); }
+    busy = false; sendBtn.disabled = false; input.focus();
+  }
+
+  sendBtn.addEventListener('click', () => send(input.value));
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(input.value); } });
+  window.koiosSendQuick = function(btn) { send(btn.textContent); };
+})();
+</script>
+
+</body>
+</html>

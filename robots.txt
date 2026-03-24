@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://koios-analytics.com/sitemap.xml
