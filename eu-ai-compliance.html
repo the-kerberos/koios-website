@@ -92,7 +92,7 @@
     .check-option input { display: none; }
     .check-option .box { width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(--gray-200); flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #fff; }
     .check-option input:checked ~ .box { border-color: var(--teal); background: var(--teal); }
-    .check-option input:checked ~ .box::after { content: '✓'; }
+    .check-option input:checked ~ .box::after { content: '\2713'; }
 
     .scale-group { display: flex; gap: 8px; margin-top: 4px; }
     .scale-btn { flex: 1; padding: 12px 8px; text-align: center; border: 1px solid var(--gray-200); border-radius: 8px; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--gray-500); transition: all 0.2s; background: #fff; font-family: inherit; }
@@ -170,26 +170,37 @@
 </head>
 <body>
 
-<nav class="nav">
-  <a href="/" class="nav-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 50" fill="none" height="40"><circle cx="25" cy="25" r="23" stroke="#fff" stroke-width="2"/><text x="25" y="33" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="28" font-weight="700">&#x3A3;</text><text x="60" y="28" fill="#fff" font-family="'DM Sans',sans-serif" font-size="18" font-weight="400" letter-spacing="3">KOIOS ANALYTICS</text><text x="60" y="43" fill="#b0ada5" font-family="'DM Sans',sans-serif" font-size="9.5" font-style="italic">Artificial intelligence, real solutions</text></svg></a>
-  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="/" class="nav-logo" aria-label="Koios Analytics home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 50" fill="none" height="40" aria-label="Koios Analytics">
+      <circle cx="25" cy="25" r="23" stroke="#fff" stroke-width="2"/>
+      <text x="25" y="33" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="28" font-weight="700">&#x3A3;</text>
+      <text x="60" y="28" fill="#fff" font-family="'DM Sans',sans-serif" font-size="18" font-weight="400" letter-spacing="3">KOIOS ANALYTICS</text>
+      <text x="60" y="43" fill="#b0ada5" font-family="'DM Sans',sans-serif" font-size="9.5" font-style="italic">Artificial intelligence, real solutions</text>
+    </svg>
+  </a>
+  <button class="menu-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/ai-readiness-assessment.html">AI Readiness</a></li>
     <li><a href="/#services">Services</a></li>
+    <li><a href="/ai-readiness-assessment.html">AI Readiness</a></li>
+    <li><a href="/odoo-partnership.html">Odoo Partnership</a></li>
+    <li><a href="/#results">Results</a></li>
+    <li><a href="/#about">About</a></li>
     <li class="lang-toggle">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="fr">FR</button>
       <button class="lang-btn" data-lang="nl">NL</button>
     </li>
-    <li><a href="https://calendar.app.google/gARU96EmoueEsaTv6" class="cta-btn" target="_blank" rel="noopener">Schedule Call</a></li>
+    <li><a href="https://calendar.app.google/gARU96EmoueEsaTv6" class="cta-btn" target="_blank" rel="noopener" data-i18n="nav_cta">Schedule Call</a></li>
   </ul>
 </nav>
 
 <section class="page-hero">
-  <div class="badge">EU AI Act</div>
-  <h1>How <em>AI Act-Ready</em> is Your Organisation?</h1>
-  <p>12 questions across 4 compliance pillars. Get your EU AI Act compliance score and prioritised action plan in under 5 minutes.</p>
+  <div class="badge" data-i18n="hero_badge">EU AI Act</div>
+  <h1 data-i18n-html="hero_h1">How <em>AI Act-Ready</em> is Your Organisation?</h1>
+  <p data-i18n="hero_p">12 questions across 4 compliance pillars. Get your EU AI Act compliance score and prioritised action plan in under 5 minutes.</p>
 </section>
 
 <!-- Progress -->
@@ -201,10 +212,10 @@
     <div class="progress-seg" data-step="3"></div>
   </div>
   <div class="progress-labels">
-    <span class="active">AI Systems</span>
-    <span>Risk & Governance</span>
-    <span>Transparency</span>
-    <span>Documentation</span>
+    <span class="active" data-i18n="prog_1">AI Systems</span>
+    <span data-i18n="prog_2">Risk &amp; Governance</span>
+    <span data-i18n="prog_3">Transparency</span>
+    <span data-i18n="prog_4">Documentation</span>
   </div>
 </div>
 
@@ -213,187 +224,187 @@
 
   <!-- PILLAR 1: AI Systems Inventory -->
   <div class="form-section active" data-step="0">
-    <h2>AI Systems Inventory</h2>
-    <p class="section-desc">Understanding what AI systems your organisation uses or plans to deploy.</p>
+    <h2 data-i18n="s1_h2">AI Systems Inventory</h2>
+    <p class="section-desc" data-i18n="s1_desc">Understanding what AI systems your organisation uses or plans to deploy.</p>
 
     <div class="q-block">
       <div class="q-num">01</div>
-      <div class="q-text">Does your organisation currently use or develop AI systems?</div>
-      <div class="q-help">Include any automated decision-making, ML models, chatbots, or predictive systems.</div>
+      <div class="q-text" data-i18n="q1_text">Does your organisation currently use or develop AI systems?</div>
+      <div class="q-help" data-i18n="q1_help">Include any automated decision-making, ML models, chatbots, or predictive systems.</div>
       <div class="radio-group" data-q="q1">
-        <label class="radio-option"><input type="radio" name="q1" value="0"><span class="dot"></span><span>No — we don't use any AI</span></label>
-        <label class="radio-option"><input type="radio" name="q1" value="1"><span class="dot"></span><span>We use third-party AI tools (e.g. ChatGPT, Copilot)</span></label>
-        <label class="radio-option"><input type="radio" name="q1" value="2"><span class="dot"></span><span>We have some internal AI/ML models in development</span></label>
-        <label class="radio-option"><input type="radio" name="q1" value="3"><span class="dot"></span><span>We have AI systems in production</span></label>
+        <label class="radio-option"><input type="radio" name="q1" value="0"><span class="dot"></span><span data-i18n="q1_o1">No — we don't use any AI</span></label>
+        <label class="radio-option"><input type="radio" name="q1" value="1"><span class="dot"></span><span data-i18n="q1_o2">We use third-party AI tools (e.g. ChatGPT, Copilot)</span></label>
+        <label class="radio-option"><input type="radio" name="q1" value="2"><span class="dot"></span><span data-i18n="q1_o3">We have some internal AI/ML models in development</span></label>
+        <label class="radio-option"><input type="radio" name="q1" value="3"><span class="dot"></span><span data-i18n="q1_o4">We have AI systems in production</span></label>
       </div>
     </div>
 
     <div class="q-block">
       <div class="q-num">02</div>
-      <div class="q-text">Have you classified your AI systems by risk level?</div>
-      <div class="q-help">The EU AI Act defines four risk tiers: unacceptable, high, limited, and minimal.</div>
+      <div class="q-text" data-i18n="q2_text">Have you classified your AI systems by risk level?</div>
+      <div class="q-help" data-i18n="q2_help">The EU AI Act defines four risk tiers: unacceptable, high, limited, and minimal.</div>
       <div class="radio-group" data-q="q2">
-        <label class="radio-option"><input type="radio" name="q2" value="0"><span class="dot"></span><span>We haven't considered risk classification</span></label>
-        <label class="radio-option"><input type="radio" name="q2" value="1"><span class="dot"></span><span>We're aware of it but haven't classified yet</span></label>
-        <label class="radio-option"><input type="radio" name="q2" value="2"><span class="dot"></span><span>We've done a preliminary classification</span></label>
-        <label class="radio-option"><input type="radio" name="q2" value="3"><span class="dot"></span><span>All AI systems are classified with documented rationale</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="0"><span class="dot"></span><span data-i18n="q2_o1">We haven't considered risk classification</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="1"><span class="dot"></span><span data-i18n="q2_o2">We're aware of it but haven't classified yet</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="2"><span class="dot"></span><span data-i18n="q2_o3">We've done a preliminary classification</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="3"><span class="dot"></span><span data-i18n="q2_o4">All AI systems are classified with documented rationale</span></label>
       </div>
     </div>
 
     <div class="q-block">
       <div class="q-num">03</div>
-      <div class="q-text">Which domains do your AI systems operate in?</div>
-      <div class="q-help">Select all that apply. Some domains trigger high-risk classification under the AI Act.</div>
+      <div class="q-text" data-i18n="q3_text">Which domains do your AI systems operate in?</div>
+      <div class="q-help" data-i18n="q3_help">Select all that apply. Some domains trigger high-risk classification under the AI Act.</div>
       <div class="check-group" data-q="q3">
-        <label class="check-option"><input type="checkbox" name="q3" value="hr"><span class="box"></span><span>HR / Recruitment</span></label>
-        <label class="check-option"><input type="checkbox" name="q3" value="credit"><span class="box"></span><span>Credit / Financial</span></label>
-        <label class="check-option"><input type="checkbox" name="q3" value="health"><span class="box"></span><span>Healthcare</span></label>
-        <label class="check-option"><input type="checkbox" name="q3" value="safety"><span class="box"></span><span>Safety-critical</span></label>
-        <label class="check-option"><input type="checkbox" name="q3" value="customer"><span class="box"></span><span>Customer service</span></label>
-        <label class="check-option"><input type="checkbox" name="q3" value="ops"><span class="box"></span><span>Operations / Logistics</span></label>
-        <label class="check-option"><input type="checkbox" name="q3" value="marketing"><span class="box"></span><span>Marketing / Sales</span></label>
-        <label class="check-option"><input type="checkbox" name="q3" value="other"><span class="box"></span><span>Other</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="hr"><span class="box"></span><span data-i18n="q3_o1">HR / Recruitment</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="credit"><span class="box"></span><span data-i18n="q3_o2">Credit / Financial</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="health"><span class="box"></span><span data-i18n="q3_o3">Healthcare</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="safety"><span class="box"></span><span data-i18n="q3_o4">Safety-critical</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="customer"><span class="box"></span><span data-i18n="q3_o5">Customer service</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="ops"><span class="box"></span><span data-i18n="q3_o6">Operations / Logistics</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="marketing"><span class="box"></span><span data-i18n="q3_o7">Marketing / Sales</span></label>
+        <label class="check-option"><input type="checkbox" name="q3" value="other"><span class="box"></span><span data-i18n="q3_o8">Other</span></label>
       </div>
     </div>
 
     <div class="form-nav">
       <div></div>
-      <button class="btn btn-gold" onclick="nextStep()">Continue</button>
+      <button class="btn btn-gold" onclick="nextStep()" data-i18n="btn_continue">Continue</button>
     </div>
   </div>
 
   <!-- PILLAR 2: Risk Management & Governance -->
   <div class="form-section" data-step="1">
-    <h2>Risk Management &amp; Governance</h2>
-    <p class="section-desc">Assess your organisational preparedness for AI Act compliance obligations.</p>
+    <h2 data-i18n-html="s2_h2">Risk Management &amp; Governance</h2>
+    <p class="section-desc" data-i18n="s2_desc">Assess your organisational preparedness for AI Act compliance obligations.</p>
 
     <div class="q-block">
       <div class="q-num">04</div>
-      <div class="q-text">Do you have an AI governance framework or policy?</div>
+      <div class="q-text" data-i18n="q4_text">Do you have an AI governance framework or policy?</div>
       <div class="radio-group" data-q="q4">
-        <label class="radio-option"><input type="radio" name="q4" value="0"><span class="dot"></span><span>No governance framework exists</span></label>
-        <label class="radio-option"><input type="radio" name="q4" value="1"><span class="dot"></span><span>Informal guidelines only</span></label>
-        <label class="radio-option"><input type="radio" name="q4" value="2"><span class="dot"></span><span>Formal policy in development</span></label>
-        <label class="radio-option"><input type="radio" name="q4" value="3"><span class="dot"></span><span>Established governance framework with regular review</span></label>
+        <label class="radio-option"><input type="radio" name="q4" value="0"><span class="dot"></span><span data-i18n="q4_o1">No governance framework exists</span></label>
+        <label class="radio-option"><input type="radio" name="q4" value="1"><span class="dot"></span><span data-i18n="q4_o2">Informal guidelines only</span></label>
+        <label class="radio-option"><input type="radio" name="q4" value="2"><span class="dot"></span><span data-i18n="q4_o3">Formal policy in development</span></label>
+        <label class="radio-option"><input type="radio" name="q4" value="3"><span class="dot"></span><span data-i18n="q4_o4">Established governance framework with regular review</span></label>
       </div>
     </div>
 
     <div class="q-block">
       <div class="q-num">05</div>
-      <div class="q-text">Is there a designated person or team responsible for AI compliance?</div>
+      <div class="q-text" data-i18n="q5_text">Is there a designated person or team responsible for AI compliance?</div>
       <div class="radio-group" data-q="q5">
-        <label class="radio-option"><input type="radio" name="q5" value="0"><span class="dot"></span><span>No one is responsible</span></label>
-        <label class="radio-option"><input type="radio" name="q5" value="1"><span class="dot"></span><span>It falls loosely under IT or legal</span></label>
-        <label class="radio-option"><input type="radio" name="q5" value="2"><span class="dot"></span><span>A specific person has been assigned</span></label>
-        <label class="radio-option"><input type="radio" name="q5" value="3"><span class="dot"></span><span>Dedicated AI compliance team or committee</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="0"><span class="dot"></span><span data-i18n="q5_o1">No one is responsible</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="1"><span class="dot"></span><span data-i18n="q5_o2">It falls loosely under IT or legal</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="2"><span class="dot"></span><span data-i18n="q5_o3">A specific person has been assigned</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="3"><span class="dot"></span><span data-i18n="q5_o4">Dedicated AI compliance team or committee</span></label>
       </div>
     </div>
 
     <div class="q-block">
       <div class="q-num">06</div>
-      <div class="q-text">Do you conduct risk assessments on your AI systems?</div>
-      <div class="q-help">The AI Act requires ongoing risk assessment for high-risk AI systems.</div>
+      <div class="q-text" data-i18n="q6_text">Do you conduct risk assessments on your AI systems?</div>
+      <div class="q-help" data-i18n="q6_help">The AI Act requires ongoing risk assessment for high-risk AI systems.</div>
       <div class="radio-group" data-q="q6">
-        <label class="radio-option"><input type="radio" name="q6" value="0"><span class="dot"></span><span>No risk assessments performed</span></label>
-        <label class="radio-option"><input type="radio" name="q6" value="1"><span class="dot"></span><span>Ad-hoc assessments only</span></label>
-        <label class="radio-option"><input type="radio" name="q6" value="2"><span class="dot"></span><span>Structured assessments for some systems</span></label>
-        <label class="radio-option"><input type="radio" name="q6" value="3"><span class="dot"></span><span>Systematic risk management for all AI systems</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="0"><span class="dot"></span><span data-i18n="q6_o1">No risk assessments performed</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="1"><span class="dot"></span><span data-i18n="q6_o2">Ad-hoc assessments only</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="2"><span class="dot"></span><span data-i18n="q6_o3">Structured assessments for some systems</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="3"><span class="dot"></span><span data-i18n="q6_o4">Systematic risk management for all AI systems</span></label>
       </div>
     </div>
 
     <div class="form-nav">
-      <button class="btn btn-outline" onclick="prevStep()">Back</button>
-      <button class="btn btn-gold" onclick="nextStep()">Continue</button>
+      <button class="btn btn-outline" onclick="prevStep()" data-i18n="btn_back">Back</button>
+      <button class="btn btn-gold" onclick="nextStep()" data-i18n="btn_continue">Continue</button>
     </div>
   </div>
 
   <!-- PILLAR 3: Transparency & Human Oversight -->
   <div class="form-section" data-step="2">
-    <h2>Transparency &amp; Human Oversight</h2>
-    <p class="section-desc">The AI Act places strong emphasis on transparency and human control over AI systems.</p>
+    <h2 data-i18n-html="s3_h2">Transparency &amp; Human Oversight</h2>
+    <p class="section-desc" data-i18n="s3_desc">The AI Act places strong emphasis on transparency and human control over AI systems.</p>
 
     <div class="q-block">
       <div class="q-num">07</div>
-      <div class="q-text">Do users know when they are interacting with an AI system?</div>
-      <div class="q-help">The AI Act requires clear disclosure when AI is used in customer-facing interactions.</div>
+      <div class="q-text" data-i18n="q7_text">Do users know when they are interacting with an AI system?</div>
+      <div class="q-help" data-i18n="q7_help">The AI Act requires clear disclosure when AI is used in customer-facing interactions.</div>
       <div class="radio-group" data-q="q7">
-        <label class="radio-option"><input type="radio" name="q7" value="0"><span class="dot"></span><span>No disclosure — users may not know</span></label>
-        <label class="radio-option"><input type="radio" name="q7" value="1"><span class="dot"></span><span>Disclosed in terms & conditions only</span></label>
-        <label class="radio-option"><input type="radio" name="q7" value="2"><span class="dot"></span><span>Clear notification at point of interaction</span></label>
-        <label class="radio-option"><input type="radio" name="q7" value="3"><span class="dot"></span><span>Full transparency with opt-out available</span></label>
+        <label class="radio-option"><input type="radio" name="q7" value="0"><span class="dot"></span><span data-i18n="q7_o1">No disclosure — users may not know</span></label>
+        <label class="radio-option"><input type="radio" name="q7" value="1"><span class="dot"></span><span data-i18n="q7_o2">Disclosed in terms &amp; conditions only</span></label>
+        <label class="radio-option"><input type="radio" name="q7" value="2"><span class="dot"></span><span data-i18n="q7_o3">Clear notification at point of interaction</span></label>
+        <label class="radio-option"><input type="radio" name="q7" value="3"><span class="dot"></span><span data-i18n="q7_o4">Full transparency with opt-out available</span></label>
       </div>
     </div>
 
     <div class="q-block">
       <div class="q-num">08</div>
-      <div class="q-text">Can a human override or intervene in AI-driven decisions?</div>
+      <div class="q-text" data-i18n="q8_text">Can a human override or intervene in AI-driven decisions?</div>
       <div class="radio-group" data-q="q8">
-        <label class="radio-option"><input type="radio" name="q8" value="0"><span class="dot"></span><span>AI decisions are fully automated — no override</span></label>
-        <label class="radio-option"><input type="radio" name="q8" value="1"><span class="dot"></span><span>Override is possible but not standardised</span></label>
-        <label class="radio-option"><input type="radio" name="q8" value="2"><span class="dot"></span><span>Human-in-the-loop for important decisions</span></label>
-        <label class="radio-option"><input type="radio" name="q8" value="3"><span class="dot"></span><span>Formal human oversight protocol for all high-impact decisions</span></label>
+        <label class="radio-option"><input type="radio" name="q8" value="0"><span class="dot"></span><span data-i18n="q8_o1">AI decisions are fully automated — no override</span></label>
+        <label class="radio-option"><input type="radio" name="q8" value="1"><span class="dot"></span><span data-i18n="q8_o2">Override is possible but not standardised</span></label>
+        <label class="radio-option"><input type="radio" name="q8" value="2"><span class="dot"></span><span data-i18n="q8_o3">Human-in-the-loop for important decisions</span></label>
+        <label class="radio-option"><input type="radio" name="q8" value="3"><span class="dot"></span><span data-i18n="q8_o4">Formal human oversight protocol for all high-impact decisions</span></label>
       </div>
     </div>
 
     <div class="q-block">
       <div class="q-num">09</div>
-      <div class="q-text">How do you handle bias and fairness in your AI systems?</div>
+      <div class="q-text" data-i18n="q9_text">How do you handle bias and fairness in your AI systems?</div>
       <div class="radio-group" data-q="q9">
-        <label class="radio-option"><input type="radio" name="q9" value="0"><span class="dot"></span><span>We haven't addressed bias</span></label>
-        <label class="radio-option"><input type="radio" name="q9" value="1"><span class="dot"></span><span>Awareness exists but no formal testing</span></label>
-        <label class="radio-option"><input type="radio" name="q9" value="2"><span class="dot"></span><span>Some bias testing during development</span></label>
-        <label class="radio-option"><input type="radio" name="q9" value="3"><span class="dot"></span><span>Regular bias audits with documented mitigation</span></label>
+        <label class="radio-option"><input type="radio" name="q9" value="0"><span class="dot"></span><span data-i18n="q9_o1">We haven't addressed bias</span></label>
+        <label class="radio-option"><input type="radio" name="q9" value="1"><span class="dot"></span><span data-i18n="q9_o2">Awareness exists but no formal testing</span></label>
+        <label class="radio-option"><input type="radio" name="q9" value="2"><span class="dot"></span><span data-i18n="q9_o3">Some bias testing during development</span></label>
+        <label class="radio-option"><input type="radio" name="q9" value="3"><span class="dot"></span><span data-i18n="q9_o4">Regular bias audits with documented mitigation</span></label>
       </div>
     </div>
 
     <div class="form-nav">
-      <button class="btn btn-outline" onclick="prevStep()">Back</button>
-      <button class="btn btn-gold" onclick="nextStep()">Continue</button>
+      <button class="btn btn-outline" onclick="prevStep()" data-i18n="btn_back">Back</button>
+      <button class="btn btn-gold" onclick="nextStep()" data-i18n="btn_continue">Continue</button>
     </div>
   </div>
 
   <!-- PILLAR 4: Technical Documentation & Data Governance -->
   <div class="form-section" data-step="3">
-    <h2>Documentation &amp; Data Governance</h2>
-    <p class="section-desc">The AI Act requires extensive documentation and data quality management.</p>
+    <h2 data-i18n-html="s4_h2">Documentation &amp; Data Governance</h2>
+    <p class="section-desc" data-i18n="s4_desc">The AI Act requires extensive documentation and data quality management.</p>
 
     <div class="q-block">
       <div class="q-num">10</div>
-      <div class="q-text">Do you maintain technical documentation for your AI systems?</div>
-      <div class="q-help">Including model cards, training data records, performance metrics, and design decisions.</div>
+      <div class="q-text" data-i18n="q10_text">Do you maintain technical documentation for your AI systems?</div>
+      <div class="q-help" data-i18n="q10_help">Including model cards, training data records, performance metrics, and design decisions.</div>
       <div class="radio-group" data-q="q10">
-        <label class="radio-option"><input type="radio" name="q10" value="0"><span class="dot"></span><span>No documentation exists</span></label>
-        <label class="radio-option"><input type="radio" name="q10" value="1"><span class="dot"></span><span>Minimal notes — mostly in developers' heads</span></label>
-        <label class="radio-option"><input type="radio" name="q10" value="2"><span class="dot"></span><span>Structured documentation for key systems</span></label>
-        <label class="radio-option"><input type="radio" name="q10" value="3"><span class="dot"></span><span>Comprehensive documentation with audit trails</span></label>
+        <label class="radio-option"><input type="radio" name="q10" value="0"><span class="dot"></span><span data-i18n="q10_o1">No documentation exists</span></label>
+        <label class="radio-option"><input type="radio" name="q10" value="1"><span class="dot"></span><span data-i18n="q10_o2">Minimal notes — mostly in developers' heads</span></label>
+        <label class="radio-option"><input type="radio" name="q10" value="2"><span class="dot"></span><span data-i18n="q10_o3">Structured documentation for key systems</span></label>
+        <label class="radio-option"><input type="radio" name="q10" value="3"><span class="dot"></span><span data-i18n="q10_o4">Comprehensive documentation with audit trails</span></label>
       </div>
     </div>
 
     <div class="q-block">
       <div class="q-num">11</div>
-      <div class="q-text">How do you manage training data quality and provenance?</div>
+      <div class="q-text" data-i18n="q11_text">How do you manage training data quality and provenance?</div>
       <div class="radio-group" data-q="q11">
-        <label class="radio-option"><input type="radio" name="q11" value="0"><span class="dot"></span><span>No data governance for AI training data</span></label>
-        <label class="radio-option"><input type="radio" name="q11" value="1"><span class="dot"></span><span>Basic data quality checks</span></label>
-        <label class="radio-option"><input type="radio" name="q11" value="2"><span class="dot"></span><span>Documented data sources and quality processes</span></label>
-        <label class="radio-option"><input type="radio" name="q11" value="3"><span class="dot"></span><span>Full data lineage, quality monitoring, and governance framework</span></label>
+        <label class="radio-option"><input type="radio" name="q11" value="0"><span class="dot"></span><span data-i18n="q11_o1">No data governance for AI training data</span></label>
+        <label class="radio-option"><input type="radio" name="q11" value="1"><span class="dot"></span><span data-i18n="q11_o2">Basic data quality checks</span></label>
+        <label class="radio-option"><input type="radio" name="q11" value="2"><span class="dot"></span><span data-i18n="q11_o3">Documented data sources and quality processes</span></label>
+        <label class="radio-option"><input type="radio" name="q11" value="3"><span class="dot"></span><span data-i18n="q11_o4">Full data lineage, quality monitoring, and governance framework</span></label>
       </div>
     </div>
 
     <div class="q-block">
       <div class="q-num">12</div>
-      <div class="q-text">Do you have logging and monitoring for AI system performance in production?</div>
+      <div class="q-text" data-i18n="q12_text">Do you have logging and monitoring for AI system performance in production?</div>
       <div class="radio-group" data-q="q12">
-        <label class="radio-option"><input type="radio" name="q12" value="0"><span class="dot"></span><span>No monitoring in place</span></label>
-        <label class="radio-option"><input type="radio" name="q12" value="1"><span class="dot"></span><span>Basic uptime monitoring only</span></label>
-        <label class="radio-option"><input type="radio" name="q12" value="2"><span class="dot"></span><span>Performance metrics and drift detection</span></label>
-        <label class="radio-option"><input type="radio" name="q12" value="3"><span class="dot"></span><span>Comprehensive logging, alerting, and automated incident response</span></label>
+        <label class="radio-option"><input type="radio" name="q12" value="0"><span class="dot"></span><span data-i18n="q12_o1">No monitoring in place</span></label>
+        <label class="radio-option"><input type="radio" name="q12" value="1"><span class="dot"></span><span data-i18n="q12_o2">Basic uptime monitoring only</span></label>
+        <label class="radio-option"><input type="radio" name="q12" value="2"><span class="dot"></span><span data-i18n="q12_o3">Performance metrics and drift detection</span></label>
+        <label class="radio-option"><input type="radio" name="q12" value="3"><span class="dot"></span><span data-i18n="q12_o4">Comprehensive logging, alerting, and automated incident response</span></label>
       </div>
     </div>
 
     <div class="form-nav">
-      <button class="btn btn-outline" onclick="prevStep()">Back</button>
-      <button class="btn btn-red" onclick="showLeadForm()">See My Compliance Score</button>
+      <button class="btn btn-outline" onclick="prevStep()" data-i18n="btn_back">Back</button>
+      <button class="btn btn-red" onclick="showLeadForm()" data-i18n="btn_score">See My Compliance Score</button>
     </div>
   </div>
 
@@ -401,44 +412,52 @@
 
 <!-- LEAD CAPTURE -->
 <div class="lead-form" id="leadForm">
-  <h2>Almost There!</h2>
-  <p class="section-desc">Enter your details to receive your personalised EU AI Act compliance report.</p>
+  <h2 data-i18n="lead_h2">Almost There!</h2>
+  <p class="section-desc" data-i18n="lead_desc">Enter your details to receive your personalised EU AI Act compliance report.</p>
 
-  <div class="field"><label>Full Name *</label><input type="text" id="leadName" required></div>
-  <div class="field"><label>Business Email *</label><input type="email" id="leadEmail" required></div>
-  <div class="field"><label>Company Name *</label><input type="text" id="leadCompany" required></div>
+  <div class="field"><label data-i18n="lead_name">Full Name *</label><input type="text" id="leadName" required></div>
+  <div class="field"><label data-i18n="lead_email">Business Email *</label><input type="email" id="leadEmail" required></div>
+  <div class="field"><label data-i18n="lead_company">Company Name *</label><input type="text" id="leadCompany" required></div>
   <div class="field">
-    <label>Your Role</label>
-    <select id="leadRole"><option value="">Select your role...</option><option>C-Suite / Executive</option><option>VP / Director</option><option>Legal / Compliance</option><option>CTO / Technical Lead</option><option>DPO / Privacy Officer</option><option>Other</option></select>
+    <label data-i18n="lead_role">Your Role</label>
+    <select id="leadRole">
+      <option value="" data-i18n="role_default">Select your role...</option>
+      <option data-i18n="role_csuite">C-Suite / Executive</option>
+      <option data-i18n="role_vp">VP / Director</option>
+      <option data-i18n="role_legal">Legal / Compliance</option>
+      <option data-i18n="role_cto">CTO / Technical Lead</option>
+      <option data-i18n="role_dpo">DPO / Privacy Officer</option>
+      <option data-i18n="role_other">Other</option>
+    </select>
   </div>
 
   <div class="form-nav">
-    <button class="btn btn-outline" onclick="backToForm()">Back</button>
-    <button class="btn btn-red" onclick="showResults()">Get My Report</button>
+    <button class="btn btn-outline" onclick="backToForm()" data-i18n="btn_back">Back</button>
+    <button class="btn btn-red" onclick="showResults()" data-i18n="btn_report">Get My Report</button>
   </div>
 
-  <p class="gdpr-note">Your data is processed in accordance with GDPR. We'll send your detailed compliance report and may follow up with relevant insights. No spam, ever.</p>
+  <p class="gdpr-note" data-i18n="gdpr_note">Your data is processed in accordance with GDPR. We'll send your detailed compliance report and may follow up with relevant insights. No spam, ever.</p>
 </div>
 
 <!-- RESULTS -->
 <div class="results-wrap" id="resultsWrap">
-  <h2 style="font-family:'Playfair Display',Georgia,serif;text-align:center;margin-bottom:6px;">Your EU AI Act Compliance Score</h2>
-  <p style="text-align:center;color:var(--gray-500);font-size:0.88rem;margin-bottom:24px;">Based on your responses across 4 compliance pillars</p>
+  <h2 style="font-family:'Playfair Display',Georgia,serif;text-align:center;margin-bottom:6px;" data-i18n="res_h2">Your EU AI Act Compliance Score</h2>
+  <p style="text-align:center;color:var(--gray-500);font-size:0.88rem;margin-bottom:24px;" data-i18n="res_sub">Based on your responses across 4 compliance pillars</p>
 
   <div class="score-ring">
     <svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fill" id="scoreCircle" cx="60" cy="60" r="52" stroke-dasharray="327" stroke-dashoffset="327"/></svg>
-    <div class="score-value"><div class="num" id="scoreNum">0</div><div class="lbl">out of 100</div></div>
+    <div class="score-value"><div class="num" id="scoreNum">0</div><div class="lbl" data-i18n="score_lbl">out of 100</div></div>
   </div>
 
   <div class="pillar-scores" id="pillarScores"></div>
 
-  <h3 style="font-family:'Playfair Display',Georgia,serif;margin-bottom:12px;">Priority Recommendations</h3>
+  <h3 style="font-family:'Playfair Display',Georgia,serif;margin-bottom:12px;" data-i18n="res_recs_h3">Priority Recommendations</h3>
   <ul class="rec-list" id="recList"></ul>
 
   <div class="results-cta">
-    <h3>Need Help Getting Compliant?</h3>
-    <p>As an Apply AI Alliance member (European Commission), we can guide your organisation through every compliance requirement.</p>
-    <a href="https://calendar.app.google/gARU96EmoueEsaTv6" class="btn btn-gold" target="_blank" rel="noopener">Schedule Compliance Consultation</a>
+    <h3 data-i18n="cta_h3">Need Help Getting Compliant?</h3>
+    <p data-i18n="cta_p">As an Apply AI Alliance member (European Commission), we can guide your organisation through every compliance requirement.</p>
+    <a href="https://calendar.app.google/gARU96EmoueEsaTv6" class="btn btn-gold" target="_blank" rel="noopener" data-i18n="cta_btn">Schedule Compliance Consultation</a>
   </div>
 </div>
 
@@ -455,19 +474,428 @@
 </footer>
 
 <script>
+// ═══ TRANSLATION SYSTEM ═══
+let currentLang = localStorage.getItem('koios-lang') || 'en';
+
+const T = {
+  en: {
+    nav_cta: 'Schedule Call',
+    hero_badge: 'EU AI Act',
+    hero_h1: 'How <em>AI Act-Ready</em> is Your Organisation?',
+    hero_p: '12 questions across 4 compliance pillars. Get your EU AI Act compliance score and prioritised action plan in under 5 minutes.',
+    prog_1: 'AI Systems',
+    prog_2: 'Risk & Governance',
+    prog_3: 'Transparency',
+    prog_4: 'Documentation',
+    s1_h2: 'AI Systems Inventory',
+    s1_desc: 'Understanding what AI systems your organisation uses or plans to deploy.',
+    q1_text: 'Does your organisation currently use or develop AI systems?',
+    q1_help: 'Include any automated decision-making, ML models, chatbots, or predictive systems.',
+    q1_o1: 'No \u2014 we don\'t use any AI',
+    q1_o2: 'We use third-party AI tools (e.g. ChatGPT, Copilot)',
+    q1_o3: 'We have some internal AI/ML models in development',
+    q1_o4: 'We have AI systems in production',
+    q2_text: 'Have you classified your AI systems by risk level?',
+    q2_help: 'The EU AI Act defines four risk tiers: unacceptable, high, limited, and minimal.',
+    q2_o1: 'We haven\'t considered risk classification',
+    q2_o2: 'We\'re aware of it but haven\'t classified yet',
+    q2_o3: 'We\'ve done a preliminary classification',
+    q2_o4: 'All AI systems are classified with documented rationale',
+    q3_text: 'Which domains do your AI systems operate in?',
+    q3_help: 'Select all that apply. Some domains trigger high-risk classification under the AI Act.',
+    q3_o1: 'HR / Recruitment',
+    q3_o2: 'Credit / Financial',
+    q3_o3: 'Healthcare',
+    q3_o4: 'Safety-critical',
+    q3_o5: 'Customer service',
+    q3_o6: 'Operations / Logistics',
+    q3_o7: 'Marketing / Sales',
+    q3_o8: 'Other',
+    btn_continue: 'Continue',
+    btn_back: 'Back',
+    s2_h2: 'Risk Management &amp; Governance',
+    s2_desc: 'Assess your organisational preparedness for AI Act compliance obligations.',
+    q4_text: 'Do you have an AI governance framework or policy?',
+    q4_o1: 'No governance framework exists',
+    q4_o2: 'Informal guidelines only',
+    q4_o3: 'Formal policy in development',
+    q4_o4: 'Established governance framework with regular review',
+    q5_text: 'Is there a designated person or team responsible for AI compliance?',
+    q5_o1: 'No one is responsible',
+    q5_o2: 'It falls loosely under IT or legal',
+    q5_o3: 'A specific person has been assigned',
+    q5_o4: 'Dedicated AI compliance team or committee',
+    q6_text: 'Do you conduct risk assessments on your AI systems?',
+    q6_help: 'The AI Act requires ongoing risk assessment for high-risk AI systems.',
+    q6_o1: 'No risk assessments performed',
+    q6_o2: 'Ad-hoc assessments only',
+    q6_o3: 'Structured assessments for some systems',
+    q6_o4: 'Systematic risk management for all AI systems',
+    s3_h2: 'Transparency &amp; Human Oversight',
+    s3_desc: 'The AI Act places strong emphasis on transparency and human control over AI systems.',
+    q7_text: 'Do users know when they are interacting with an AI system?',
+    q7_help: 'The AI Act requires clear disclosure when AI is used in customer-facing interactions.',
+    q7_o1: 'No disclosure \u2014 users may not know',
+    q7_o2: 'Disclosed in terms & conditions only',
+    q7_o3: 'Clear notification at point of interaction',
+    q7_o4: 'Full transparency with opt-out available',
+    q8_text: 'Can a human override or intervene in AI-driven decisions?',
+    q8_o1: 'AI decisions are fully automated \u2014 no override',
+    q8_o2: 'Override is possible but not standardised',
+    q8_o3: 'Human-in-the-loop for important decisions',
+    q8_o4: 'Formal human oversight protocol for all high-impact decisions',
+    q9_text: 'How do you handle bias and fairness in your AI systems?',
+    q9_o1: 'We haven\'t addressed bias',
+    q9_o2: 'Awareness exists but no formal testing',
+    q9_o3: 'Some bias testing during development',
+    q9_o4: 'Regular bias audits with documented mitigation',
+    s4_h2: 'Documentation &amp; Data Governance',
+    s4_desc: 'The AI Act requires extensive documentation and data quality management.',
+    q10_text: 'Do you maintain technical documentation for your AI systems?',
+    q10_help: 'Including model cards, training data records, performance metrics, and design decisions.',
+    q10_o1: 'No documentation exists',
+    q10_o2: 'Minimal notes \u2014 mostly in developers\' heads',
+    q10_o3: 'Structured documentation for key systems',
+    q10_o4: 'Comprehensive documentation with audit trails',
+    q11_text: 'How do you manage training data quality and provenance?',
+    q11_o1: 'No data governance for AI training data',
+    q11_o2: 'Basic data quality checks',
+    q11_o3: 'Documented data sources and quality processes',
+    q11_o4: 'Full data lineage, quality monitoring, and governance framework',
+    q12_text: 'Do you have logging and monitoring for AI system performance in production?',
+    q12_o1: 'No monitoring in place',
+    q12_o2: 'Basic uptime monitoring only',
+    q12_o3: 'Performance metrics and drift detection',
+    q12_o4: 'Comprehensive logging, alerting, and automated incident response',
+    btn_score: 'See My Compliance Score',
+    lead_h2: 'Almost There!',
+    lead_desc: 'Enter your details to receive your personalised EU AI Act compliance report.',
+    lead_name: 'Full Name *',
+    lead_email: 'Business Email *',
+    lead_company: 'Company Name *',
+    lead_role: 'Your Role',
+    role_default: 'Select your role...',
+    role_csuite: 'C-Suite / Executive',
+    role_vp: 'VP / Director',
+    role_legal: 'Legal / Compliance',
+    role_cto: 'CTO / Technical Lead',
+    role_dpo: 'DPO / Privacy Officer',
+    role_other: 'Other',
+    btn_report: 'Get My Report',
+    gdpr_note: 'Your data is processed in accordance with GDPR. We\'ll send your detailed compliance report and may follow up with relevant insights. No spam, ever.',
+    res_h2: 'Your EU AI Act Compliance Score',
+    res_sub: 'Based on your responses across 4 compliance pillars',
+    score_lbl: 'out of 100',
+    res_recs_h3: 'Priority Recommendations',
+    cta_h3: 'Need Help Getting Compliant?',
+    cta_p: 'As an Apply AI Alliance member (European Commission), we can guide your organisation through every compliance requirement.',
+    cta_btn: 'Schedule Compliance Consultation',
+    pillar_1: 'AI Systems Inventory',
+    pillar_2: 'Risk & Governance',
+    pillar_3: 'Transparency & Oversight',
+    pillar_4: 'Documentation & Data',
+    alert_required: 'Please enter your name and email.',
+    rec_highrisk: '<strong>High-risk domains detected.</strong> Your AI systems may fall under high-risk classification requiring conformity assessment, CE marking, and registration in the EU database.',
+    rec_critical: '<strong>{pillar}: Critical gap.</strong> Immediate action needed \u2014 this pillar scores below the minimum threshold for AI Act compliance.',
+    rec_developing: '<strong>{pillar}: Developing.</strong> Foundation exists but significant work needed before compliance deadlines.',
+    rec_overall_low: '<strong>Overall:</strong> We recommend an urgent compliance gap analysis. The AI Act enforcement begins August 2025 for prohibited practices, with full obligations phasing in through 2027.',
+    rec_overall_mid: '<strong>Overall:</strong> Good foundation, but gaps remain. A structured compliance roadmap would help you prioritise and meet deadlines.',
+    rec_overall_high: '<strong>Overall:</strong> Strong compliance posture. Consider a formal audit to validate your readiness and document it for regulators.'
+  },
+  fr: {
+    nav_cta: 'Planifier un Appel',
+    hero_badge: 'EU AI Act',
+    hero_h1: 'Votre Organisation est-elle Pr\u00eate pour le <em>EU AI Act</em> ?',
+    hero_p: '12 questions sur 4 piliers de conformit\u00e9. Obtenez votre score de conformit\u00e9 EU AI Act et un plan d\'action prioris\u00e9 en moins de 5 minutes.',
+    prog_1: 'Syst\u00e8mes IA',
+    prog_2: 'Risques & Gouvernance',
+    prog_3: 'Transparence',
+    prog_4: 'Documentation',
+    s1_h2: 'Inventaire des Syst\u00e8mes IA',
+    s1_desc: 'Comprendre quels syst\u00e8mes d\'IA votre organisation utilise ou pr\u00e9voit de d\u00e9ployer.',
+    q1_text: 'Votre organisation utilise-t-elle ou d\u00e9veloppe-t-elle actuellement des syst\u00e8mes d\'IA ?',
+    q1_help: 'Incluez toute prise de d\u00e9cision automatis\u00e9e, mod\u00e8les ML, chatbots ou syst\u00e8mes pr\u00e9dictifs.',
+    q1_o1: 'Non \u2014 nous n\'utilisons aucune IA',
+    q1_o2: 'Nous utilisons des outils IA tiers (ex. ChatGPT, Copilot)',
+    q1_o3: 'Nous avons des mod\u00e8les IA/ML internes en d\u00e9veloppement',
+    q1_o4: 'Nous avons des syst\u00e8mes IA en production',
+    q2_text: 'Avez-vous classifi\u00e9 vos syst\u00e8mes IA par niveau de risque ?',
+    q2_help: 'L\'EU AI Act d\u00e9finit quatre niveaux de risque : inacceptable, \u00e9lev\u00e9, limit\u00e9 et minimal.',
+    q2_o1: 'Nous n\'avons pas envisag\u00e9 la classification des risques',
+    q2_o2: 'Nous en sommes conscients mais n\'avons pas encore classifi\u00e9',
+    q2_o3: 'Nous avons fait une classification pr\u00e9liminaire',
+    q2_o4: 'Tous les syst\u00e8mes IA sont classifi\u00e9s avec une justification document\u00e9e',
+    q3_text: 'Dans quels domaines op\u00e8rent vos syst\u00e8mes IA ?',
+    q3_help: 'S\u00e9lectionnez tous ceux qui s\'appliquent. Certains domaines d\u00e9clenchent une classification \u00e0 haut risque.',
+    q3_o1: 'RH / Recrutement',
+    q3_o2: 'Cr\u00e9dit / Finance',
+    q3_o3: 'Sant\u00e9',
+    q3_o4: 'S\u00e9curit\u00e9 critique',
+    q3_o5: 'Service client',
+    q3_o6: 'Op\u00e9rations / Logistique',
+    q3_o7: 'Marketing / Ventes',
+    q3_o8: 'Autre',
+    btn_continue: 'Continuer',
+    btn_back: 'Retour',
+    s2_h2: 'Gestion des Risques &amp; Gouvernance',
+    s2_desc: '\u00c9valuez la pr\u00e9paration de votre organisation aux obligations de conformit\u00e9 de l\'AI Act.',
+    q4_text: 'Disposez-vous d\'un cadre de gouvernance ou d\'une politique IA ?',
+    q4_o1: 'Aucun cadre de gouvernance',
+    q4_o2: 'Directives informelles uniquement',
+    q4_o3: 'Politique formelle en cours d\'\u00e9laboration',
+    q4_o4: 'Cadre de gouvernance \u00e9tabli avec r\u00e9vision r\u00e9guli\u00e8re',
+    q5_text: 'Y a-t-il une personne ou une \u00e9quipe d\u00e9sign\u00e9e responsable de la conformit\u00e9 IA ?',
+    q5_o1: 'Personne n\'est responsable',
+    q5_o2: 'Cela rel\u00e8ve vaguement de l\'IT ou du juridique',
+    q5_o3: 'Une personne sp\u00e9cifique a \u00e9t\u00e9 d\u00e9sign\u00e9e',
+    q5_o4: '\u00c9quipe ou comit\u00e9 d\u00e9di\u00e9 \u00e0 la conformit\u00e9 IA',
+    q6_text: 'Effectuez-vous des \u00e9valuations des risques sur vos syst\u00e8mes IA ?',
+    q6_help: 'L\'AI Act exige une \u00e9valuation continue des risques pour les syst\u00e8mes IA \u00e0 haut risque.',
+    q6_o1: 'Aucune \u00e9valuation des risques',
+    q6_o2: '\u00c9valuations ponctuelles uniquement',
+    q6_o3: '\u00c9valuations structur\u00e9es pour certains syst\u00e8mes',
+    q6_o4: 'Gestion syst\u00e9matique des risques pour tous les syst\u00e8mes IA',
+    s3_h2: 'Transparence &amp; Contr\u00f4le Humain',
+    s3_desc: 'L\'AI Act met fortement l\'accent sur la transparence et le contr\u00f4le humain des syst\u00e8mes IA.',
+    q7_text: 'Les utilisateurs savent-ils qu\'ils interagissent avec un syst\u00e8me IA ?',
+    q7_help: 'L\'AI Act exige une divulgation claire lorsque l\'IA est utilis\u00e9e dans les interactions client.',
+    q7_o1: 'Aucune divulgation \u2014 les utilisateurs peuvent ne pas savoir',
+    q7_o2: 'Mentionn\u00e9 uniquement dans les conditions g\u00e9n\u00e9rales',
+    q7_o3: 'Notification claire au point d\'interaction',
+    q7_o4: 'Transparence totale avec option de retrait',
+    q8_text: 'Un humain peut-il annuler ou intervenir dans les d\u00e9cisions prises par l\'IA ?',
+    q8_o1: 'Les d\u00e9cisions IA sont enti\u00e8rement automatis\u00e9es \u2014 pas de recours',
+    q8_o2: 'Le recours est possible mais non standardis\u00e9',
+    q8_o3: 'Humain dans la boucle pour les d\u00e9cisions importantes',
+    q8_o4: 'Protocole formel de supervision humaine pour toutes les d\u00e9cisions \u00e0 fort impact',
+    q9_text: 'Comment g\u00e9rez-vous les biais et l\'\u00e9quit\u00e9 dans vos syst\u00e8mes IA ?',
+    q9_o1: 'Nous n\'avons pas abord\u00e9 les biais',
+    q9_o2: 'La sensibilisation existe mais pas de tests formels',
+    q9_o3: 'Quelques tests de biais pendant le d\u00e9veloppement',
+    q9_o4: 'Audits r\u00e9guliers des biais avec att\u00e9nuation document\u00e9e',
+    s4_h2: 'Documentation &amp; Gouvernance des Donn\u00e9es',
+    s4_desc: 'L\'AI Act exige une documentation extensive et une gestion de la qualit\u00e9 des donn\u00e9es.',
+    q10_text: 'Maintenez-vous une documentation technique pour vos syst\u00e8mes IA ?',
+    q10_help: 'Y compris fiches de mod\u00e8le, registres de donn\u00e9es d\'entra\u00eenement, m\u00e9triques de performance et d\u00e9cisions de conception.',
+    q10_o1: 'Aucune documentation',
+    q10_o2: 'Notes minimales \u2014 principalement dans la t\u00eate des d\u00e9veloppeurs',
+    q10_o3: 'Documentation structur\u00e9e pour les syst\u00e8mes cl\u00e9s',
+    q10_o4: 'Documentation compl\u00e8te avec pistes d\'audit',
+    q11_text: 'Comment g\u00e9rez-vous la qualit\u00e9 et la provenance des donn\u00e9es d\'entra\u00eenement ?',
+    q11_o1: 'Aucune gouvernance des donn\u00e9es d\'entra\u00eenement IA',
+    q11_o2: 'Contr\u00f4les de qualit\u00e9 des donn\u00e9es de base',
+    q11_o3: 'Sources de donn\u00e9es et processus de qualit\u00e9 document\u00e9s',
+    q11_o4: 'Lign\u00e9e compl\u00e8te des donn\u00e9es, surveillance de la qualit\u00e9 et cadre de gouvernance',
+    q12_text: 'Disposez-vous de journalisation et de surveillance des performances de vos syst\u00e8mes IA en production ?',
+    q12_o1: 'Aucune surveillance en place',
+    q12_o2: 'Surveillance de disponibilit\u00e9 de base uniquement',
+    q12_o3: 'M\u00e9triques de performance et d\u00e9tection de d\u00e9rive',
+    q12_o4: 'Journalisation compl\u00e8te, alertes et r\u00e9ponse automatis\u00e9e aux incidents',
+    btn_score: 'Voir Mon Score de Conformit\u00e9',
+    lead_h2: 'Presque Termin\u00e9 !',
+    lead_desc: 'Entrez vos coordonn\u00e9es pour recevoir votre rapport personnalis\u00e9 de conformit\u00e9 EU AI Act.',
+    lead_name: 'Nom Complet *',
+    lead_email: 'Email Professionnel *',
+    lead_company: 'Nom de l\'Entreprise *',
+    lead_role: 'Votre R\u00f4le',
+    role_default: 'S\u00e9lectionnez votre r\u00f4le...',
+    role_csuite: 'Direction G\u00e9n\u00e9rale',
+    role_vp: 'VP / Directeur',
+    role_legal: 'Juridique / Conformit\u00e9',
+    role_cto: 'CTO / Responsable Technique',
+    role_dpo: 'DPO / Responsable Vie Priv\u00e9e',
+    role_other: 'Autre',
+    btn_report: 'Obtenir Mon Rapport',
+    gdpr_note: 'Vos donn\u00e9es sont trait\u00e9es conform\u00e9ment au RGPD. Nous vous enverrons votre rapport de conformit\u00e9 d\u00e9taill\u00e9 et pourrons vous contacter avec des informations pertinentes. Jamais de spam.',
+    res_h2: 'Votre Score de Conformit\u00e9 EU AI Act',
+    res_sub: 'Bas\u00e9 sur vos r\u00e9ponses aux 4 piliers de conformit\u00e9',
+    score_lbl: 'sur 100',
+    res_recs_h3: 'Recommandations Prioritaires',
+    cta_h3: 'Besoin d\'Aide pour la Mise en Conformit\u00e9 ?',
+    cta_p: 'En tant que membre de l\'Apply AI Alliance (Commission Europ\u00e9enne), nous pouvons guider votre organisation \u00e0 travers chaque exigence de conformit\u00e9.',
+    cta_btn: 'Planifier une Consultation Conformit\u00e9',
+    pillar_1: 'Inventaire des Syst\u00e8mes IA',
+    pillar_2: 'Risques & Gouvernance',
+    pillar_3: 'Transparence & Contr\u00f4le',
+    pillar_4: 'Documentation & Donn\u00e9es',
+    alert_required: 'Veuillez entrer votre nom et email.',
+    rec_highrisk: '<strong>Domaines \u00e0 haut risque d\u00e9tect\u00e9s.</strong> Vos syst\u00e8mes IA peuvent relever de la classification \u00e0 haut risque n\u00e9cessitant une \u00e9valuation de conformit\u00e9, un marquage CE et une inscription dans la base de donn\u00e9es europ\u00e9enne.',
+    rec_critical: '<strong>{pillar} : Lacune critique.</strong> Action imm\u00e9diate n\u00e9cessaire \u2014 ce pilier est en dessous du seuil minimum de conformit\u00e9 \u00e0 l\'AI Act.',
+    rec_developing: '<strong>{pillar} : En d\u00e9veloppement.</strong> Les bases existent mais un travail significatif est n\u00e9cessaire avant les \u00e9ch\u00e9ances de conformit\u00e9.',
+    rec_overall_low: '<strong>Global :</strong> Nous recommandons une analyse urgente des lacunes de conformit\u00e9. L\'application de l\'AI Act commence en ao\u00fbt 2025 pour les pratiques interdites, avec des obligations compl\u00e8tes s\'\u00e9chelonnant jusqu\'en 2027.',
+    rec_overall_mid: '<strong>Global :</strong> Bonne base, mais des lacunes subsistent. Une feuille de route de conformit\u00e9 structur\u00e9e vous aiderait \u00e0 prioriser et respecter les \u00e9ch\u00e9ances.',
+    rec_overall_high: '<strong>Global :</strong> Solide posture de conformit\u00e9. Envisagez un audit formel pour valider votre \u00e9tat de pr\u00e9paration et le documenter pour les r\u00e9gulateurs.'
+  },
+  nl: {
+    nav_cta: 'Gesprek Plannen',
+    hero_badge: 'EU AI Act',
+    hero_h1: 'Is Uw Organisatie Klaar voor de <em>EU AI Act</em>?',
+    hero_p: '12 vragen over 4 nalevingspijlers. Ontvang uw EU AI Act-nalevingsscore en geprioriteerd actieplan in minder dan 5 minuten.',
+    prog_1: 'AI-systemen',
+    prog_2: 'Risico & Governance',
+    prog_3: 'Transparantie',
+    prog_4: 'Documentatie',
+    s1_h2: 'Inventaris van AI-systemen',
+    s1_desc: 'Begrijpen welke AI-systemen uw organisatie gebruikt of van plan is in te zetten.',
+    q1_text: 'Gebruikt of ontwikkelt uw organisatie momenteel AI-systemen?',
+    q1_help: 'Inclusief geautomatiseerde besluitvorming, ML-modellen, chatbots of voorspellende systemen.',
+    q1_o1: 'Nee \u2014 wij gebruiken geen AI',
+    q1_o2: 'We gebruiken AI-tools van derden (bijv. ChatGPT, Copilot)',
+    q1_o3: 'We hebben enkele interne AI/ML-modellen in ontwikkeling',
+    q1_o4: 'We hebben AI-systemen in productie',
+    q2_text: 'Heeft u uw AI-systemen geclassificeerd op risiconiveau?',
+    q2_help: 'De EU AI Act defini\u00ebert vier risiconiveaus: onaanvaardbaar, hoog, beperkt en minimaal.',
+    q2_o1: 'We hebben risicoclassificatie niet overwogen',
+    q2_o2: 'We zijn ons ervan bewust maar hebben nog niet geclassificeerd',
+    q2_o3: 'We hebben een voorlopige classificatie gedaan',
+    q2_o4: 'Alle AI-systemen zijn geclassificeerd met gedocumenteerde motivering',
+    q3_text: 'In welke domeinen werken uw AI-systemen?',
+    q3_help: 'Selecteer alles wat van toepassing is. Sommige domeinen activeren een hoog-risicoclassificatie.',
+    q3_o1: 'HR / Werving',
+    q3_o2: 'Krediet / Financieel',
+    q3_o3: 'Gezondheidszorg',
+    q3_o4: 'Veiligheidskritisch',
+    q3_o5: 'Klantenservice',
+    q3_o6: 'Operaties / Logistiek',
+    q3_o7: 'Marketing / Verkoop',
+    q3_o8: 'Overig',
+    btn_continue: 'Doorgaan',
+    btn_back: 'Terug',
+    s2_h2: 'Risicobeheer &amp; Governance',
+    s2_desc: 'Beoordeel de gereedheid van uw organisatie voor de nalevingsverplichtingen van de AI Act.',
+    q4_text: 'Heeft u een AI-governancekader of -beleid?',
+    q4_o1: 'Geen governancekader aanwezig',
+    q4_o2: 'Alleen informele richtlijnen',
+    q4_o3: 'Formeel beleid in ontwikkeling',
+    q4_o4: 'Vastgesteld governancekader met regelmatige evaluatie',
+    q5_text: 'Is er een aangewezen persoon of team verantwoordelijk voor AI-naleving?',
+    q5_o1: 'Niemand is verantwoordelijk',
+    q5_o2: 'Valt losjes onder IT of juridisch',
+    q5_o3: 'Een specifieke persoon is aangewezen',
+    q5_o4: 'Toegewijd AI-nalevingsteam of -comit\u00e9',
+    q6_text: 'Voert u risicobeoordelingen uit op uw AI-systemen?',
+    q6_help: 'De AI Act vereist doorlopende risicobeoordeling voor hoog-risico AI-systemen.',
+    q6_o1: 'Geen risicobeoordelingen uitgevoerd',
+    q6_o2: 'Alleen ad-hocbeoordelingen',
+    q6_o3: 'Gestructureerde beoordelingen voor sommige systemen',
+    q6_o4: 'Systematisch risicobeheer voor alle AI-systemen',
+    s3_h2: 'Transparantie &amp; Menselijk Toezicht',
+    s3_desc: 'De AI Act legt sterk de nadruk op transparantie en menselijke controle over AI-systemen.',
+    q7_text: 'Weten gebruikers wanneer ze met een AI-systeem communiceren?',
+    q7_help: 'De AI Act vereist duidelijke openbaarmaking wanneer AI wordt gebruikt in klantinteracties.',
+    q7_o1: 'Geen openbaarmaking \u2014 gebruikers weten het mogelijk niet',
+    q7_o2: 'Vermeld alleen in de algemene voorwaarden',
+    q7_o3: 'Duidelijke melding op het punt van interactie',
+    q7_o4: 'Volledige transparantie met opt-out mogelijkheid',
+    q8_text: 'Kan een mens AI-gestuurde beslissingen overrulen of ingrijpen?',
+    q8_o1: 'AI-beslissingen zijn volledig geautomatiseerd \u2014 geen overruling',
+    q8_o2: 'Overruling is mogelijk maar niet gestandaardiseerd',
+    q8_o3: 'Mens-in-de-lus voor belangrijke beslissingen',
+    q8_o4: 'Formeel protocol voor menselijk toezicht bij alle impactvolle beslissingen',
+    q9_text: 'Hoe gaat u om met bias en eerlijkheid in uw AI-systemen?',
+    q9_o1: 'We hebben bias niet aangepakt',
+    q9_o2: 'Bewustzijn bestaat maar geen formele tests',
+    q9_o3: 'Enige biastests tijdens ontwikkeling',
+    q9_o4: 'Regelmatige biasaudits met gedocumenteerde mitigatie',
+    s4_h2: 'Documentatie &amp; Datagovernance',
+    s4_desc: 'De AI Act vereist uitgebreide documentatie en beheer van datakwaliteit.',
+    q10_text: 'Onderhoudt u technische documentatie voor uw AI-systemen?',
+    q10_help: 'Inclusief modelkaarten, trainingsdata-registers, prestatiemetrieken en ontwerpbeslissingen.',
+    q10_o1: 'Geen documentatie aanwezig',
+    q10_o2: 'Minimale notities \u2014 voornamelijk in de hoofden van ontwikkelaars',
+    q10_o3: 'Gestructureerde documentatie voor belangrijke systemen',
+    q10_o4: 'Uitgebreide documentatie met audittrails',
+    q11_text: 'Hoe beheert u de kwaliteit en herkomst van trainingsdata?',
+    q11_o1: 'Geen datagovernance voor AI-trainingsdata',
+    q11_o2: 'Basiskwaliteitscontroles',
+    q11_o3: 'Gedocumenteerde databronnen en kwaliteitsprocessen',
+    q11_o4: 'Volledige datalijn, kwaliteitsbewaking en governancekader',
+    q12_text: 'Heeft u logging en monitoring voor AI-systeemprestaties in productie?',
+    q12_o1: 'Geen monitoring aanwezig',
+    q12_o2: 'Alleen basisbeschikbaarheidsmonitoring',
+    q12_o3: 'Prestatiemetrieken en driftdetectie',
+    q12_o4: 'Uitgebreide logging, alertering en geautomatiseerde incidentrespons',
+    btn_score: 'Bekijk Mijn Nalevingsscore',
+    lead_h2: 'Bijna Klaar!',
+    lead_desc: 'Vul uw gegevens in om uw gepersonaliseerd EU AI Act-nalevingsrapport te ontvangen.',
+    lead_name: 'Volledige Naam *',
+    lead_email: 'Zakelijk E-mailadres *',
+    lead_company: 'Bedrijfsnaam *',
+    lead_role: 'Uw Rol',
+    role_default: 'Selecteer uw rol...',
+    role_csuite: 'C-Suite / Directie',
+    role_vp: 'VP / Directeur',
+    role_legal: 'Juridisch / Compliance',
+    role_cto: 'CTO / Technisch Leider',
+    role_dpo: 'FG / Privacy Officer',
+    role_other: 'Overig',
+    btn_report: 'Mijn Rapport Ontvangen',
+    gdpr_note: 'Uw gegevens worden verwerkt in overeenstemming met de AVG. We sturen u uw gedetailleerd nalevingsrapport en kunnen u opvolgen met relevante inzichten. Nooit spam.',
+    res_h2: 'Uw EU AI Act Nalevingsscore',
+    res_sub: 'Gebaseerd op uw antwoorden over 4 nalevingspijlers',
+    score_lbl: 'op 100',
+    res_recs_h3: 'Prioritaire Aanbevelingen',
+    cta_h3: 'Hulp Nodig bij Naleving?',
+    cta_p: 'Als lid van de Apply AI Alliance (Europese Commissie) kunnen wij uw organisatie begeleiden bij elke nalevingsvereiste.',
+    cta_btn: 'Plan een Nalevingsconsultatie',
+    pillar_1: 'Inventaris AI-systemen',
+    pillar_2: 'Risico & Governance',
+    pillar_3: 'Transparantie & Toezicht',
+    pillar_4: 'Documentatie & Data',
+    alert_required: 'Vul alstublieft uw naam en e-mailadres in.',
+    rec_highrisk: '<strong>Hoog-risico domeinen gedetecteerd.</strong> Uw AI-systemen kunnen onder de hoog-risicoclassificatie vallen, waarvoor conformiteitsbeoordeling, CE-markering en registratie in de EU-databank vereist zijn.',
+    rec_critical: '<strong>{pillar}: Kritieke lacune.</strong> Onmiddellijke actie vereist \u2014 deze pijler scoort onder de minimumdrempel voor AI Act-naleving.',
+    rec_developing: '<strong>{pillar}: In ontwikkeling.</strong> Basis aanwezig maar aanzienlijk werk nodig v\u00f3\u00f3r de nalevingsdeadlines.',
+    rec_overall_low: '<strong>Algemeen:</strong> Wij adviseren een dringende analyse van nalevingslacunes. De handhaving van de AI Act begint in augustus 2025 voor verboden praktijken, met volledige verplichtingen die doorlopen tot 2027.',
+    rec_overall_mid: '<strong>Algemeen:</strong> Goede basis, maar er zijn nog lacunes. Een gestructureerde nalevingsroadmap zou u helpen te prioriteren en deadlines te halen.',
+    rec_overall_high: '<strong>Algemeen:</strong> Sterke nalevingshouding. Overweeg een formele audit om uw gereedheid te valideren en te documenteren voor toezichthouders.'
+  }
+};
+
+function t(key) { return (T[currentLang] && T[currentLang][key]) || T.en[key] || key; }
+
+function applyLang() {
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    var val = t(key);
+    if (val) el.textContent = val;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-html');
+    var val = t(key);
+    if (val) el.innerHTML = val;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-placeholder');
+    var val = t(key);
+    if (val) el.placeholder = val;
+  });
+  document.documentElement.lang = currentLang === 'nl' ? 'nl' : currentLang === 'fr' ? 'fr' : 'en';
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('koios-lang', lang);
+  document.querySelectorAll('.lang-toggle .lang-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  applyLang();
+}
+
+// ═══ ASSESSMENT LOGIC ═══
 let step = 0;
 const totalSteps = 4;
 
 function updateProgress() {
-  document.querySelectorAll('.progress-seg').forEach((s, i) => {
+  document.querySelectorAll('.progress-seg').forEach(function(s, i) {
     s.classList.toggle('active', i === step);
     s.classList.toggle('done', i < step);
   });
-  document.querySelectorAll('.progress-labels span').forEach((s, i) => {
+  document.querySelectorAll('.progress-labels span').forEach(function(s, i) {
     s.classList.toggle('active', i === step);
     s.classList.toggle('done', i < step);
   });
-  document.querySelectorAll('.form-section').forEach((s, i) => {
+  document.querySelectorAll('.form-section').forEach(function(s, i) {
     s.classList.toggle('active', i === step);
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -491,29 +919,29 @@ function backToForm() {
 
 function getScores() {
   const pillars = [
-    { name: 'AI Systems Inventory', qs: ['q1','q2'], color: '#e07a5f' },
-    { name: 'Risk & Governance', qs: ['q4','q5','q6'], color: '#c8a44e' },
-    { name: 'Transparency & Oversight', qs: ['q7','q8','q9'], color: '#2a9d8f' },
-    { name: 'Documentation & Data', qs: ['q10','q11','q12'], color: '#5a7abf' }
+    { name: t('pillar_1'), qs: ['q1','q2'], color: '#e07a5f' },
+    { name: t('pillar_2'), qs: ['q4','q5','q6'], color: '#c8a44e' },
+    { name: t('pillar_3'), qs: ['q7','q8','q9'], color: '#2a9d8f' },
+    { name: t('pillar_4'), qs: ['q10','q11','q12'], color: '#5a7abf' }
   ];
 
   let totalScore = 0, totalMax = 0;
-  const results = pillars.map(p => {
+  const results = pillars.map(function(p) {
     let score = 0, max = p.qs.length * 3;
-    p.qs.forEach(q => {
-      const checked = document.querySelector(`input[name="${q}"]:checked`);
+    p.qs.forEach(function(q) {
+      const checked = document.querySelector('input[name="' + q + '"]:checked');
       if (checked) score += parseInt(checked.value);
     });
     totalScore += score; totalMax += max;
-    return { ...p, score, max, pct: Math.round((score / max) * 100) };
+    return { name: p.name, qs: p.qs, color: p.color, score: score, max: max, pct: Math.round((score / max) * 100) };
   });
 
   // Bonus for high-risk domains checked in q3
   const highRiskDomains = ['hr','credit','health','safety'];
-  const q3Checked = [...document.querySelectorAll('input[name="q3"]:checked')].map(i => i.value);
-  const hasHighRisk = q3Checked.some(v => highRiskDomains.includes(v));
+  const q3Checked = Array.from(document.querySelectorAll('input[name="q3"]:checked')).map(function(i) { return i.value; });
+  const hasHighRisk = q3Checked.some(function(v) { return highRiskDomains.includes(v); });
 
-  return { results, total: Math.round((totalScore / totalMax) * 100), hasHighRisk };
+  return { results: results, total: Math.round((totalScore / totalMax) * 100), hasHighRisk: hasHighRisk };
 }
 
 function showResults() {
@@ -521,7 +949,7 @@ function showResults() {
   const email = document.getElementById('leadEmail').value;
   const company = document.getElementById('leadCompany').value;
   const role = document.getElementById('leadRole').value;
-  if (!name || !email) { alert('Please enter your name and email.'); return; }
+  if (!name || !email) { alert(t('alert_required')); return; }
 
   document.getElementById('leadForm').classList.remove('active');
   document.getElementById('resultsWrap').classList.add('active');
@@ -529,8 +957,6 @@ function showResults() {
   const { results, total, hasHighRisk } = getScores();
 
   // ── GOOGLE SHEETS LEAD CAPTURE ──────────────────
-  // Replace GOOGLE_SCRIPT_URL with your Google Apps Script web app URL
-  // See SHEETS-SETUP.md for instructions
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyqr7G6AuFHdMD25sRGjCfvBkUlzLQOLwGAX0KXBbt-CYzt7npQALHnMXVQGCJsTRxfsw/exec';
   if (GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
     const answers = {};
@@ -538,7 +964,7 @@ function showResults() {
       const checked = document.querySelector('input[name="q' + i + '"]:checked');
       answers['q' + i] = checked ? checked.value : '';
     }
-    const q3Checked = [...document.querySelectorAll('input[name="q3"]:checked')].map(i => i.value);
+    const q3Checked = Array.from(document.querySelectorAll('input[name="q3"]:checked')).map(function(i) { return i.value; });
     answers.q3 = q3Checked.join(', ');
 
     fetch(GOOGLE_SCRIPT_URL, {
@@ -547,64 +973,68 @@ function showResults() {
       body: JSON.stringify({
         source: 'eu-ai-compliance',
         timestamp: new Date().toISOString(),
-        name, email, company, role,
+        name: name, email: email, company: company, role: role,
         totalScore: total,
-        hasHighRisk,
-        pillarScores: results.map(p => p.name + ': ' + p.pct + '%').join(' | '),
+        hasHighRisk: hasHighRisk,
+        pillarScores: results.map(function(p) { return p.name + ': ' + p.pct + '%'; }).join(' | '),
         ...answers
       })
-    }).catch(() => {});
+    }).catch(function() {});
   }
   // ────────────────────────────────────────────────
 
   // Animate score ring
   const circle = document.getElementById('scoreCircle');
   const offset = 327 - (327 * total / 100);
-  setTimeout(() => { circle.style.strokeDashoffset = offset; }, 100);
+  setTimeout(function() { circle.style.strokeDashoffset = offset; }, 100);
   let counter = 0;
   const numEl = document.getElementById('scoreNum');
-  const interval = setInterval(() => { counter++; numEl.textContent = counter; if (counter >= total) clearInterval(interval); }, 15);
+  const interval = setInterval(function() { counter++; numEl.textContent = counter; if (counter >= total) clearInterval(interval); }, 15);
 
   // Pillar cards
   const pillarWrap = document.getElementById('pillarScores');
-  pillarWrap.innerHTML = results.map(p => `
-    <div class="pillar-card">
-      <h4>${p.name}</h4>
-      <div class="pillar-bar-bg"><div class="pillar-bar-fill" style="width:0%;background:${p.color}"></div></div>
-      <div class="pillar-score-num">${p.pct}%</div>
-    </div>
-  `).join('');
-  setTimeout(() => {
-    pillarWrap.querySelectorAll('.pillar-bar-fill').forEach((bar, i) => { bar.style.width = results[i].pct + '%'; });
+  pillarWrap.innerHTML = results.map(function(p) {
+    return '<div class="pillar-card"><h4>' + p.name + '</h4><div class="pillar-bar-bg"><div class="pillar-bar-fill" style="width:0%;background:' + p.color + '"></div></div><div class="pillar-score-num">' + p.pct + '%</div></div>';
+  }).join('');
+  setTimeout(function() {
+    pillarWrap.querySelectorAll('.pillar-bar-fill').forEach(function(bar, i) { bar.style.width = results[i].pct + '%'; });
   }, 200);
 
   // Recommendations
   const recs = [];
-  if (hasHighRisk) recs.push('<strong>High-risk domains detected.</strong> Your AI systems may fall under high-risk classification requiring conformity assessment, CE marking, and registration in the EU database.');
-  results.forEach(p => {
-    if (p.pct < 34) recs.push(`<strong>${p.name}: Critical gap.</strong> Immediate action needed — this pillar scores below the minimum threshold for AI Act compliance.`);
-    else if (p.pct < 67) recs.push(`<strong>${p.name}: Developing.</strong> Foundation exists but significant work needed before compliance deadlines.`);
+  if (hasHighRisk) recs.push(t('rec_highrisk'));
+  results.forEach(function(p) {
+    if (p.pct < 34) recs.push(t('rec_critical').replace('{pillar}', p.name));
+    else if (p.pct < 67) recs.push(t('rec_developing').replace('{pillar}', p.name));
   });
-  if (total < 50) recs.push('<strong>Overall:</strong> We recommend an urgent compliance gap analysis. The AI Act enforcement begins August 2025 for prohibited practices, with full obligations phasing in through 2027.');
-  else if (total < 75) recs.push('<strong>Overall:</strong> Good foundation, but gaps remain. A structured compliance roadmap would help you prioritise and meet deadlines.');
-  else recs.push('<strong>Overall:</strong> Strong compliance posture. Consider a formal audit to validate your readiness and document it for regulators.');
+  if (total < 50) recs.push(t('rec_overall_low'));
+  else if (total < 75) recs.push(t('rec_overall_mid'));
+  else recs.push(t('rec_overall_high'));
 
-  document.getElementById('recList').innerHTML = recs.map(r => `<li>${r}</li>`).join('');
+  document.getElementById('recList').innerHTML = recs.map(function(r) { return '<li>' + r + '</li>'; }).join('');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Scale button handler
-document.querySelectorAll('.scale-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.parentElement.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+document.querySelectorAll('.scale-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    btn.parentElement.querySelectorAll('.scale-btn').forEach(function(b) { b.classList.remove('selected'); });
     btn.classList.add('selected');
   });
 });
 
 // Mobile nav
-document.querySelectorAll('.nav-links a').forEach(a => {
-  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+document.querySelectorAll('.nav-links a').forEach(function(a) {
+  a.addEventListener('click', function() { document.querySelector('.nav-links').classList.remove('open'); });
 });
+
+// Language toggle
+document.querySelectorAll('.lang-toggle .lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { setLang(btn.dataset.lang); });
+});
+
+// Apply saved language on load
+setLang(currentLang);
 </script>
 
 </body>
