@@ -414,6 +414,50 @@
       line-height: 1.4;
     }
 
+    /* ═══ MAZE HOOK ═══ */
+    .maze-section {
+      background: var(--navy);
+      padding: var(--section-pad) var(--h-pad);
+      text-align: center;
+    }
+    .maze-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .maze-inner svg {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin-bottom: 32px;
+    }
+    .maze-inner h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .maze-inner p {
+      font-size: 1rem;
+      color: var(--gray-300);
+      max-width: 500px;
+      margin: 0 auto 28px;
+      line-height: 1.65;
+    }
+    .maze-cta {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 14px 32px;
+      border-radius: 7px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .maze-cta:hover { background: var(--gold-light); }
+
     /* ═══ SERVICES ═══ */
     .services-grid {
       display: grid;
@@ -446,7 +490,6 @@
       transform: translateY(-2px);
     }
     .svc-card:hover::after { opacity: 1; }
-    .svc-icon { font-size: 1.4rem; margin-bottom: 14px; }
     .svc-card h3 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 1.12rem;
@@ -882,7 +925,7 @@
 <div class="cred-bar">
   <div class="cred-item"><span class="cred-check">&#10003;</span> MIT AI Strategy Expert</div>
   <div class="cred-item"><span class="cred-check">&#10003;</span> EU AI Policy Advisor</div>
-  <div class="cred-item"><span class="cred-check">&#10003;</span> 15+ Years Software Leadership</div>
+  <div class="cred-item"><span class="cred-check">&#10003;</span> 15+ Years in Software Engineering &amp; Leadership</div>
   <div class="cred-item"><span class="cred-check">&#10003;</span> Proprietary AI Transformation Platform</div>
 </div>
 
@@ -916,6 +959,39 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════ -->
+<!-- MAZE HOOK -->
+<!-- ═══════════════════════════════════════════════ -->
+<section class="maze-section">
+  <div class="maze-inner reveal">
+    <svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Maze lines (left side — tangled) -->
+      <path d="M30 30 h40 v30 h-20 v30 h40 v-50 h20 v60 h-30 v20" stroke="#4d4b45" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M30 60 h20 v40 h30 v-20 h-10 v-30 h30" stroke="#4d4b45" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M50 30 v20 h30 v30 h-20 v30 h-20" stroke="#4d4b45" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M30 90 h30 v-20 h20 v40 h-10 v20 h30" stroke="#4d4b45" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M40 110 h20 v-30 h30 v20 h20 v20" stroke="#4d4b45" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M30 130 h50 v-20 h20 v30 h-30 v20" stroke="#4d4b45" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Transition zone (middle — lines simplify) -->
+      <path d="M140 50 h30 v40 h30" stroke="#6b6860" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M140 90 h40 v20 h20" stroke="#6b6860" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M140 130 h50 v-20 h20" stroke="#6b6860" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Clean paths (right side — open, clear) -->
+      <line x1="230" y1="90" x2="350" y2="90" stroke="#b0ada5" stroke-width="1.5"/>
+      <line x1="230" y1="60" x2="310" y2="60" stroke="#8a877f" stroke-width="1"/>
+      <line x1="230" y1="120" x2="310" y2="120" stroke="#8a877f" stroke-width="1"/>
+      <!-- Dotted path tracing through -->
+      <path d="M40 70 C60 70 70 55 90 55 C110 55 120 80 140 80 C160 80 170 75 200 75 C230 75 240 90 260 90 L350 90" stroke="var(--gold)" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" opacity="0.8"/>
+      <!-- Goal dot -->
+      <circle cx="362" cy="90" r="8" fill="var(--gold)" opacity="0.9"/>
+      <circle cx="362" cy="90" r="4" fill="#fff" opacity="0.6"/>
+    </svg>
+    <h2>Turning AI from a Maze into Amazing</h2>
+    <p>Most companies know AI matters. Few know where to start. We provide the map.</p>
+    <a href="/ai-readiness-assessment.html" class="maze-cta">Get Your AI Readiness Assessment</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ -->
 <!-- SERVICES -->
 <!-- ═══════════════════════════════════════════════ -->
 <section class="section section-alt" id="services">
@@ -928,7 +1004,6 @@
     <div class="services-grid">
 
       <div class="svc-card reveal">
-        <div class="svc-icon">&#x1F4CB;</div>
         <h3>AI Strategy &amp; Roadmap Development</h3>
         <ul>
           <li>Comprehensive AI readiness assessment</li>
@@ -940,7 +1015,6 @@
       </div>
 
       <div class="svc-card reveal reveal-delay-1">
-        <div class="svc-icon">&#x1F680;</div>
         <h3>Implementation Oversight</h3>
         <ul>
           <li>Technical team guidance</li>
@@ -952,7 +1026,6 @@
       </div>
 
       <div class="svc-card reveal reveal-delay-2">
-        <div class="svc-icon">&#x1F3AF;</div>
         <h3>Specialised Expertise</h3>
         <ul>
           <li>Churn prediction &amp; customer analytics</li>
@@ -964,7 +1037,6 @@
       </div>
 
       <div class="svc-card reveal reveal-delay-3">
-        <div class="svc-icon">&#x1F4BC;</div>
         <h3>Embedded AI Leadership</h3>
         <ul>
           <li>2&ndash;3 days/week strategic presence</li>
@@ -992,7 +1064,7 @@
     <div class="cases-grid">
 
       <div class="case-card reveal">
-        <div class="case-industry">&#x1F3E2; Telecommunications</div>
+        <div class="case-industry">Telecommunications</div>
         <h3>Churn Prediction &amp; NLP Analytics &mdash; Vox Telecom</h3>
         <div class="case-metrics">
           <div class="metric-box">
@@ -1008,7 +1080,7 @@
       </div>
 
       <div class="case-card reveal reveal-delay-1">
-        <div class="case-industry">&#x1F33E; Agriculture</div>
+        <div class="case-industry">Agriculture</div>
         <h3>Hydroponics IoT Data Platform &mdash; Stellenbosch University</h3>
         <div class="case-metrics">
           <div class="metric-box">
@@ -1024,7 +1096,7 @@
       </div>
 
       <div class="case-card reveal reveal-delay-2">
-        <div class="case-industry">&#x1F6E1;&#xFE0F; Defense</div>
+        <div class="case-industry">Defense</div>
         <h3>Ballistic Simulation Optimisation &mdash; KNDS Belgium</h3>
         <div class="case-metrics">
           <div class="metric-box">
@@ -1040,7 +1112,7 @@
       </div>
 
       <div class="case-card reveal reveal-delay-3">
-        <div class="case-industry">&#x1F3A8; Consumer Tech</div>
+        <div class="case-industry">Consumer Tech</div>
         <h3>Generative AI Integration &mdash; Celebr8tly</h3>
         <div class="case-metrics">
           <div class="metric-box">
@@ -1070,17 +1142,14 @@
     </div>
     <div class="expertise-grid">
       <div class="exp-card reveal">
-        <div class="svc-icon">&#x1F4DE;</div>
         <h3>Agentic AI</h3>
         <p>AI-powered voice agents for appointment booking and customer service. Production architecture with Vapi, Twilio, and real-time calendar integration for hands-on professionals who can't answer the phone.</p>
       </div>
       <div class="exp-card reveal reveal-delay-1">
-        <div class="svc-icon">&#x2699;&#xFE0F;</div>
         <h3>MLOps &amp; LLMOps</h3>
         <p>Production deployment pipelines, model versioning, automated retraining, drift detection with Evidently, and Prometheus/Grafana monitoring. We don't just train models &mdash; we keep them running.</p>
       </div>
       <div class="exp-card reveal reveal-delay-2">
-        <div class="svc-icon">&#x1F30D;</div>
         <h3>Multilingual NLP</h3>
         <p>Sentiment analysis, zero-shot topic classification, and automatic language detection with Afrikaans&#x2011;to&#x2011;English translation. Built for real production workloads at Vox Telecom.</p>
       </div>
@@ -1214,7 +1283,7 @@
       </div>
       <div class="about-text reveal reveal-delay-1">
         <h3>Our Founder</h3>
-        <p>Fabien Zablocki, MSc Computer Science (<em>cum laude</em>), brings 15+ years of software leadership and 5+ years in AI implementation. As a member of the European Commission's Apply AI Alliance and an MIT Sloan AI Strategy Facilitator, he has guided organisations from initial AI readiness assessment through to production-grade deployment &mdash; including an 18% to 81% precision improvement in customer churn prediction for Vox Telecom.</p>
+        <p>Fabien Zablocki, MSc Computer Science (<em>cum laude</em>), brings 15+ years of software leadership and 5+ years in AI implementation. As a member of the European Commission's Apply AI Alliance and a former MIT Sloan AI Strategy Facilitator, he has guided organisations from initial AI readiness assessment through to production-grade deployment &mdash; including an 18% to 81% precision improvement in customer churn prediction for Vox Telecom.</p>
         <p>Want to know more? <a href="https://myprofilegpt.onrender.com" target="_blank" rel="noopener">Ask his digital twin</a>.</p>
       </div>
     </div>
@@ -1296,7 +1365,8 @@
       heroH1: 'From Teaching AI Strategy at MIT to <em>Implementing It in Your Business</em>',
       heroSub: 'After guiding thousands of executives through AI transformation at MIT Sloan, I now bring that same structured methodology directly to mid-market companies as their strategic AI partner.',
       heroCTA1: 'Get Your AI Readiness Assessment', heroCTA2: 'Schedule Strategy Call',
-      cred1: '✓ MIT AI Strategy Expert', cred2: '✓ EU AI Policy Advisor', cred3: '✓ 15+ Years Software Leadership', cred4: '✓ Proprietary AI Transformation Platform',
+      mazeH2: 'Turning AI from a Maze into Amazing', mazeP: 'Most companies know AI matters. Few know where to start. We provide the map.', mazeCTA: 'Get Your AI Readiness Assessment',
+      cred1: '✓ MIT AI Strategy Expert', cred2: '✓ EU AI Policy Advisor', cred3: '✓ 15+ Years in Software Engineering & Leadership', cred4: '✓ Proprietary AI Transformation Platform',
       proofEyebrow: 'Trusted by Industry Leaders',
       stat1num: '18% → 81%', stat1lbl: 'Churn prediction precision<br>Vox Telecom',
       stat2num: '1,000+', stat2lbl: 'Executives guided through<br>AI strategy at MIT Sloan',
@@ -1308,10 +1378,10 @@
       svc3title: 'Specialised Expertise', svc3li1: 'Churn prediction & customer analytics', svc3li2: 'Agricultural AI & IoT data platforms', svc3li3: 'Generative AI & agentic AI integration', svc3li4: 'ERP/CRM AI integration (Odoo specialist)', svc3del: 'Deliverable: Industry-specific AI solutions',
       svc4title: 'Embedded AI Leadership', svc4li1: '2–3 days/week strategic presence', svc4li2: 'C-suite & board communication', svc4li3: 'Team capability building', svc4li4: 'Technology decision authority', svc4del: 'Deliverable: Ongoing strategic leadership',
       casesEyebrow: 'Proven Results', casesH2: 'Results Across Industries', casesSub: 'Real outcomes from strategic AI implementation — not theoretical projections.',
-      case1ind: '🏢 Telecommunications', case1title: 'Churn Prediction & NLP Analytics — Vox Telecom', case1m1v: '81%', case1m1l: 'Precision (from 18%)', case1m2v: '74%', case1m2l: 'Recall', case1res: '€2.3M estimated annual churn reduction · NLP sentiment analysis with Afrikaans auto-detect & translate · Full MLOps pipeline',
-      case2ind: '🌾 Agriculture', case2title: 'Hydroponics IoT Data Platform — Stellenbosch University', case2m1v: '25+', case2m1l: 'Sensor Parameters', case2m2v: '500K', case2m2l: 'Data Points', case2res: 'IoT sensor pipeline · Predictive crop analytics for yield, quality & flavour · AWS cloud architecture',
-      case3ind: '🛡️ Defense', case3title: 'Ballistic Simulation Optimisation — KNDS Belgium', case3m1v: '50×', case3m1l: 'Efficiency Gain', case3m2v: 'PINNs', case3m2l: 'Novel Approach', case3res: 'Physics-informed neural networks · Surrogate modelling · Reduced R&D costs',
-      case4ind: '🎨 Consumer Tech', case4title: 'Generative AI Integration — Celebr8tly', case4m1v: 'GenAI', case4m1l: 'Image Generation', case4m2v: 'SaaS', case4m2l: 'Platform Integration', case4res: 'AI-powered personalised graphics for celebration platform · End-to-end product strategy',
+      case1ind: 'Telecommunications', case1title: 'Churn Prediction & NLP Analytics — Vox Telecom', case1m1v: '81%', case1m1l: 'Precision (from 18%)', case1m2v: '74%', case1m2l: 'Recall', case1res: '€2.3M estimated annual churn reduction · NLP sentiment analysis with Afrikaans auto-detect & translate · Full MLOps pipeline',
+      case2ind: 'Agriculture', case2title: 'Hydroponics IoT Data Platform — Stellenbosch University', case2m1v: '25+', case2m1l: 'Sensor Parameters', case2m2v: '500K', case2m2l: 'Data Points', case2res: 'IoT sensor pipeline · Predictive crop analytics for yield, quality & flavour · AWS cloud architecture',
+      case3ind: 'Defense', case3title: 'Ballistic Simulation Optimisation — KNDS Belgium', case3m1v: '50×', case3m1l: 'Efficiency Gain', case3m2v: 'PINNs', case3m2l: 'Novel Approach', case3res: 'Physics-informed neural networks · Surrogate modelling · Reduced R&D costs',
+      case4ind: 'Consumer Tech', case4title: 'Generative AI Integration — Celebr8tly', case4m1v: 'GenAI', case4m1l: 'Image Generation', case4m2v: 'SaaS', case4m2l: 'Platform Integration', case4res: 'AI-powered personalised graphics for celebration platform · End-to-end product strategy',
       expEyebrow: 'Additional Capabilities', expH2: 'Beyond Strategy — We Build & Ship',
       exp1title: 'Agentic AI', exp1p: 'AI-powered voice agents for appointment booking and customer service. Production architecture with Vapi, Twilio, and real-time calendar integration for hands-on professionals who can\'t answer the phone.',
       exp2title: 'MLOps & LLMOps', exp2p: 'Production deployment pipelines, model versioning, automated retraining, drift detection with Evidently, and Prometheus/Grafana monitoring. We don\'t just train models — we keep them running.',
@@ -1322,7 +1392,7 @@
       euBig: '€35M', euCaption: 'Maximum penalty for non-compliance<br>(7% of global turnover)', euCTA: 'Get EU AI Compliance Assessment',
       aboutEyebrow: 'About Koios Analytics', aboutH2: 'Strategic AI Leadership, Not Slide Decks',
       about1title: 'Our Approach', about1p1: 'Koios Analytics is a strategic AI partner for mid-market companies. We combine deep technical expertise with strategic leadership — bridging the AI leadership gap so companies get access to senior AI strategy without the cost of a full-time executive hire.', about1p2: 'We don\'t believe in AI for AI\'s sake. Every engagement starts with a rigorous readiness assessment and delivers measurable business outcomes. Our unique combination of strategic insight, technical depth, and regulatory expertise means we help companies implement AI that actually works — and stays compliant.',
-      about2title: 'Our Founder', about2p1: 'Fabien Zablocki, MSc Computer Science (cum laude), brings 15+ years of software leadership and 5+ years in AI implementation. As a member of the European Commission\'s Apply AI Alliance and an MIT Sloan AI Strategy Facilitator, he has guided organisations from initial AI readiness assessment through to production-grade deployment — including an 18% to 81% precision improvement in customer churn prediction for Vox Telecom.', about2p2link: 'Ask his digital twin',
+      about2title: 'Our Founder', about2p1: 'Fabien Zablocki, MSc Computer Science (cum laude), brings 15+ years of software leadership and 5+ years in AI implementation. As a member of the European Commission\'s Apply AI Alliance and a former MIT Sloan AI Strategy Facilitator, he has guided organisations from initial AI readiness assessment through to production-grade deployment — including an 18% to 81% precision improvement in customer churn prediction for Vox Telecom.', about2p2link: 'Ask his digital twin',
       ctaH2: 'Ready to Bridge Your AI Leadership Gap?', ctaSub: 'Get a complimentary AI readiness assessment based on real-world transformation experience across six industries.', ctaBtn: 'Get Your AI Readiness Assessment',
       footServices: 'Services', footResources: 'Resources', footContact: 'Contact', footCopy: '© 2026 Koios Analytics (Pty) Ltd — All Rights Reserved.'
     },
@@ -1333,7 +1403,8 @@
       heroH1: 'De l\'enseignement de la stratégie IA au MIT à <em>son implémentation dans votre entreprise</em>',
       heroSub: 'Après avoir guidé des milliers de dirigeants à travers la transformation IA au MIT Sloan, j\'apporte désormais cette même méthodologie structurée directement aux entreprises de taille intermédiaire en tant que partenaire IA stratégique.',
       heroCTA1: 'Évaluation de maturité IA', heroCTA2: 'Planifier un appel stratégique',
-      cred1: '✓ Expert stratégie IA MIT', cred2: '✓ Conseiller politique IA UE', cred3: '✓ 15+ ans leadership logiciel', cred4: '✓ Plateforme de transformation IA propriétaire',
+      mazeH2: 'Transformer l\'IA d\'un labyrinthe en quelque chose d\'incroyable', mazeP: 'La plupart des entreprises savent que l\'IA compte. Peu savent par où commencer. Nous fournissons la carte.', mazeCTA: 'Évaluation de maturité IA',
+      cred1: '✓ Expert stratégie IA MIT', cred2: '✓ Conseiller politique IA UE', cred3: '✓ 15+ ans en ingénierie logicielle et leadership', cred4: '✓ Plateforme de transformation IA propriétaire',
       proofEyebrow: 'Reconnu par les leaders de l\'industrie',
       stat1num: '18% → 81%', stat1lbl: 'Précision de prédiction du churn<br>Vox Telecom',
       stat2num: '1 000+', stat2lbl: 'Dirigeants guidés en stratégie IA<br>au MIT Sloan',
@@ -1345,10 +1416,10 @@
       svc3title: 'Expertise spécialisée', svc3li1: 'Prédiction du churn et analytique client', svc3li2: 'IA agricole et plateformes de données IoT', svc3li3: 'Intégration d\'IA générative et agentique', svc3li4: 'Intégration IA ERP/CRM (spécialiste Odoo)', svc3del: 'Livrable : solutions IA sectorielles',
       svc4title: 'Leadership IA intégré', svc4li1: '2–3 jours/semaine de présence stratégique', svc4li2: 'Communication avec la direction et le conseil', svc4li3: 'Renforcement des compétences de l\'équipe', svc4li4: 'Autorité de décision technologique', svc4del: 'Livrable : leadership stratégique continu',
       casesEyebrow: 'Résultats prouvés', casesH2: 'Résultats dans tous les secteurs', casesSub: 'Des résultats concrets d\'implémentation IA stratégique — pas des projections théoriques.',
-      case1ind: '🏢 Télécommunications', case1title: 'Prédiction du churn et NLP — Vox Telecom', case1m1v: '81%', case1m1l: 'Précision (depuis 18%)', case1m2v: '74%', case1m2l: 'Rappel', case1res: 'Réduction annuelle estimée de 2,3M€ du churn · Analyse de sentiment NLP avec détection automatique de l\'afrikaans · Pipeline MLOps complet',
-      case2ind: '🌾 Agriculture', case2title: 'Plateforme IoT hydroponique — Université de Stellenbosch', case2m1v: '25+', case2m1l: 'Paramètres capteurs', case2m2v: '500K', case2m2l: 'Points de données', case2res: 'Pipeline capteurs IoT · Analyse prédictive des cultures · Architecture cloud AWS',
-      case3ind: '🛡️ Défense', case3title: 'Optimisation de simulation balistique — KNDS Belgique', case3m1v: '50×', case3m1l: 'Gain d\'efficacité', case3m2v: 'PINNs', case3m2l: 'Approche innovante', case3res: 'Réseaux de neurones informés par la physique · Modélisation de substitution · Réduction des coûts R&D',
-      case4ind: '🎨 Tech grand public', case4title: 'Intégration d\'IA générative — Celebr8tly', case4m1v: 'GenAI', case4m1l: 'Génération d\'images', case4m2v: 'SaaS', case4m2l: 'Intégration plateforme', case4res: 'Graphiques personnalisés par IA pour plateforme de célébration · Stratégie produit de bout en bout',
+      case1ind: 'Télécommunications', case1title: 'Prédiction du churn et NLP — Vox Telecom', case1m1v: '81%', case1m1l: 'Précision (depuis 18%)', case1m2v: '74%', case1m2l: 'Rappel', case1res: 'Réduction annuelle estimée de 2,3M€ du churn · Analyse de sentiment NLP avec détection automatique de l\'afrikaans · Pipeline MLOps complet',
+      case2ind: 'Agriculture', case2title: 'Plateforme IoT hydroponique — Université de Stellenbosch', case2m1v: '25+', case2m1l: 'Paramètres capteurs', case2m2v: '500K', case2m2l: 'Points de données', case2res: 'Pipeline capteurs IoT · Analyse prédictive des cultures · Architecture cloud AWS',
+      case3ind: 'Défense', case3title: 'Optimisation de simulation balistique — KNDS Belgique', case3m1v: '50×', case3m1l: 'Gain d\'efficacité', case3m2v: 'PINNs', case3m2l: 'Approche innovante', case3res: 'Réseaux de neurones informés par la physique · Modélisation de substitution · Réduction des coûts R&D',
+      case4ind: 'Tech grand public', case4title: 'Intégration d\'IA générative — Celebr8tly', case4m1v: 'GenAI', case4m1l: 'Génération d\'images', case4m2v: 'SaaS', case4m2l: 'Intégration plateforme', case4res: 'Graphiques personnalisés par IA pour plateforme de célébration · Stratégie produit de bout en bout',
       expEyebrow: 'Capacités additionnelles', expH2: 'Au-delà de la stratégie — nous construisons et livrons',
       exp1title: 'IA agentique', exp1p: 'Agents vocaux IA pour la prise de rendez-vous et le service client. Architecture de production avec Vapi, Twilio et intégration calendrier en temps réel.',
       exp2title: 'MLOps et LLMOps', exp2p: 'Pipelines de déploiement en production, versioning de modèles, réentraînement automatisé, détection de dérive avec Evidently et monitoring Prometheus/Grafana.',
@@ -1359,7 +1430,7 @@
       euBig: '35M€', euCaption: 'Pénalité maximale pour non-conformité<br>(7% du chiffre d\'affaires mondial)', euCTA: 'Évaluation de conformité AI Act',
       aboutEyebrow: 'À propos de Koios Analytics', aboutH2: 'Leadership IA stratégique, pas des présentations',
       about1title: 'Notre approche', about1p1: 'Koios Analytics est un partenaire IA stratégique pour les entreprises de taille intermédiaire. Nous combinons une expertise technique approfondie avec un leadership stratégique — comblant le déficit de leadership IA pour que les entreprises accèdent à une stratégie IA senior sans le coût d\'un recrutement à temps plein.', about1p2: 'Nous ne croyons pas en l\'IA pour l\'IA. Chaque engagement commence par une évaluation rigoureuse de maturité et produit des résultats commerciaux mesurables.',
-      about2title: 'Notre fondateur', about2p1: 'Fabien Zablocki, MSc informatique (cum laude), apporte 15+ ans de leadership logiciel et 5+ ans d\'implémentation IA. En tant que membre de l\'Apply AI Alliance de la Commission européenne et facilitateur de stratégie IA au MIT Sloan, il a guidé des organisations de l\'évaluation initiale de maturité IA jusqu\'au déploiement en production.', about2p2link: 'Interrogez son jumeau numérique',
+      about2title: 'Notre fondateur', about2p1: 'Fabien Zablocki, MSc informatique (cum laude), apporte 15+ ans de leadership logiciel et 5+ ans d\'implémentation IA. En tant que membre de l\'Apply AI Alliance de la Commission européenne et ancien facilitateur de stratégie IA au MIT Sloan, il a guidé des organisations de l\'évaluation initiale de maturité IA jusqu\'au déploiement en production.', about2p2link: 'Interrogez son jumeau numérique',
       ctaH2: 'Prêt à combler votre déficit de leadership IA ?', ctaSub: 'Obtenez une évaluation gratuite de maturité IA basée sur une expérience concrète de transformation dans six industries.', ctaBtn: 'Évaluation de maturité IA',
       footServices: 'Services', footResources: 'Ressources', footContact: 'Contact', footCopy: '© 2026 Koios Analytics (Pty) Ltd — Tous droits réservés.'
     },
@@ -1370,7 +1441,8 @@
       heroH1: 'Van AI-strategie doceren aan MIT tot <em>implementatie in uw bedrijf</em>',
       heroSub: 'Na duizenden leidinggevenden te hebben begeleid bij AI-transformatie aan MIT Sloan, breng ik diezelfde gestructureerde methodologie nu rechtstreeks naar middelgrote bedrijven als hun strategische AI-partner.',
       heroCTA1: 'AI-gereedheidstoets', heroCTA2: 'Strategiegesprek plannen',
-      cred1: '✓ MIT AI-strategiedeskundige', cred2: '✓ EU AI-beleidsadviseur', cred3: '✓ 15+ jaar softwareleiderschap', cred4: '✓ Eigen AI-transformatieplatform',
+      mazeH2: 'AI transformeren van een doolhof naar iets geweldigs', mazeP: 'De meeste bedrijven weten dat AI belangrijk is. Weinigen weten waar te beginnen. Wij bieden de routekaart.', mazeCTA: 'AI-gereedheidstoets',
+      cred1: '✓ MIT AI-strategiedeskundige', cred2: '✓ EU AI-beleidsadviseur', cred3: '✓ 15+ jaar software-engineering en leiderschap', cred4: '✓ Eigen AI-transformatieplatform',
       proofEyebrow: 'Vertrouwd door marktleiders',
       stat1num: '18% → 81%', stat1lbl: 'Churnpredictie precisie<br>Vox Telecom',
       stat2num: '1.000+', stat2lbl: 'Leidinggevenden begeleid in<br>AI-strategie aan MIT Sloan',
@@ -1382,10 +1454,10 @@
       svc3title: 'Gespecialiseerde expertise', svc3li1: 'Churnpredictie en klantanalyse', svc3li2: 'Agrarische AI en IoT-dataplatforms', svc3li3: 'Generatieve AI en agentische AI-integratie', svc3li4: 'ERP/CRM AI-integratie (Odoo-specialist)', svc3del: 'Oplevering: sectorspecifieke AI-oplossingen',
       svc4title: 'Ingebed AI-leiderschap', svc4li1: '2–3 dagen/week strategische aanwezigheid', svc4li2: 'Communicatie met directie en bestuur', svc4li3: 'Opbouw van teamcapaciteiten', svc4li4: 'Beslissingsbevoegdheid technologie', svc4del: 'Oplevering: doorlopend strategisch leiderschap',
       casesEyebrow: 'Bewezen resultaten', casesH2: 'Resultaten in alle sectoren', casesSub: 'Echte resultaten van strategische AI-implementatie — geen theoretische projecties.',
-      case1ind: '🏢 Telecommunicatie', case1title: 'Churnpredictie en NLP-analyse — Vox Telecom', case1m1v: '81%', case1m1l: 'Precisie (van 18%)', case1m2v: '74%', case1m2l: 'Recall', case1res: '€2,3M geschatte jaarlijkse churnreductie · NLP-sentimentanalyse met Afrikaans auto-detectie en vertaling · Volledige MLOps-pijplijn',
-      case2ind: '🌾 Landbouw', case2title: 'Hydroponisch IoT-dataplatform — Universiteit Stellenbosch', case2m1v: '25+', case2m1l: 'Sensorparameters', case2m2v: '500K', case2m2l: 'Datapunten', case2res: 'IoT-sensorpijplijn · Voorspellende gewasanalyse voor opbrengst, kwaliteit en smaak · AWS-cloudarchitectuur',
-      case3ind: '🛡️ Defensie', case3title: 'Ballistische simulatie-optimalisatie — KNDS België', case3m1v: '50×', case3m1l: 'Efficiëntiewinst', case3m2v: 'PINNs', case3m2l: 'Innovatieve aanpak', case3res: 'Physics-informed neurale netwerken · Surrogaatmodellering · Lagere R&D-kosten',
-      case4ind: '🎨 Consumententech', case4title: 'Generatieve AI-integratie — Celebr8tly', case4m1v: 'GenAI', case4m1l: 'Beeldgeneratie', case4m2v: 'SaaS', case4m2l: 'Platformintegratie', case4res: 'AI-aangedreven gepersonaliseerde graphics voor feestplatform · End-to-end productstrategie',
+      case1ind: 'Telecommunicatie', case1title: 'Churnpredictie en NLP-analyse — Vox Telecom', case1m1v: '81%', case1m1l: 'Precisie (van 18%)', case1m2v: '74%', case1m2l: 'Recall', case1res: '€2,3M geschatte jaarlijkse churnreductie · NLP-sentimentanalyse met Afrikaans auto-detectie en vertaling · Volledige MLOps-pijplijn',
+      case2ind: 'Landbouw', case2title: 'Hydroponisch IoT-dataplatform — Universiteit Stellenbosch', case2m1v: '25+', case2m1l: 'Sensorparameters', case2m2v: '500K', case2m2l: 'Datapunten', case2res: 'IoT-sensorpijplijn · Voorspellende gewasanalyse voor opbrengst, kwaliteit en smaak · AWS-cloudarchitectuur',
+      case3ind: 'Defensie', case3title: 'Ballistische simulatie-optimalisatie — KNDS België', case3m1v: '50×', case3m1l: 'Efficiëntiewinst', case3m2v: 'PINNs', case3m2l: 'Innovatieve aanpak', case3res: 'Physics-informed neurale netwerken · Surrogaatmodellering · Lagere R&D-kosten',
+      case4ind: 'Consumententech', case4title: 'Generatieve AI-integratie — Celebr8tly', case4m1v: 'GenAI', case4m1l: 'Beeldgeneratie', case4m2v: 'SaaS', case4m2l: 'Platformintegratie', case4res: 'AI-aangedreven gepersonaliseerde graphics voor feestplatform · End-to-end productstrategie',
       expEyebrow: 'Aanvullende capaciteiten', expH2: 'Verder dan strategie — wij bouwen en leveren',
       exp1title: 'Agentische AI', exp1p: 'AI-aangedreven spraakagenten voor afspraakboeking en klantenservice. Productiearchitectuur met Vapi, Twilio en realtime kalenderintegratie.',
       exp2title: 'MLOps en LLMOps', exp2p: 'Productie-implementatiepijplijnen, modelversioning, geautomatiseerde hertraining, driftdetectie met Evidently en Prometheus/Grafana-monitoring.',
@@ -1396,7 +1468,7 @@
       euBig: '€35M', euCaption: 'Maximale boete voor niet-naleving<br>(7% van de wereldwijde omzet)', euCTA: 'EU AI Act-nalevingstoets',
       aboutEyebrow: 'Over Koios Analytics', aboutH2: 'Strategisch AI-leiderschap, geen diavoorstellingen',
       about1title: 'Onze aanpak', about1p1: 'Koios Analytics is een strategische AI-partner voor middelgrote bedrijven. Wij combineren diepgaande technische expertise met strategisch leiderschap — het overbruggen van het AI-leiderschapstekort zodat bedrijven toegang krijgen tot senior AI-strategie zonder de kosten van een fulltime executive.', about1p2: 'Wij geloven niet in AI om de AI. Elk engagement begint met een grondige gereedheidstoets en levert meetbare bedrijfsresultaten.',
-      about2title: 'Onze oprichter', about2p1: 'Fabien Zablocki, MSc informatica (cum laude), brengt 15+ jaar softwareleiderschap en 5+ jaar AI-implementatie. Als lid van de Apply AI Alliance van de Europese Commissie en MIT Sloan AI-strategiefacilitator heeft hij organisaties begeleid van initiële AI-gereedheidstoets tot productieklaar deployment.', about2p2link: 'Vraag het aan zijn digitale tweeling',
+      about2title: 'Onze oprichter', about2p1: 'Fabien Zablocki, MSc informatica (cum laude), brengt 15+ jaar softwareleiderschap en 5+ jaar AI-implementatie. Als lid van de Apply AI Alliance van de Europese Commissie en voormalig MIT Sloan AI-strategiefacilitator heeft hij organisaties begeleid van initiële AI-gereedheidstoets tot productieklaar deployment.', about2p2link: 'Vraag het aan zijn digitale tweeling',
       ctaH2: 'Klaar om uw AI-leiderschapstekort te overbruggen?', ctaSub: 'Ontvang een gratis AI-gereedheidstoets op basis van praktijkervaring met transformatie in zes industrieën.', ctaBtn: 'AI-gereedheidstoets',
       footServices: 'Diensten', footResources: 'Bronnen', footContact: 'Contact', footCopy: '© 2026 Koios Analytics (Pty) Ltd — Alle rechten voorbehouden.'
     }
@@ -1429,6 +1501,7 @@
     ['.stat-card:nth-child(3) .stat-label', 'stat3lbl', 'html'],
     ['.stat-card:nth-child(4) .stat-number', 'stat4num'],
     ['.stat-card:nth-child(4) .stat-label', 'stat4lbl', 'html'],
+    ['.maze-inner h2', 'mazeH2'], ['.maze-inner p', 'mazeP'], ['.maze-cta', 'mazeCTA'],
     ['#services .eyebrow', 'svcEyebrow'],
     ['#services .section-head h2', 'svcH2'],
     ['#services .section-head p:not(.eyebrow)', 'svcSub'],
