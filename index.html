@@ -1284,7 +1284,7 @@
       <div class="about-text reveal reveal-delay-1">
         <h3>Our Founder</h3>
         <p>Fabien Zablocki, MSc Computer Science (<em>cum laude</em>), brings 15+ years of software leadership and 5+ years in AI implementation. As a member of the European Commission's Apply AI Alliance and a former MIT Sloan AI Strategy Facilitator, he has guided organisations from initial AI readiness assessment through to production-grade deployment &mdash; including an 18% to 81% precision improvement in customer churn prediction for Vox Telecom.</p>
-        <p>Want to know more? <a href="https://myprofilegpt.onrender.com" target="_blank" rel="noopener">Ask his digital twin</a>.</p>
+        <p>Want to know more? <a href="https://myprofilegpt.onrender.com/?bot=true" target="_blank" rel="noopener">Ask his digital twin</a>.</p>
       </div>
     </div>
   </div>
@@ -1545,7 +1545,7 @@
     const about1 = document.querySelector('.about-text:nth-child(1)');
     if (about1 && dict.about1p1) { const ps = about1.querySelectorAll('p'); if(ps[0]) ps[0].textContent = dict.about1p1; if(ps[1]) ps[1].textContent = dict.about1p2; }
     const about2 = document.querySelector('.about-text:nth-child(2)');
-    if (about2 && dict.about2p1) { const ps = about2.querySelectorAll('p'); if(ps[0]) ps[0].textContent = dict.about2p1; if(ps[1]) ps[1].innerHTML = 'Want to know more? <a href="https://myprofilegpt.onrender.com" target="_blank" rel="noopener">' + dict.about2p2link + '</a>.'; }
+    if (about2 && dict.about2p1) { const ps = about2.querySelectorAll('p'); if(ps[0]) ps[0].textContent = dict.about2p1; if(ps[1]) ps[1].innerHTML = 'Want to know more? <a href="https://myprofilegpt.onrender.com/?bot=true" target="_blank" rel="noopener">' + dict.about2p2link + '</a>.'; }
     document.documentElement.lang = lang === 'nl' ? 'nl' : lang === 'fr' ? 'fr' : 'en';
   }
 
