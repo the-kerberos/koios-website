@@ -96,7 +96,7 @@ The logo is embedded as inline SVG throughout all pages (not as an <img>). This 
 ### Case Studies (all defensible — real engagements)
 1. Vox Telecom — churn prediction 18%→81%, NLP sentiment, Afrikaans auto-detect. Do NOT mention "Dual XGBoost" or specific model architecture.
 2. Stellenbosch University — Hydroponics IoT platform, 25+ sensors, 500K data points
-3. KNDS Belgium — Ballistic simulation, PINNs, 50× efficiency
+3. European Defense Manufacturer — Ballistic simulation, PINNs, 50× efficiency. Client name kept anonymous (defense industry prefers discretion; engagement still being chased).
 4. Celebr8tly — Generative AI image integration for celebration platform
 
 ### Things NOT to mention on the website
