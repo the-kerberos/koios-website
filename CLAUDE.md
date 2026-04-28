@@ -111,7 +111,7 @@ The logo is embedded as inline SVG throughout all pages (not as an <img>). This 
 - EU AI Compliance: /eu-ai-compliance.html
 - Email: solutions@koios-analytics.com
 - LinkedIn: https://www.linkedin.com/company/koios-analytics/
-- Digital twin: https://myprofilegpt.onrender.com/?bot=true
+- Digital twin: https://myprofilegpt.onrender.com
 - Chatbot backend: https://ask-koios-ai.onrender.com
 
 ## Assets Directory Policy
