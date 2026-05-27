@@ -59,13 +59,12 @@ The logo is embedded as inline SVG throughout all pages (not as an <img>). This 
 
 ## Key Features
 
-### Language Toggle (EN/FR/NL)
-- Located in the nav bar as three small buttons
-- Homepage (index.html) has a full translation dictionary object `T` with keys for en/fr/nl
-- `applyLang()` function maps CSS selectors to dictionary keys
+### Language Toggle (EN/FR/NL/IT)
+- Located in the nav bar as four small buttons
+- Homepage (index.html), EU AI compliance, and AI Readiness pages each have a full translation dictionary object `T` with keys for en/fr/nl/it
+- `applyLang()` function maps CSS selectors / data-i18n attributes to dictionary keys
 - Persists choice via localStorage
-- EU AI compliance page has the toggle UI but translations not yet wired up
-- AI Readiness page needs the toggle added and translations wired
+- Odoo partnership page has the toggle UI but translations are not wired (all languages currently fall back to English content)
 
 ### Chatbot Widget ("Ask Koios AI")
 - Floating gold FAB button bottom-right of homepage
